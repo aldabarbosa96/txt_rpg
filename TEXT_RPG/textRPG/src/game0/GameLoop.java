@@ -1,34 +1,35 @@
 package game0;
 
+import game0.NPCs.Enemy;
 import game0.NPCs.NPC;
+import game0.events.Combat;
 import game0.player.Inventory;
 import game0.player.Player;
+import game0.player.PlayerStatistics;
 import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 import java.util.Scanner;
 public class GameLoop {
     public static void run(Scanner sc){
         Player player = new Player();
-        NPC npc = new NPC(); //creo q habrá q cambiar la manera de manejar las instancias d los NPC's más adelante..
+        PlayerStatistics ps = new PlayerStatistics();
+        NPC npc = new NPC(); //todo-> debería cambiar el manejo de las instancias de los NPC's más adelante..
         Dice d6 = new Dice(6);
         Dice d12 = new Dice(12);
+        Enemy enemigo = new Enemy("Narrador",5,2);
 
         GameStoryTeller.narrar(0,null);
         player.setName(sc.nextLine());
         GameStoryTeller.narrar(1,player);
         sc.nextLine();
 
-        /**
-         * crear una clase para manejar la lógica (y dejar constancia quí) de las actualizaciones del siguiente bloque
-         * además de añadir algún parámetro más (ataque,..)
-         */
-        System.out.println("Player: " + Player.getName()+"\nLifePoints: " + player.getHp()+"\nEnergy: "+player.getEnergy()); //debo manejarlo desde una clase independiente
+        PlayerStatistics.statsPlayer(player);
         sc.nextLine();
 
         GameStoryTeller.narrar(2,null); sc.nextLine();
         GameStoryTeller.narrar(3,player); sc.nextLine();
 
-        NPC.interactuarNPC00(); sc.nextLine();
+        NPC.interactuarNPC00(sc); sc.nextLine();
 
         System.out.println(Player.getName()+":");
         String respuesta = player.opcionEscogida0(sc); sc.nextLine();
@@ -37,6 +38,7 @@ public class GameLoop {
 
         NPC.interactuarNPC02();
         player.escogerOpcion(sc, npc);
+        System.out.println("\n");
         GameStoryTeller.narrar(8,player);
         sc.nextLine();
 
@@ -45,9 +47,8 @@ public class GameLoop {
 
         if (player.ResPaz()) GameStoryTeller.narrar(11,null);
 
-        GameEnter.enterInv();
         Inventory.addToInventory("\"DADO\"");
-        Inventory.mostrarInv();
+        GameEnter.enterInv();
         sc.nextLine();
 
         GameStoryTeller.narrar(12,null); sc.nextLine();
@@ -55,22 +56,14 @@ public class GameLoop {
         GameStoryTeller.narrar(14,player);
         sc.nextLine();
 
-        GameEnter.enterDadoAtaque(); //revisar lógica implementación DADO
-        int resultadoD12 = d12.lanzar();
-        d12.imprimirDado(resultadoD12);
+        GameEnter.enterDadoAtaque(player); //lógica de lanzar dados mejorada pero se podría mejorar más
         sc.nextLine();
 
         GameStoryTeller.narrar(15,null); sc.nextLine();
 
-        player.opcionEscogida04(sc);
-        GameEvent.tutorialEvent(sc,player);
+        if (GameEvent.gestionEventos01(sc,player,enemigo).equalsIgnoreCase("a")){
+            Combat.combatEvent(sc,enemigo);}
 
-        /*GameEnter.enterDadoDialogo();
-        int resultadoD6 = d6.lanzar();
-        d6.imprimirDado(resultadoD6);
-        sc.nextLine();*/
-
-        /*System.out.println("Pulsa ENTER para lanzar el dado de diálogo:"); sc.nextLine();
-        d6.lanzarD6();*/
+        Combat.combatFlow(player,enemigo,sc,ps);    //todo-> método que maneja toda la lógica y desarrollo del combate (habrá que cambiarlo)
     }
 }

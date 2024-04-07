@@ -1,12 +1,14 @@
 package game0.player;
 
+import game0.GameStoryTeller;
 import game0.NPCs.NPC;
 
 import java.util.Scanner;
 public class Player {
-    private static String name;
-    private int hp = 10;
-    private int energy = 5;
+    protected static String name;
+    protected int hp = 10;
+    protected int energy = 5;
+    protected int attack = 1;
     private boolean resPaz;
 
     public boolean ResPaz() {
@@ -27,6 +29,16 @@ public class Player {
         return energy;
     }
 
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
+    public int getAttack(){return attack;}
+
     public void setName(String name) {
         this.name = name;
     }
@@ -37,19 +49,19 @@ public class Player {
     public String opcionEscogida0(Scanner sc) {
         String respuesta = "";
         boolean respuestaValida = false;
+        PlayerOptions.opcion(0);
 
         while (!respuestaValida) {
-            PlayerStatus.opcion(0);
             respuesta = sc.nextLine();
 
             if (respuesta.equalsIgnoreCase("a")) {
-                System.out.println(this.getName() + ": Aquí al único que le huele la boca a polla es a ti hermanito.");
+                System.out.println(getName() + ": Aquí al único que le huele la boca a polla es a ti hermanito.");
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {
-                System.out.println(this.getName() + ": Procede a violentarle la mandíbula con los nudillos en un gesto rápido y efectivo.");
+                System.out.println(getName() + ": Procede a violentarle la mandíbula con los nudillos en un gesto rápido y efectivo.");
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("c")) {
-                System.out.println(this.getName() + ": Procede a enseñar su bolsa.");
+                System.out.println(getName() + ": Procede a enseñar su bolsa.");
                 respuestaValida = true;
                 marcarPaz();
             } else {
@@ -72,7 +84,7 @@ public class Player {
             } else if (respuesta.equalsIgnoreCase("b")) {
                 System.out.println("Guardia de las arenas: ¡MUERE!");
                 respuestaValida = true;
-                System.out.println("Narrador: El Guardia de las Arenas golpea a "+this.getName()+" con su maza de tungsteno y lo mata ipsofacto\n--------------------GAME OVER--------------------");
+                System.out.println("Narrador: El Guardia de las Arenas golpea a "+getName()+" con su maza de tungsteno y lo mata ipsofacto\n--------------------GAME OVER--------------------");
                 System.exit(0);
             } else {
                 System.out.println("Narrador: Prueba de nuevo lumbreras.");
@@ -81,7 +93,7 @@ public class Player {
         return respuesta;
     }
 
-    public String opcionEscogida02(Scanner sc) {
+    public void opcionEscogida02(Scanner sc) {
         String respuesta = "";
         boolean respuestaValida = false;
 
@@ -89,10 +101,10 @@ public class Player {
             respuesta = sc.nextLine();
 
             if (respuesta.equalsIgnoreCase("a")){
-                System.out.println(this.getName()+": ¡Coño! ¡¿Solo tiene una mierda de dado?!");
+                System.out.println(getName()+": ¡Coño! ¡¿Solo tiene una mierda de dado?!");
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {
-                System.out.println("Narrador: "+ this.getName() + " sale corriendo y tropieza con la sangre del guardia\nCon la cabeza en el frío suelo se percata de un objeto pequeño e insignificante (EL PUTO DADO).");
+                System.out.println("Narrador: "+ getName() + " sale corriendo y tropieza con la sangre del guardia\nCon la cabeza en el frío suelo se percata de un objeto pequeño e insignificante (EL PUTO DADO).");
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("c")) {
                 System.out.println("Narrador: Saltan derechos de copyright y se cierra el juego por denuncias de derechos de autor.\n--------------------GAME OVER--------------------");
@@ -101,11 +113,11 @@ public class Player {
                 System.out.println("Narrador: Prueba de nuevo lumbreras.");
             }
         }
-        return respuesta;
     }
     public void opcionEscogida03(Scanner sc){
         Inventory.addToInventory("\"trozo de pan\"");
-        System.out.println("Guardia de las arenas: Ten anda, que me da lástima que no tengas ni un trsite trozo de pan.");
+        System.out.println("Guardia de las arenas: Ten anda, que me da lástima que no tengas ni un triste trozo de pan.");
+        GameStoryTeller.narrar(18,null);
     }
     public void escogerOpcion(Scanner sc, NPC npc){
         int respuestaNum0 = npc.getRespuestaNum0();
@@ -122,11 +134,10 @@ public class Player {
                 break;
         }
     }
-    public void opcionEscogida04(Scanner sc){
-        PlayerStatus.opcion(4);
+    public String opcionEscogida04(Scanner sc){
+        PlayerOptions.opcion(4);
         String respuesta ="";
         boolean respuestaValida = false;
-
         while (!respuestaValida){
             respuesta = sc.nextLine();
             if (respuesta.equalsIgnoreCase("a")){
@@ -138,12 +149,14 @@ public class Player {
                 sc.nextLine();
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("c")) {
-                System.out.println("Narrador: Eres gilipollas, digo nos vemos >>"+Player.getName()+"<<.\n--------------------GAME OVER--------------------");
+                System.out.println("Narrador: No te falta razón, digo nos vemos >>"+getName()+"<<.\n--------------------GAME OVER--------------------");
                 sc.nextLine();
                 respuestaValida = true;
+                System.exit(0);
             }
             else System.out.println("Narrador: Prueba de nuevo lumbreras.");
         }
+        return respuesta;
     }
 }
 

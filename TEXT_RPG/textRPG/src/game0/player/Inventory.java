@@ -23,7 +23,7 @@ public class Inventory {
 
     }
     public static void mostrarInv(){
-        System.out.println("INVENTARIO:");
+        System.out.println("INVENTARIO:\n");
         for (int i=0;i< slots.length;i++){
             System.out.println(slots[i]);
         }

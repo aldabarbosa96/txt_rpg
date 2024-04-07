@@ -1,21 +1,29 @@
 package game0.NPCs;
 
 import game0.GameStoryTeller;
-import game0.player.Player;
-import game0.player.PlayerStatus;
+import game0.player.PlayerOptions;
+
+import java.util.Scanner;
 
 public class NPC {
-    private static int respuestaNum0 = 0;
+    protected String name;
+
+    protected static int respuestaNum0 = 0;
 
     public int getRespuestaNum0() {
         return respuestaNum0;
     }
 
-    public NPC() {}
-
-    public static void interactuarNPC00() {
-        GameStoryTeller.narrar(4,null);
-        System.out.println("Guardia de las arenas: ¡¡¡ALTO MARICONNNNN!!!");
+    public NPC(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public NPC(){}
+    public static void interactuarNPC00(Scanner sc) {
+        GameStoryTeller.narrar(4,null); sc.nextLine();
+        System.out.println("Guardia de las arenas: ¡ALTO MARICONNN!");
         System.out.println("Narrador: A pesar de lo que parece, no, no nos está dando el alto...");
         System.out.println("Guardia de las arenas: Enséñame tus enseres o muere sucia puerca.");
     }
@@ -44,15 +52,14 @@ public class NPC {
     }
     public static void interactuarNPC02() {
         while (respuestaNum0 <= 3) {
-            System.out.println(Player.getName()+":");
             if (respuestaNum0 == 0) {
-                PlayerStatus.opcion(1);
+                PlayerOptions.opcion(1);
                 break;
             } else if (respuestaNum0 == 1) {
-                PlayerStatus.opcion(2);
+                PlayerOptions.opcion(2);
                 break;
             } else if (respuestaNum0 == 2) {
-                PlayerStatus.opcion(3);
+                PlayerOptions.opcion(3);
                 break;
             } else System.out.println("Esta opción no existe lumbreras.");
         }
