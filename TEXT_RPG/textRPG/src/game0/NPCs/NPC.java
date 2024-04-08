@@ -5,7 +5,7 @@ import game0.player.PlayerOptions;
 
 import java.util.Scanner;
 
-public class NPC {
+public class Npc {
     protected String name;
 
     protected static int respuestaNum0 = 0;
@@ -14,27 +14,26 @@ public class NPC {
         return respuestaNum0;
     }
 
-    public NPC(String name) {
+    public Npc(String name) {
         this.name = name;
     }
     public String getName() {
         return name;
     }
-    public NPC(){}
+    public Npc(){}
     public static void interactuarNPC00(Scanner sc) {
         GameStoryTeller.narrar(4,null); sc.nextLine();
-        System.out.println("Guardia de las arenas: ¡ALTO MARICONNN!");
-        System.out.println("Narrador: A pesar de lo que parece, no, no nos está dando el alto...");
-        System.out.println("Guardia de las arenas: Enséñame tus enseres o muere sucia puerca.");
+        NpcOptions.dialogo(0);
+        GameStoryTeller.narrar(38,null);
+        NpcOptions.dialogo(1);
     }
     public void interactuarNPC01(String respuesta) {
         while (respuestaNum0 <= 3) {
             if (respuesta.equalsIgnoreCase("a")) {
                 respuestaNum0 = 0;
-                System.out.println("Guardia de las arenas: Me cago en todos tus santísimos cojones pedazo de basura.");
+                NpcOptions.dialogo(2);
                 GameStoryTeller.narrar(5,null);
-                System.out.println("Guardia de las arenas: Sucio bastardo, arrodíllate ahora mismo y lame mis botas para conservar la cabeza " +
-                        "encima de los hombros.");
+                NpcOptions.dialogo(3);
                 break;
             } else if (respuesta.equalsIgnoreCase("b")) {
                 respuestaNum0 = 1;
@@ -42,7 +41,7 @@ public class NPC {
                 break;
             } else if (respuesta.equalsIgnoreCase("c")) {
                 respuestaNum0 = 2;
-                System.out.println("Guardia de las arenas: Veamos...");
+                NpcOptions.dialogo(4);
                 GameStoryTeller.narrar(7,null);
                 break;
             } else {
@@ -61,10 +60,9 @@ public class NPC {
             } else if (respuestaNum0 == 2) {
                 PlayerOptions.opcion(3);
                 break;
-            } else System.out.println("Esta opción no existe lumbreras.");
+            } else GameStoryTeller.narrar(26,null);
         }
     }
     public void interactuarNPC03(){
-
         }
     }

@@ -1,7 +1,8 @@
 package game0.player;
 
 import game0.GameStoryTeller;
-import game0.NPCs.NPC;
+import game0.NPCs.Npc;
+import game0.NPCs.NpcOptions;
 
 import java.util.Scanner;
 public class Player {
@@ -55,23 +56,23 @@ public class Player {
             respuesta = sc.nextLine();
 
             if (respuesta.equalsIgnoreCase("a")) {
-                System.out.println(getName() + ": Aquí al único que le huele la boca a polla es a ti hermanito.");
+                PlayerOptions.dialogo(0);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {
-                System.out.println(getName() + ": Procede a violentarle la mandíbula con los nudillos en un gesto rápido y efectivo.");
+                PlayerOptions.dialogo(1);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("c")) {
-                System.out.println(getName() + ": Procede a enseñar su bolsa.");
+                PlayerOptions.dialogo(2);
                 respuestaValida = true;
                 marcarPaz();
             } else {
-                System.out.println("Narrador: Prueba de nuevo lumbreras.");
+                GameStoryTeller.narrar(26,null);
             }
         }
         return respuesta;
     }
 
-    public String opcionEscogida01(Scanner sc) {
+    public String opcionEscogida01(Scanner sc, Player player,Npc npc) {
         String respuesta = "";
         boolean respuestaValida = false;
 
@@ -79,21 +80,21 @@ public class Player {
             respuesta = sc.nextLine();
 
             if (respuesta.equalsIgnoreCase("a")) {
-                System.out.println("Guardia de las arenas: Así me gusta siervo bastardo. ¡Ten! Te otorgo esta basurilla como obsequio por ser un buen sirviente.");
+                NpcOptions.dialogo(5);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {
-                System.out.println("Guardia de las arenas: ¡MUERE!");
+                NpcOptions.dialogo(6);
                 respuestaValida = true;
-                System.out.println("Narrador: El Guardia de las Arenas golpea a "+getName()+" con su maza de tungsteno y lo mata ipsofacto\n--------------------GAME OVER--------------------");
+                GameStoryTeller.narrar(32,player);
                 System.exit(0);
             } else {
-                System.out.println("Narrador: Prueba de nuevo lumbreras.");
+                GameStoryTeller.narrar(26,null);
             }
         }
         return respuesta;
     }
 
-    public void opcionEscogida02(Scanner sc) {
+    public void opcionEscogida02(Scanner sc,Player player) {
         String respuesta = "";
         boolean respuestaValida = false;
 
@@ -101,60 +102,59 @@ public class Player {
             respuesta = sc.nextLine();
 
             if (respuesta.equalsIgnoreCase("a")){
-                System.out.println(getName()+": ¡Coño! ¡¿Solo tiene una mierda de dado?!");
+                PlayerOptions.dialogo(3);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {
-                System.out.println("Narrador: "+ getName() + " sale corriendo y tropieza con la sangre del guardia\nCon la cabeza en el frío suelo se percata de un objeto pequeño e insignificante (EL PUTO DADO).");
+                GameStoryTeller.narrar(33,player);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("c")) {
-                System.out.println("Narrador: Saltan derechos de copyright y se cierra el juego por denuncias de derechos de autor.\n--------------------GAME OVER--------------------");
+                GameStoryTeller.narrar(34,null);
                 System.exit(0);
             } else {
-                System.out.println("Narrador: Prueba de nuevo lumbreras.");
+               GameStoryTeller.narrar(26,null);
             }
         }
     }
     public void opcionEscogida03(Scanner sc){
         Inventory.addToInventory("\"trozo de pan\"");
-        System.out.println("Guardia de las arenas: Ten anda, que me da lástima que no tengas ni un triste trozo de pan.");
+        NpcOptions.dialogo(7);
         GameStoryTeller.narrar(18,null);
     }
-    public void escogerOpcion(Scanner sc, NPC npc){
+    public void escogerOpcion(Scanner sc, Npc npc, Player player){
         int respuestaNum0 = npc.getRespuestaNum0();
 
         switch (respuestaNum0){
             case 0:
-                opcionEscogida01(sc);
+                opcionEscogida01(sc,player,npc);
                 break;
             case 1:
-                opcionEscogida02(sc);
+                opcionEscogida02(sc,player);
                 break;
             case 2:
                 opcionEscogida03(sc);
                 break;
         }
     }
-    public String opcionEscogida04(Scanner sc){
+    public String opcionEscogida04(Scanner sc,Player player){
         PlayerOptions.opcion(4);
         String respuesta ="";
         boolean respuestaValida = false;
         while (!respuestaValida){
             respuesta = sc.nextLine();
             if (respuesta.equalsIgnoreCase("a")){
-                System.out.println("Narrador: Ya suponía.. Con ese nombre y ese careto que me llevas.\nEstá bien, te haré el t-u-t-o-r-i-a-l.");
+                GameStoryTeller.narrar(35, null);
                 sc.nextLine();
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {
-                System.out.println("Narrador: Así me gusta, dispuesto a todo (a sufrir, concretamente).");
+                GameStoryTeller.narrar(36,null);
                 sc.nextLine();
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("c")) {
-                System.out.println("Narrador: No te falta razón, digo nos vemos >>"+getName()+"<<.\n--------------------GAME OVER--------------------");
+                GameStoryTeller.narrar(37,player);
                 sc.nextLine();
                 respuestaValida = true;
                 System.exit(0);
-            }
-            else System.out.println("Narrador: Prueba de nuevo lumbreras.");
+            } else  GameStoryTeller.narrar(26,null);
         }
         return respuesta;
     }

@@ -1,5 +1,7 @@
 package game0.player;
 
+import game0.GameVoiceOver;
+
 public class Inventory {
     private static String[] slots = new String[12];
 
@@ -18,7 +20,7 @@ public class Inventory {
                 return true;
             }
         }
-        System.out.println("Inventario lleno. Tira algo Diógenes.");
+        GameVoiceOver.dialogo(4);
             return false;
 
     }

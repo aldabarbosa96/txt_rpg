@@ -1,6 +1,8 @@
 package game0.NPCs;
 
-public class Enemy extends NPC {
+import java.util.Scanner;
+
+public class Enemy extends Npc {
     private int lifePoints;
     private int attackPoints;
     public Enemy(String name, int vida, int ataque){
@@ -19,6 +21,10 @@ public class Enemy extends NPC {
 
     public void setLifePoints(int lifePoints) {
         this.lifePoints = lifePoints;
+    }
+    public static void statsEnemy(Enemy enemy, Scanner sc) {
+        System.out.println("--------------------\nEnemigo: " + enemy.getName() + "\nVida: " + enemy.getLifePoints() + "\nFuerza: " + enemy.getAttackPoints());
+        sc.nextLine();
     }
 }
 

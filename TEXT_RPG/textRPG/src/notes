@@ -1,10 +1,9 @@
 NOTAS:
 
--Prioridad corregir los métodos Combat.combatFlow() y PlayerStatistics.actEst()
-para poder implementar de una vez el sistema de combate de forma correcta.
-
--Actualizar tutorial y descripción del sistema de combate (falta añadir la fuerza al daño de ataque)
-
--Optimizar en general la clase GameLoop
-
+-Prioridad corregir los métodos Combat.combatFlow() y PlayerStatistics.actEst() para poder implementar de una vez el sistema de combate de forma correcta.          HECHO!
+-Actualizar tutorial y descripción del sistema de combate (falta añadir la fuerza al daño de ataque)        REVISAR
+-Optimizar en general la clase GameLoop         REVISAR
 -Revisar clase NPC (y la manera de crear instancias de los diferentes NPC's)
+-Seguir implementando la creaciñon del juego
+-Mover todas las interacciones del narrador a la clase GameStoryTeller
+-Manjear de mejor forma las interacciones de los NPC's y el Player

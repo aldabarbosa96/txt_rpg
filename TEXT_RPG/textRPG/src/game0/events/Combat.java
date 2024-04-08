@@ -1,14 +1,23 @@
 package game0.events;
 
+import game0.GameStoryTeller;
+import game0.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Player;
 import game0.player.PlayerStatistics;
+import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 
 import java.util.Scanner;
 
 public class Combat {
-    static Enemy narrador = new Enemy("Narrador",5,2);
+    private String ganador = "";
+    boolean ganaJugador = true;
+
+    public boolean getGanaJugador() {
+        return ganaJugador;
+    }
+
     public static void combatEvent(Scanner sc, Enemy enemy){
         GameEnter.enterAtaque();
         System.out.println("--------------------FIGHT--------------------\n" +
@@ -20,25 +29,58 @@ public class Combat {
                 "\n"+
               "     "+ Player.getName()+"   VS     "+enemy.getName()+"\n");
     }
-    public static String combatFlow(Player player, Enemy enemy, Scanner sc,PlayerStatistics ps){
-        boolean enCombate = true;
-        String ganador = "";
+    public  String combatFlow(Player player, Enemy enemy, Scanner sc,PlayerStatistics ps, Dice dado){
+        sc.nextLine();
 
-        while (enCombate){
+
+        PlayerStatistics.statsPlayer(player,sc);
+        Enemy.statsEnemy(enemy,sc);
+
+        while (player.getHp() > 0 && enemy.getLifePoints() > 0){
             sc.nextLine();
 
-            ps.actEstEnCombate(player,sc,enemy);
-            if (player.getHp() <=0 || player.getEnergy() == 0){
-                enCombate = false;
-                ganador = "¡"+ narrador.getName()+" es el ganador del combate!";
-                System.out.println("¡Terminó el combate!");
-                sc.nextLine();
-            } else if (narrador.getLifePoints()<=0) {
-                enCombate = false;
-                ganador = "¡"+Player.getName()+" es el ganador del combate";
+            ps.actEstPlayerEnCombate(player,sc,enemy);
 
-            } else System.out.println("Continúa el combate:");
+            if (enemy.getLifePoints()<=0) {
+                enemy.setLifePoints(0);
+                System.out.println("¡FIN DEL COMBATE!");
+                sc.nextLine();
+                break;
+            } else if (player.getHp()<=0 || player.getEnergy() <= 0) {
+                ganaJugador = false;
+                GameVoiceOver.dialogo(9);
+                sc.nextLine();
+                break;
+            }
+
+            ps.actEstEnemyEnCombate(player,sc,enemy,dado);
+
+            if (enemy.getLifePoints() <= 0){
+                GameVoiceOver.dialogo(9);
+                sc.nextLine();
+                break;
+            }
+
+            else if (player.getHp() <=0 || player.getEnergy() <= 0){
+                ganaJugador = false;
+                GameVoiceOver.dialogo(9);
+                sc.nextLine();
+                break;
+
+            } else GameVoiceOver.dialogo(10);
+
         }
+        if (ganaJugador){
+            ganador += "¡¡¡<<"+Player.getName()+">> es el ganador!!!";
+        } else ganador += "¡¡¡<<"+ enemy.getName()+">> es el ganador!!!";
+        System.out.println(ganador);
         return ganador;
+    }
+    public void ganador(Player player, Enemy enemy){
+        if (ganaJugador){
+            GameStoryTeller.narrar(19,player);
+            GameStoryTeller.narrar(20,null);
+        }
+        else GameStoryTeller.narrar(21,null);;
     }
 }
