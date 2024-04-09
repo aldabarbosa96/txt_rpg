@@ -8,6 +8,7 @@ simulación de combates, y alguna que otra interacción más. La idea es que el 
 en una ventana GUI (implementación de JFrame y JPanel en un futuro) y que el usuario pueda interactuar tanto con teclado como con ratón,
 además de añadir algunos sprites para que el acabado visual sea mucho mejor (la idea es que tanto los npc's, enemigos, items, etc, tenga
 su representación gráfica dentro del juego.
+Por ahora soy consciente de los bugs y lo mal optimizado y redactado que está el código, por ahora me enfoco en que funcione y poco a poco lo voy revisando y mejorando.
 
 Espero que te guste el proyecto y cualquier duda, consejo o crítica constructiva será bienvenida :)
 
