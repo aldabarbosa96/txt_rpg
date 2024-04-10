@@ -31,6 +31,10 @@ public class GameVoiceOver {
         /*11*/vozEnOff.add("---------------------------------------------------");
         /*12*/vozEnOff.add("Pulsa ENTER para lanzar el dado de ataque: del enemigo:");
         /*13*/vozEnOff.add("¿Qué quieres hacer <<{PlayerName}>> ?");
+        /*14*/vozEnOff.add("Pulsa ENTER para ver tu equipamiento:");
+        /*15*/vozEnOff.add("Comienzas a subir hacia \"Los Acantilados de Riera Alta\".");
+        /*16*/vozEnOff.add("Coges un extraño transporte dirección \"La Selva Santa Rosa\".");
+        /*17*/vozEnOff.add("Te adentras en las profundidades de \"La Jungla de Fondo\".");
     }
 }
 

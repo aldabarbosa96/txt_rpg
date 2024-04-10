@@ -10,13 +10,13 @@ public class Equipment {
     private String collar;
 
     public Equipment() {
-        this.cabeza = "     ---     ";
-        this.torso = "     ---     ";
-        this.manoD = "     ---     ";
-        this.manoI = "     ---     ";
-        this.pantalones = "     ---     ";
-        this.zapatos = "     ---     r";
-        this.collar = "     ---     ";
+        this.cabeza = "---";
+        this.torso = "---";
+        this.manoD = "---";
+        this.manoI = "---";
+        this.pantalones = "---";
+        this.zapatos = "---";
+        this.collar = "---";
     }
 
     public void equiparCabeza(String item) {
@@ -47,7 +47,7 @@ public class Equipment {
     }
 
     public void mostrarEquipo() {
-        System.out.println("--------------------EQUIPAMIENTO--------------------");
+        System.out.println("--------------------EQUIPAMIENTO--------------------\n");
         System.out.println("Cabeza: " + this.cabeza);
         System.out.println("Torso: " + this.torso);
         System.out.println("Mano D: " + this.manoD);

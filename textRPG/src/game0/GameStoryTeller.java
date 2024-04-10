@@ -44,8 +44,8 @@ public class GameStoryTeller { //NARRADOR
         /*26*/narracion.add("Narrador: Prueba de nuevo, lumbreras.");
         /*27*/narracion.add("Narrador: La santa puta virgen del señor...");
         /*28*/narracion.add("Narrador: Era la mejor opción de todas.");
-        /*29*/narracion.add("Introduzca nombre del Jugador:");
-        /*30*/narracion.add("Introudce un nombre válido:");
+        /*29*/narracion.add("Introduzca nombre del Jugador:"); //esto debería ir en GameVoiceOver
+        /*30*/narracion.add("Introudce un nombre válido:"); //esto debería ir en GameVoiceOver
         /*31*/narracion.add("Narrador: Ah, se me olvidaba, toma, te entrego esto:\n<<{PlayerName}>> ha recibido \"navaja multiusos\".");
         /*32*/narracion.add("Narrador: El Guardia de las Arenas golpea a <<{PlayerName}>> con su maza de tungsteno y lo mata ipsofacto\n--------------------GAME OVER--------------------");
         /*33*/narracion.add("Narrador: <<{PlayerName}>> sale corriendo y tropieza con la sangre del guardia\nCon la cabeza en el frío suelo se percata de un objeto pequeño e insignificante (EL PUTO DADO).");
@@ -56,5 +56,9 @@ public class GameStoryTeller { //NARRADOR
         /*38*/narracion.add("Narrador: A pesar de lo que parece, no, no nos está dando el alto...");
         /*39*/narracion.add("Narrador: Venga, te lo volveré a preguntar {PlayerName}: ");
         /*40*/narracion.add("Narrador: No se yo si estás muy bien preparado para este basto mundo de violad..Digo, de peligros que acenchan.");
+        /*41*/narracion.add("Narrador: <<{PlayerName}>> comienza a subir los empinados acantilados, cuando de repente, un curioso personaje apareció.");
+        /*42*/narracion.add("Narrador: ¿Parece que vas en tod@ regalad@ o no <<{PlayerName}>> ? Anda mira, en el vehículo este raro hay bastante muchedumbre.\nYo probaría a interactuar con alguno de estos paletos...");
+        /*43*/narracion.add("Narrador: Muy atrevido por tu parte <<{PlayerName}>> ; buena suerte en la Jungla de los \"Horrores\", je je je...");
+        /*44*/narracion.add("Narrador: Te recomendaría pasar desapercibid@. Esta zona es bastante peliaguda.");
     }
 }

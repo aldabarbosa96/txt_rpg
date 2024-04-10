@@ -18,6 +18,8 @@ public class PlayerOptions {
         /*5*/opciones.add(Player.getName() + ":\nA) Sí, aún tengo dudas porque soy un cubo de basura con manos\nB) No, soy hostia y lo he entendido todo\nC) Empecemos ya el combate, capullo");
         /*6*/opciones.add(Player.getName() + ":\nA) Coger regalo y empezar aventurita\nB) ¡T-U-T-O-R-I-A-L! ¡T-U-T-O-R-I-A-L!\nC) Ahora sí, adiós\nD) Quiero cambiarme el nombre\nE) Quiero pelear otra vez");
         /*7*/opciones.add(Player.getName() + ":\n1) Abrir inventario\n2) Ver equipamiento\n3) Ver estadísticas\nA) Ir al Norte (\"Acantilados Riera Alta\")\nB) Ir al Sur (\"Selva Santa Rosa\")\nC) Ir al Este (\"Jungla Fondo\")\nD) Ir al Oeste (\"Montañas Singuerlín\")\nE) Explorar tu ubicación");
+        /*8*/opciones.add(Player.getName() + ":\nA) Hablar con el ente raro\nB) Atacar al ente raro\nC) Tirarte un pedo\nD) Pasar de largo");
+        /*9*/opciones.add(Player.getName() + ":\nA) Dialogar con anciana\nB) Atacar a anciana\nC) Dialogar con borracho\nD) Atacar a borracho\nE) Seguir tu camino");
     }
     public static void dialogo(int index){
         String escoger = dialogar.get(index);

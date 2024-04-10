@@ -37,7 +37,7 @@ public class GameEvent {
             if (opcionEsc.equalsIgnoreCase("a")) {
                 GameStoryTeller.narrar(24, player); sc.nextLine();
                 GameStoryTeller.narrar(31,player); sc.nextLine();
-                equipment.equiparManoD("Navaja Multiusos (+1 Fuerza)");
+                equipment.equiparManoD(" Navaja Multiusos (+1 Fuerza)");
                 GameStoryTeller.narrar(25, null);
                 break;
             } else if (opcionEsc.equalsIgnoreCase("b")) {
@@ -70,27 +70,51 @@ public class GameEvent {
             gestionEventos02(sc, player, enter, combat, enemy, ps, dice,equipment);
         }
     }
-    public static void gestionEventos03(Player player,Scanner sc,Equipment equipment){
+    public static String gestionEventos03(Player player,Scanner sc,Equipment equipment){
         GameVoiceOver.dialogo(13,player); sc.nextLine();
         PlayerOptions.opcion(7);
 
-        boolean esValida = false;
-        int opcion = sc.nextInt();
+        String opcion = sc.nextLine();
 
-        while (!esValida){
-            if (opcion == 1){
-                GameEnter.enterInv(); //seguir por aquí
+        while (true){
+            if (opcion.equalsIgnoreCase("1")){
+                GameEnter.enterInv();
                 break;
-            } else if (opcion == 2) {
-                equipment.mostrarEquipo();
-            } else if (opcion == 3) {
+            } else if (opcion.equalsIgnoreCase("2")) {
+                GameEnter.enterEquipo(equipment);;
+                break;
+            } else if (opcion.equalsIgnoreCase("3")) {
                 PlayerStatistics.statsPlayer(player,sc);
+                break;
+            } if (opcion.equalsIgnoreCase("a")){
+                GameStoryTeller.narrar(41,player); sc.nextLine();
+                PlayerOptions.opcion(8);
+                //aquí irá gestionEventos04()
+                break;
+            } if (opcion.equalsIgnoreCase("b")){
+                GameVoiceOver.dialogo(16,null);
+                GameStoryTeller.narrar(42,player); sc.nextLine();
+                PlayerOptions.opcion(9);
+                //aquí irá gestionEventos04()
             }
-            String opcion1 = sc.nextLine();
-            if (opcion1.equalsIgnoreCase("a")){
-
+            if (opcion.equalsIgnoreCase("c")){
+                GameVoiceOver.dialogo(17,null); sc.nextLine();
+                GameStoryTeller.narrar(43,player); sc.nextLine();
+                GameStoryTeller.narrar(44,null); sc.nextLine();
             }
         }
+        if (opcion.equals("1") || opcion.equals("2") || opcion.equals("3")){
+            gestionEventos03(player,sc,equipment);
+        }
+        return opcion;
+    }
+    public static void gestionEventos04(Scanner sc, Player player,Equipment equipment){
+        String opcion = sc.nextLine();
+
+        if (gestionEventos03(player,sc,equipment).equalsIgnoreCase("a")){
+            //seguir aquí
+        }
+
     }
 }
 

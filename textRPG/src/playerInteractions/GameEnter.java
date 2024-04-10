@@ -3,6 +3,7 @@ package playerInteractions;
 import game0.GameStoryTeller;
 import game0.GameVoiceOver;
 import game0.NPCs.Enemy;
+import game0.player.Equipment;
 import game0.player.Inventory;
 import game0.player.Player;
 
@@ -22,6 +23,7 @@ public class GameEnter {
         GameVoiceOver.dialogo(0,null);
         sc.nextLine();
         Inventory.mostrarInv();
+        sc.nextLine();
     }
     public static int enterDadoAtaquePlayer(Player player){
         GameVoiceOver.dialogo(11,null);
@@ -43,6 +45,12 @@ public class GameEnter {
     public static void enterAtaque(){
         GameVoiceOver.dialogo(11,null);
         GameVoiceOver.dialogo(2,null);
+        sc.nextLine();
+    }
+    public static void enterEquipo(Equipment equipment){
+        GameVoiceOver.dialogo(11,null);
+        GameVoiceOver.dialogo(14,null);
+        equipment.mostrarEquipo();
         sc.nextLine();
     }
     public static void enterDadoDialogo(){
