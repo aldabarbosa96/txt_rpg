@@ -20,7 +20,7 @@ public class PlayerOptions {
         /*7*/opciones.add(Player.getName() + ":\n1) Abrir inventario\n2) Ver equipamiento\n3) Ver estadísticas\nA) Ir al Norte (\"Acantilados Riera Alta\")\nB) Ir al Sur (\"Selva Santa Rosa\")\nC) Ir al Este (\"Jungla Fondo\")\nD) Ir al Oeste (\"Montañas Singuerlín\")\nE) Explorar tu ubicación");
         /*8*/opciones.add(Player.getName() + ":\nA) Hablar con el ente raro\nB) Atacar al ente raro\nC) Tirarte un pedo\nD) Pasar de largo");
         /*9*/opciones.add(Player.getName() + ":\nA) Dialogar con anciana\nB) Atacar a anciana\nC) Dialogar con borracho\nD) Atacar a borracho\nE) Seguir tu camino");
-        /*10*/opciones.add(Player.getName() + ":\nA) Retroceder al \"Centro\"\nB) Entrar en la Singuerlín C.F\nC) Adoptar postura sigilosa\nD) Provocar al primero que veas");
+        /*10*/opciones.add(Player.getName() + ":\nA) Retroceder al \"Centro\"\nB) Entrar en la Singuerlín C.F\nC) ");
     }
     public static void dialogo(int index){
         String escoger = dialogar.get(index);

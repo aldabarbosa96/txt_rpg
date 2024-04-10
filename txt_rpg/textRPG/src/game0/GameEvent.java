@@ -70,61 +70,47 @@ public class GameEvent {
             gestionEventos02(sc, player, enter, combat, enemy, ps, dice,equipment);
         }
     }
-    public static String gestionEventos03(Player player, Scanner sc, Equipment equipment) {
-        String opcion = "";
+    public static String gestionEventos03(Player player,Scanner sc,Equipment equipment){
+        GameVoiceOver.dialogo(13,player); sc.nextLine();
+        PlayerOptions.opcion(7);
 
-        while (true) {
-            GameVoiceOver.dialogo(13, player);
-            sc.nextLine();
-            PlayerOptions.opcion(7);
+        String opcion = sc.nextLine();
 
-            opcion = sc.nextLine();
-
-            switch (opcion.toLowerCase()) {
-                case "1":
-                    GameEnter.enterInv();
-                    break;
-                case "2":
-                    GameEnter.enterEquipo(equipment);
-                    break;
-                case "3":
-                    PlayerStatistics.statsPlayer(player, sc);
-                    break;
-                case "d":
-                    GameVoiceOver.dialogo(18, null);
-                    sc.nextLine();
-                    GameStoryTeller.narrar(45, null);
-                    sc.nextLine();
-                    break;
-                case "a":
-                    GameVoiceOver.dialogo(15, null);
-                    GameStoryTeller.narrar(41, player);
-                    sc.nextLine();
-                    PlayerOptions.opcion(8);
-                    return opcion;
-                case "b":
-                    GameVoiceOver.dialogo(16, null);
-                    GameStoryTeller.narrar(42, player);
-                    sc.nextLine();
-                    PlayerOptions.opcion(9);
-                    return opcion;
-                case "c":
-                    GameVoiceOver.dialogo(17, null);
-                    sc.nextLine();
-                    GameStoryTeller.narrar(43, player);
-                    sc.nextLine();
-                    GameStoryTeller.narrar(44, null);
-                    sc.nextLine();
-                    return opcion;
-                case "e":
-                    // Implementar la acción específica para la opción 'e'
-                    return opcion;
-                default:
-                    GameStoryTeller.narrar(26, null);
+        while (true){
+            if (opcion.equalsIgnoreCase("1")){
+                GameEnter.enterInv();
+                break;
+            } else if (opcion.equalsIgnoreCase("2")) {
+                GameEnter.enterEquipo(equipment);;
+                break;
+            } else if (opcion.equalsIgnoreCase("3")) {
+                PlayerStatistics.statsPlayer(player,sc);
+                break;
+            } else if (opcion.equalsIgnoreCase("a")){
+                GameVoiceOver.dialogo(15,null);
+                GameStoryTeller.narrar(41,player); sc.nextLine();
+                PlayerOptions.opcion(8);
+                //aquí irá gestionEventos04()
+                break;
+            } else if (opcion.equalsIgnoreCase("b")){
+                GameVoiceOver.dialogo(16,null);
+                GameStoryTeller.narrar(42,player); sc.nextLine();
+                PlayerOptions.opcion(9);
+                //aquí irá gestionEventos04()
+            } else if (opcion.equalsIgnoreCase("c")){
+                GameVoiceOver.dialogo(17,null); sc.nextLine();
+                GameStoryTeller.narrar(43,player); sc.nextLine();
+                GameStoryTeller.narrar(44,null); sc.nextLine();
+            } else if (opcion.equalsIgnoreCase("d")){
+                GameVoiceOver.dialogo(18,null); sc.nextLine();
+                GameStoryTeller.narrar(45,null); sc.nextLine();
             }
         }
+        if (opcion.equals("1") || opcion.equals("2") || opcion.equals("3")){
+            gestionEventos03(player,sc,equipment);
+        }
+        return opcion;
     }
-
     public static void gestionEventos04(Scanner sc, Player player,Equipment equipment){
         String opcion = sc.nextLine();
 
