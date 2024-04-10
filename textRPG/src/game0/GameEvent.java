@@ -86,21 +86,24 @@ public class GameEvent {
             } else if (opcion.equalsIgnoreCase("3")) {
                 PlayerStatistics.statsPlayer(player,sc);
                 break;
-            } if (opcion.equalsIgnoreCase("a")){
+            } else if (opcion.equalsIgnoreCase("a")){
+                GameVoiceOver.dialogo(15,null);
                 GameStoryTeller.narrar(41,player); sc.nextLine();
                 PlayerOptions.opcion(8);
                 //aquí irá gestionEventos04()
                 break;
-            } if (opcion.equalsIgnoreCase("b")){
+            } else if (opcion.equalsIgnoreCase("b")){
                 GameVoiceOver.dialogo(16,null);
                 GameStoryTeller.narrar(42,player); sc.nextLine();
                 PlayerOptions.opcion(9);
                 //aquí irá gestionEventos04()
-            }
-            if (opcion.equalsIgnoreCase("c")){
+            } else if (opcion.equalsIgnoreCase("c")){
                 GameVoiceOver.dialogo(17,null); sc.nextLine();
                 GameStoryTeller.narrar(43,player); sc.nextLine();
                 GameStoryTeller.narrar(44,null); sc.nextLine();
+            } else if (opcion.equalsIgnoreCase("d")){
+                GameVoiceOver.dialogo(18,null); sc.nextLine();
+                GameStoryTeller.narrar(45,null); sc.nextLine();
             }
         }
         if (opcion.equals("1") || opcion.equals("2") || opcion.equals("3")){

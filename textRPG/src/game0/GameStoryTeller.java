@@ -56,9 +56,10 @@ public class GameStoryTeller { //NARRADOR
         /*38*/narracion.add("Narrador: A pesar de lo que parece, no, no nos está dando el alto...");
         /*39*/narracion.add("Narrador: Venga, te lo volveré a preguntar {PlayerName}: ");
         /*40*/narracion.add("Narrador: No se yo si estás muy bien preparado para este basto mundo de violad..Digo, de peligros que acenchan.");
-        /*41*/narracion.add("Narrador: <<{PlayerName}>> comienza a subir los empinados acantilados, cuando de repente, un curioso personaje apareció.");
+        /*41*/narracion.add("Narrador: <<{PlayerName}>> se ecnontraba subiendo los empinados acantilados, cuando, de repente, un curioso personaje apareció.");
         /*42*/narracion.add("Narrador: ¿Parece que vas en tod@ regalad@ o no <<{PlayerName}>> ? Anda mira, en el vehículo este raro hay bastante muchedumbre.\nYo probaría a interactuar con alguno de estos paletos...");
         /*43*/narracion.add("Narrador: Muy atrevido por tu parte <<{PlayerName}>> ; buena suerte en la Jungla de los \"Horrores\", je je je...");
         /*44*/narracion.add("Narrador: Te recomendaría pasar desapercibid@. Esta zona es bastante peliaguda.");
+        /*45*/narracion.add("Narrador: Para tu información, toda la zona de Singuerlín está bajo los dominios de la S.C.F (Singuerlín Clan Fentanílico) y no son muy amigables que digamos...");
     }
 }
