@@ -3,6 +3,7 @@ package game0;
 import game0.NPCs.Enemy;
 import game0.NPCs.Npc;
 import game0.events.Combat;
+import game0.player.Equipment;
 import game0.player.Inventory;
 import game0.player.Player;
 import game0.player.PlayerStatistics;
@@ -19,6 +20,7 @@ public class GameLoop {
         Dice d12 = new Dice(12); //dado ataque
         Enemy enemigo = new Enemy("Narrador", 20, 3, 5);
         Combat combate = new Combat();
+        Equipment equipment = new Equipment();
 
         GameStoryTeller.narrar(0, null);
         player.setName(sc.nextLine());
@@ -71,12 +73,13 @@ public class GameLoop {
 
         GameEvent.gestionEventos01(sc, player, enemigo, combate, ps, d12);
         //todo-> revisar lógica del daño del combate
-        player.setEnergy(8);
+
+        GameStoryTeller.narrar(22,player); sc.nextLine();
+        GameStoryTeller.narrar(23, null); sc.nextLine();
+        GameEvent.gestionEventos02(sc, player, enter, combate, enemigo, ps, d12,equipment);
         sc.nextLine();
 
-        GameStoryTeller.narrar(23, null); sc.nextLine();
-        GameEvent.gestionEventos02(sc, player, enter, combate, enemigo, ps, d12);
-        sc.nextLine();
+        GameEvent.gestionEventos03(player,sc,equipment);
 
     }
 }

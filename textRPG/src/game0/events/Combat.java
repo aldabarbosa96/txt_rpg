@@ -86,6 +86,5 @@ public class Combat {
         player.setEnergy(8);
         player.setHp(30);
         enemy.setLifePoints(20);
-        GameStoryTeller.narrar(22,player);
     }
 }

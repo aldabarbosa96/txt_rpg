@@ -30,6 +30,7 @@ public class GameVoiceOver {
         /*10*/vozEnOff.add("Continúa el combate:");
         /*11*/vozEnOff.add("---------------------------------------------------");
         /*12*/vozEnOff.add("Pulsa ENTER para lanzar el dado de ataque: del enemigo:");
+        /*13*/vozEnOff.add("¿Qué quieres hacer <<{PlayerName}>> ?");
     }
 }
 

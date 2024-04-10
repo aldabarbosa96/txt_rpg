@@ -40,7 +40,7 @@ public class GameStoryTeller { //NARRADOR
         /*22*/narracion.add("Narrador: Llegados a este punto, si te ves preparad@ para emprender tu viaje <<{PlayerName}>> tengo algo para ti.");
         /*23*/narracion.add("Narrador: Por el contrario, si prefieres practicar un poco más con el combate, que te R-E-P-I-T-A el T-U-T-O-R-I-A-L o prefieres abandonar aquí, ahora es el momento:\n");
         /*24*/narracion.add("Narrador: Lo vas a flipar <<{PlayerName}>>\n\n¡QUE EMPIECE EL JUEGO!\n----------------------------------------");
-        /*25*/narracion.add("Narrador: Estás en el centro del oasis \"Fondo\", un peculiar, maravilloso y peligroso lugar en el corazón del desierto del \"Santako\".");
+        /*25*/narracion.add("Narrador: Estás en el centro del oasis \"Centro\", un peculiar, maravilloso y peligroso lugar en el corazón del desierto del \"Santako\".");
         /*26*/narracion.add("Narrador: Prueba de nuevo, lumbreras.");
         /*27*/narracion.add("Narrador: La santa puta virgen del señor...");
         /*28*/narracion.add("Narrador: Era la mejor opción de todas.");

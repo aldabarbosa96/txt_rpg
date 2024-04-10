@@ -3,6 +3,7 @@ package game0;
 import game0.NPCs.Enemy;
 import game0.events.Combat;
 import game0.events.Tutorial;
+import game0.player.Equipment;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import game0.player.PlayerStatistics;
@@ -28,7 +29,7 @@ public class GameEvent {
         } else GameStoryTeller.narrar(26,null);
         }
     }
-    public static void gestionEventos02(Scanner sc, Player player,GameEnter enter,Combat combat,Enemy enemy,PlayerStatistics ps,Dice dice) {
+    public static void gestionEventos02(Scanner sc, Player player,GameEnter enter,Combat combat,Enemy enemy,PlayerStatistics ps,Dice dice,Equipment equipment) {
         PlayerOptions.opcion(6);
         String opcionEsc = sc.nextLine();
 
@@ -36,6 +37,7 @@ public class GameEvent {
             if (opcionEsc.equalsIgnoreCase("a")) {
                 GameStoryTeller.narrar(24, player); sc.nextLine();
                 GameStoryTeller.narrar(31,player); sc.nextLine();
+                equipment.equiparManoD("Navaja Multiusos (+1 Fuerza)");
                 GameStoryTeller.narrar(25, null);
                 break;
             } else if (opcionEsc.equalsIgnoreCase("b")) {
@@ -65,7 +67,29 @@ public class GameEvent {
         if (!opcionEsc.equalsIgnoreCase("a")) {
             GameStoryTeller.narrar(39, player);
             sc.nextLine();
-            gestionEventos02(sc, player, enter, combat, enemy, ps, dice);
+            gestionEventos02(sc, player, enter, combat, enemy, ps, dice,equipment);
+        }
+    }
+    public static void gestionEventos03(Player player,Scanner sc,Equipment equipment){
+        GameVoiceOver.dialogo(13,player); sc.nextLine();
+        PlayerOptions.opcion(7);
+
+        boolean esValida = false;
+        int opcion = sc.nextInt();
+
+        while (!esValida){
+            if (opcion == 1){
+                GameEnter.enterInv(); //seguir por aquí
+                break;
+            } else if (opcion == 2) {
+                equipment.mostrarEquipo();
+            } else if (opcion == 3) {
+                PlayerStatistics.statsPlayer(player,sc);
+            }
+            String opcion1 = sc.nextLine();
+            if (opcion1.equalsIgnoreCase("a")){
+
+            }
         }
     }
 }
