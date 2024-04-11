@@ -3,10 +3,11 @@ package game0.player;
 import game0.GameStoryTeller;
 import game0.NPCs.Npc;
 import game0.NPCs.NpcOptions;
+import game0.interfaces.UserInteraction;
 
 import java.util.Scanner;
 public class Player {
-    protected static String name;
+    private String name;
     protected int hp = 30;
     protected int energy = 8;
     protected int attack = 1;
@@ -23,7 +24,7 @@ public class Player {
 
     public Player() {
     }
-    public static String getName() {
+    public  String getName() {
         return name;
     }
 
@@ -42,6 +43,13 @@ public class Player {
         this.hp = hp;
     }
 
+    public Player(String name, int hp, int energy, int attack) {
+        this.name = name;
+        this.hp = hp;
+        this.energy = energy;
+        this.attack = attack;
+    }
+
     public void setEnergy(int energy) {
         this.energy = energy;
     }
@@ -50,6 +58,10 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public void setName(UserInteraction ui) {
+        ui.showMessage("Introduce tu nombre:");
+        this.name = ui.getInput();
     }
     public void marcarPaz(){
         this.resPaz = true;

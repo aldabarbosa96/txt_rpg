@@ -18,7 +18,7 @@ public class Combat {
         return ganaJugador;
     }
 
-    public static void combatEvent(Scanner sc, Enemy enemy){
+    public static void combatEvent(Player player,Scanner sc, Enemy enemy){
         GameEnter.enterAtaque();
         System.out.println("--------------------FIGHT--------------------\n" +
                 "\n"+
@@ -27,10 +27,10 @@ public class Combat {
                 "                //\\   VS   |\\\\\n" +
                 "               //  \\      /  \\\\\n" +
                 "\n"+
-              "     "+ Player.getName()+"   VS     "+enemy.getName()+"\n");
+              "     "+ player.getName()+"   VS     "+enemy.getName()+"\n");
     }
     public void combatFlow(Player player, Enemy enemy, Scanner sc, PlayerStatistics ps, Dice dado){
-        combatEvent(sc,enemy);
+        combatEvent(player,sc,enemy);
         sc.nextLine();
         PlayerStatistics.statsPlayer(player,sc);
         Enemy.statsEnemy(enemy,sc);
@@ -69,7 +69,7 @@ public class Combat {
             } else {sc.nextLine(); GameVoiceOver.dialogo(10,null);}
 
         }
-        if (ganaJugador) ganador += "¡¡¡<<"+Player.getName()+">> es el ganador!!!";
+        if (ganaJugador) ganador += "¡¡¡<<"+player.getName()+">> es el ganador!!!";
             else ganador += "¡¡¡<<"+ enemy.getName()+">> es el ganador!!!";
         System.out.println(ganador);
         ganador(player,enemy); sc.nextLine();

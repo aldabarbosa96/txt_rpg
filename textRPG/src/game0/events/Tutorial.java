@@ -17,8 +17,8 @@ public class Tutorial {
         System.out.println("Narrador: Igual te pensabas que iba a ser otra cosa, pero la verdad es que soy yo de nuevo dándote la turra\n" +
                 "porque eres t-o-n-t-i-t-@ y no puedes hacerte a la idea de como funciona un combate en un juego tan simple como este...");
         sc.nextLine();
-        System.out.println("Jugador: " + Player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack()+"\nDefensa: "+player.getDeffense());
-        System.out.println("\nEsto representa tus estadísticas básicas: Player: " + Player.getName() + " --> ERES TÚ ... Por si no te habías percatado.\n\n" +
+        System.out.println("Jugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack()+"\nDefensa: "+player.getDeffense());
+        System.out.println("\nEsto representa tus estadísticas básicas: Player: " + player.getName() + " --> ERES TÚ ... Por si no te habías percatado.\n\n" +
                 "Vida: " + player.getHp() + " --> esto representa tus life points, tu vida, tu alma, tu salud.\n\n" +
                 "Energía: " + player.getEnergy() + " --> esto representa tu energía para realizar cualquier acción de combate; se gastará 1 punto por cada acción que realices, por ahora.\n\n" +
                 "Fuerza: " + player.getAttack() + " --> esto representa tu poder de ataque, que se sumará a tu tirada de dados para sumar el daño total del golpe.\n\n" +
@@ -28,7 +28,7 @@ public class Tutorial {
                 "En cristiano: si el guacho tiene 10 de defensa y tu tirada es 12(+1 de tu fuerza) = 13 --> le quitas 3 puntos de vida. En cambio, si tu tirada es de 8 perderías TÚ 1  punto de vida.\n" +
                 "Esto se aplica igual a todo el mundo, por ahora.");
         sc.nextLine();
-        System.out.println("Alguna duda más >>" + Player.getName() + "<<?\n"); sc.nextLine();
+        System.out.println("Alguna duda más >>" + player.getName() + "<<?\n"); sc.nextLine();
 
         PlayerOptions.opcion(5);
         boolean esTonto = false;
@@ -51,7 +51,7 @@ public class Tutorial {
                         "                           DAÑO = -2\n" +
                         "                           TU VIDA = 8");
                 sc.nextLine();
-                System.out.println("¿¿¿¡¡¡TE HA QUEDADO YA CLARO PEDAZO DE ...  <<" + Player.getName() + ">> !!!???\nNarrador del Narrador: La pregunta era retórica, pues el combate iba a comenzar.");
+                System.out.println("¿¿¿¡¡¡TE HA QUEDADO YA CLARO PEDAZO DE ...  <<" + player.getName() + ">> !!!???\nNarrador del Narrador: La pregunta era retórica, pues el combate iba a comenzar.");
                 esTonto = true;
 
             } else if (respuesta.equalsIgnoreCase("b")) {
@@ -59,7 +59,7 @@ public class Tutorial {
                 System.out.println("Narrador: No, la hostia no eres porque si lo fueras no tendría que haber hecho la explicación, lumbreras.");
                 combat.combatFlow(player,enemy,sc,ps,dice);
             } else if (respuesta.equalsIgnoreCase("c")) {
-                System.out.println("Narrador: Capullo tu padre. Te vas a enterar <<" + Player.getName() + ">>");
+                System.out.println("Narrador: Capullo tu padre. Te vas a enterar <<" + player.getName() + ">>");
                 esTonto = true;
             } else {
                 GameStoryTeller.narrar(26, null);
@@ -73,10 +73,10 @@ public class Tutorial {
     public static void tutorialEvent01(Scanner sc, Player player) { //TUTORIAL2
         System.out.println("--------------------TUTORIAL--------------------");
         sc.nextLine();
-        System.out.println("Narrador: Me cansas <<"+Player.getName()+">>, deja de pedir el tutorial de un juego tan simple, mendrug@.\n\nToma a ver si te queda claro YA:");
+        System.out.println("Narrador: Me cansas <<"+player.getName()+">>, deja de pedir el tutorial de un juego tan simple, mendrug@.\n\nToma a ver si te queda claro YA:");
         sc.nextLine();
-        System.out.println("Jugador: " + Player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack()+"\nDefensa: "+player.getDeffense());
-        System.out.println("\nEsto representa tus estadísticas básicas: Player: " + Player.getName() + " --> ERES TÚ ... Por si no te habías percatado.\n\n" +
+        System.out.println("Jugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack()+"\nDefensa: "+player.getDeffense());
+        System.out.println("\nEsto representa tus estadísticas básicas: Player: " + player.getName() + " --> ERES TÚ ... Por si no te habías percatado.\n\n" +
                 "Vida: " + player.getHp() + " --> esto es lo que me falta a mí... Digo, esto representa tus life points, tu vida, tu alma, tu salud.\n\n" +
                 "Energía: " + player.getEnergy() + " --> esto representa tu energía para realizar cualquier acción de combate; se gastará 1 punto por cada acción que realices, por ahora.\n\n" +
                 "Fuerza: " + player.getAttack() + " --> esto representa tu poder de ataque, que se sumará a tu tirada de dados para sumar el daño total del golpe.\n\n" +

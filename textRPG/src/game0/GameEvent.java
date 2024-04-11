@@ -117,7 +117,7 @@ public class GameEvent {
                     sc.nextLine();
                     return opcion;
                 case "e":
-                    // Implementar la acción específica para la opción 'e'
+                    //implementar funcionalidad
                     return opcion;
                 default:
                     GameStoryTeller.narrar(26, null);

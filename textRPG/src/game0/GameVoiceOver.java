@@ -10,7 +10,7 @@ public class GameVoiceOver {
     public static void dialogo(int index,Player player){
         String voz = vozEnOff.get(index);
         if (player != null) {
-            voz = voz.replace("{PlayerName}",Player.getName());
+            voz = voz.replace("{PlayerName}",player.getName());
         }
         System.out.println(voz);
     }

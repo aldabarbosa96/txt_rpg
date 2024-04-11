@@ -10,7 +10,7 @@ public class PlayerStatistics extends Player {
     }
 
     public static void statsPlayer(Player player, Scanner sc) {
-        System.out.println("--------------------\nJugador: " + Player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack()+"\nDefensa: "+player.getDeffense());
+        System.out.println("--------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack()+"\nDefensa: "+player.getDeffense());
         sc.nextLine();
     }
 
@@ -31,7 +31,7 @@ public class PlayerStatistics extends Player {
         } else {
             int daño = enemigo.getDeffensePoints() - (resultadoDado+player.getAttack());
             player.setHp(player.getHp() - daño);
-            System.out.println(Player.getName() + " se hirió " + daño + " a si mismo.");
+            System.out.println(player.getName() + " se hirió " + daño + " a si mismo.");
             sc.nextLine();
         }
         statsPlayer(player,sc);

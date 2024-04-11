@@ -8,7 +8,7 @@ public class GameStoryTeller { //NARRADOR
     public static void narrar(int index, Player player){
         String narraciones = narracion.get(index);
         if (player != null) {
-            narraciones = narraciones.replace("{PlayerName}",Player.getName());
+            narraciones = narraciones.replace("{PlayerName}",player.getName());
         }
         System.out.println(narraciones);
     }

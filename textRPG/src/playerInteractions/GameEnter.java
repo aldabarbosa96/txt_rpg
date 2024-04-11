@@ -13,7 +13,7 @@ public class GameEnter {
     static Dice d12 = new Dice(12);
     static Scanner sc = new Scanner(System.in);
     public void invalidName(Player player){
-        while (Player.getName().isEmpty()){
+        while (player.getName().isEmpty()){
             GameStoryTeller.narrar(30,null);
             player.setName(sc.nextLine());
         }
