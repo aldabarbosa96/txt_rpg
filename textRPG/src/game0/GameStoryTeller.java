@@ -1,17 +1,26 @@
 package game0;
 
+import game0.interfaces.UserInteraction;
 import game0.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-public class GameStoryTeller { //NARRADOR
-    public static void narrar(int index, Player player){
+
+public class GameStoryTeller {
+    private static UserInteraction ui;
+
+    public static void setUserInteraction(UserInteraction userInteraction) {
+        ui = userInteraction;
+    }
+
+    public static void narrar(int index, Player player) {
         String narraciones = narracion.get(index);
         if (player != null) {
-            narraciones = narraciones.replace("{PlayerName}",player.getName());
+            narraciones = narraciones.replace("{PlayerName}", player.getName());
         }
-        System.out.println(narraciones);
+        ui.showMessage(narraciones);
     }
+
     public static List<String> narracion = new ArrayList<>();
 
     static {

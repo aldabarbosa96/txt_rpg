@@ -15,4 +15,8 @@ public class ConsoleInteraction implements UserInteraction {
     public String getInput() {
         return scanner.nextLine();
     }
+    @Override
+    public void pauseForUserInput() {
+        scanner.nextLine(); //uso interno del scanner (debe pasar como método)
+    }
 }

@@ -1,35 +1,36 @@
 package game0.console;
 
 import game0.interfaces.GamePresentation;
+import game0.interfaces.UserInteraction;
 import game0.player.Player;
 import game0.NPCs.Enemy;
 
 public class ConsolePresentation implements GamePresentation {
     @Override
-    public void displayStats(Object entity) {
+    public void displayStats(UserInteraction ui,Object entity) {
         if (entity instanceof Player) {
             Player player = (Player) entity;
-            System.out.println("--------------------");
-            System.out.println("Jugador: " + player.getName());
-            System.out.println("Vida: " + player.getHp());
-            System.out.println("Energía: " + player.getEnergy());
-            System.out.println("Fuerza: " + player.getAttack());
-            System.out.println("Defensa: " + player.getDeffense());
-            System.out.println("--------------------");
+            ui.showMessage("--------------------");
+            ui.showMessage("Jugador: " + player.getName());
+            ui.showMessage("Vida: " + player.getHp());
+            ui.showMessage("Energía: " + player.getEnergy());
+            ui.showMessage("Fuerza: " + player.getAttack());
+            ui.showMessage("Defensa: " + player.getDeffense());
+            ui.showMessage("--------------------");
         } else if (entity instanceof Enemy) {
             Enemy enemy = (Enemy) entity;
-            System.out.println("--------------------");
-            System.out.println("Enemigo: " + enemy.getName());
-            System.out.println("Vida: " + enemy.getLifePoints());
-            System.out.println("Fuerza: " + enemy.getAttackPoints());
-            System.out.println("Defensa: " + enemy.getDeffensePoints());
-            System.out.println("--------------------");
+            ui.showMessage("--------------------");
+            ui.showMessage("Enemigo: " + enemy.getName());
+            ui.showMessage("Vida: " + enemy.getLifePoints());
+            ui.showMessage("Fuerza: " + enemy.getAttackPoints());
+            ui.showMessage("Defensa: " + enemy.getDeffensePoints());
+            ui.showMessage("--------------------");
         }
     }
 
     @Override
-    public void displayCombat(Player player, Enemy enemy) {
-        System.out.println("--------------------FIGHT--------------------\n" +
+    public void displayCombat(UserInteraction ui,Player player, Enemy enemy) {
+        ui.showMessage("--------------------FIGHT--------------------\n" +
                 "\n"+
                 "                  O        O\n" +
                 "                 /|\\/     /|\\\\\n" +

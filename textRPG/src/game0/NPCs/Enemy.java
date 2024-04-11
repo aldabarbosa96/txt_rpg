@@ -1,5 +1,7 @@
 package game0.NPCs;
 
+import game0.interfaces.UserInteraction;
+
 import java.util.Scanner;
 
 public class Enemy extends Npc {
@@ -28,8 +30,8 @@ public class Enemy extends Npc {
     public void setLifePoints(int lifePoints) {
         this.lifePoints = lifePoints;
     }
-    public static void statsEnemy(Enemy enemy, Scanner sc) {
-        System.out.println("--------------------\nEnemigo: " + enemy.getName() + "\nVida: " + enemy.getLifePoints() + "\nFuerza: " + enemy.getAttackPoints()+"\nDefensa: "+enemy.getDeffensePoints());
+    public static void statsEnemy(UserInteraction ui,Enemy enemy) {
+        ui.showMessage("--------------------\nEnemigo: " + enemy.getName() + "\nVida: " + enemy.getLifePoints() + "\nFuerza: " + enemy.getAttackPoints()+"\nDefensa: "+enemy.getDeffensePoints());
     }
 }
 

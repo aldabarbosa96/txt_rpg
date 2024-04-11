@@ -1,6 +1,8 @@
 package game0.NPCs;
 
 import game0.GameStoryTeller;
+import game0.interfaces.UserInteraction;
+import game0.player.Player;
 import game0.player.PlayerOptions;
 
 import java.util.Scanner;
@@ -21,8 +23,8 @@ public class Npc {
         return name;
     }
     public Npc(){}
-    public static void interactuarNPC00(Scanner sc) {
-        GameStoryTeller.narrar(4,null); sc.nextLine();
+    public static void interactuarNPC00(UserInteraction ui) {
+        GameStoryTeller.narrar(4,null); ui.pauseForUserInput();
         NpcOptions.dialogo(0);
         GameStoryTeller.narrar(38,null);
         NpcOptions.dialogo(1);
@@ -49,16 +51,16 @@ public class Npc {
             }
         }
     }
-    public static void interactuarNPC02() {
+    public static void interactuarNPC02(Player player) {
         while (respuestaNum0 <= 3) {
             if (respuestaNum0 == 0) {
-                PlayerOptions.opcion(1);
+                PlayerOptions.opcion(1,player);
                 break;
             } else if (respuestaNum0 == 1) {
-                PlayerOptions.opcion(2);
+                PlayerOptions.opcion(2,player);
                 break;
             } else if (respuestaNum0 == 2) {
-                PlayerOptions.opcion(3);
+                PlayerOptions.opcion(3,player);
                 break;
             } else GameStoryTeller.narrar(26,null);
         }

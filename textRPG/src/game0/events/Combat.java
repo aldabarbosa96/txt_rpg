@@ -3,6 +3,8 @@ package game0.events;
 import game0.GameStoryTeller;
 import game0.GameVoiceOver;
 import game0.NPCs.Enemy;
+import game0.console.ConsolePresentation;
+import game0.interfaces.UserInteraction;
 import game0.player.Player;
 import game0.player.PlayerStatistics;
 import playerInteractions.Dice;
@@ -18,61 +20,50 @@ public class Combat {
         return ganaJugador;
     }
 
-    public static void combatEvent(Player player,Scanner sc, Enemy enemy){
-        GameEnter.enterAtaque();
-        System.out.println("--------------------FIGHT--------------------\n" +
-                "\n"+
-                "                  O        O\n" +
-                "                 /|\\/     /|\\\\\n" +
-                "                //\\   VS   |\\\\\n" +
-                "               //  \\      /  \\\\\n" +
-                "\n"+
-              "     "+ player.getName()+"   VS     "+enemy.getName()+"\n");
-    }
-    public void combatFlow(Player player, Enemy enemy, Scanner sc, PlayerStatistics ps, Dice dado){
-        combatEvent(player,sc,enemy);
-        sc.nextLine();
-        PlayerStatistics.statsPlayer(player,sc);
-        Enemy.statsEnemy(enemy,sc);
+    public void combatFlow(ConsolePresentation cp,Player player, Enemy enemy, UserInteraction ui, PlayerStatistics ps, Dice dado){
+        cp.displayCombat(ui,player,enemy);
+        ui.pauseForUserInput();
+        PlayerStatistics.statsPlayer(player,ui);
+        Enemy.statsEnemy(ui,enemy);
 
         while (player.getHp() > 0 && enemy.getLifePoints() > 0){
-            sc.nextLine();
+            ui.pauseForUserInput();
 
-            ps.actEstPlayerEnCombate(player,sc,enemy);
+            ps.actEstPlayerEnCombate(player,ui,enemy);
 
             if (enemy.getLifePoints()<=0) {
-                sc.nextLine();
+                ui.pauseForUserInput();
                 GameVoiceOver.dialogo(9,null);
-                sc.nextLine();
+                ui.pauseForUserInput();
                 break;
             } else if (player.getHp()<=0 || player.getEnergy() <= 0) {
                 ganaJugador = false;
                 GameVoiceOver.dialogo(9,null);
-                sc.nextLine();
+                ui.pauseForUserInput();
                 break;
             }
 
-            ps.actEstEnemyEnCombate(player,sc,enemy,dado);
+            ps.actEstEnemyEnCombate(player,ui,enemy,dado);
 
             if (enemy.getLifePoints() <= 0){
                 GameVoiceOver.dialogo(9,null);
-                sc.nextLine();
+                ui.pauseForUserInput();
                 break;
             }
 
             else if (player.getHp() <=0 || player.getEnergy() <= 0){
                 ganaJugador = false;
                 GameVoiceOver.dialogo(9,null);
-                sc.nextLine();
+                ui.pauseForUserInput();
                 break;
 
-            } else {sc.nextLine(); GameVoiceOver.dialogo(10,null);}
+            } else {ui.pauseForUserInput(); GameVoiceOver.dialogo(10,null);}
 
         }
         if (ganaJugador) ganador += "¡¡¡<<"+player.getName()+">> es el ganador!!!";
             else ganador += "¡¡¡<<"+ enemy.getName()+">> es el ganador!!!";
-        System.out.println(ganador);
-        ganador(player,enemy); sc.nextLine();
+        ui.showMessage(ganador);
+        ganador(player,enemy); ui.pauseForUserInput();
     }
     public void ganador(Player player, Enemy enemy){
         if (ganaJugador){

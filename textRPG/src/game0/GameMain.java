@@ -1,19 +1,27 @@
 package game0;
 
+import game0.NPCs.NpcOptions;
+import game0.console.ConsoleInteraction;
+import game0.console.ConsolePresentation;
+import game0.player.PlayerOptions;
 import window.GameFrame;
-
 import javax.swing.*;
 import java.util.Locale;
-import java.util.Scanner;
+
 
 public class GameMain {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in).useLocale(Locale.ENGLISH);
         /*SwingUtilities.invokeLater(() -> {
             GameFrame frame = new GameFrame();
             frame.setVisible(true);
         });*///todo --> esto implementa una GUI básica que extenderemos e implementaremos en un futuro
-        GameLoop.run(sc);
-        sc.close();
+
+        ConsoleInteraction ui = new ConsoleInteraction();
+        ConsolePresentation cp = new ConsolePresentation();
+        GameStoryTeller.setUserInteraction(ui);
+        NpcOptions.setUserInteraction(ui);
+        PlayerOptions.setUserInteraction(ui);
+        GameVoiceOver.setUserInteraction(ui);
+        GameLoop.run(ui,cp);
     }
 }

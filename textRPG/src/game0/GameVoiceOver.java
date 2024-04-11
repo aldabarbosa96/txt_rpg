@@ -1,21 +1,25 @@
 package game0;
 
-import game0.NPCs.Npc;
+import game0.interfaces.UserInteraction;
 import game0.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameVoiceOver {
+    private static UserInteraction ui;
+
+    public static void setUserInteraction(UserInteraction userInteraction) {
+        ui = userInteraction;
+    }
     public static void dialogo(int index,Player player){
         String voz = vozEnOff.get(index);
         if (player != null) {
             voz = voz.replace("{PlayerName}",player.getName());
         }
-        System.out.println(voz);
+        ui.showMessage(voz);
     }
     public static List<String> vozEnOff = new ArrayList<>();
-
     static {
         /*0*/vozEnOff.add("Pulsa ENTER para abrir tu inventario:");
         /*1*/vozEnOff.add("Pulsa ENTER para lanzar el dado de ataque:");
