@@ -8,9 +8,6 @@ import game0.interfaces.UserInteraction;
 import game0.player.Player;
 import game0.player.PlayerStatistics;
 import playerInteractions.Dice;
-import playerInteractions.GameEnter;
-
-import java.util.Scanner;
 
 public class Combat {
     private String ganador = "";
@@ -20,16 +17,14 @@ public class Combat {
         return ganaJugador;
     }
 
-    public void combatFlow(ConsolePresentation cp,Player player, Enemy enemy, UserInteraction ui, PlayerStatistics ps, Dice dado){
+    public void combatFlow(ConsolePresentation cp, Player player, Enemy enemy, UserInteraction ui,PlayerStatistics ps,Dice dado,Attacks attack){
         cp.displayCombat(ui,player,enemy);
         ui.pauseForUserInput();
-        PlayerStatistics.statsPlayer(player,ui);
-        Enemy.statsEnemy(ui,enemy);
+        cp.displayStats(ui,player);
+        cp.displayStats(ui,enemy);
 
         while (player.getHp() > 0 && enemy.getLifePoints() > 0){
-            ui.pauseForUserInput();
-
-            ps.actEstPlayerEnCombate(player,ui,enemy);
+            ps.actEstPlayerEnCombate(player,ui,enemy,attack);
 
             if (enemy.getLifePoints()<=0) {
                 ui.pauseForUserInput();
@@ -43,7 +38,7 @@ public class Combat {
                 break;
             }
 
-            ps.actEstEnemyEnCombate(player,ui,enemy,dado);
+            ps.actEstEnemyEnCombate(player,ui,enemy,attack);
 
             if (enemy.getLifePoints() <= 0){
                 GameVoiceOver.dialogo(9,null);

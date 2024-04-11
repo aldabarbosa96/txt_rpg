@@ -9,7 +9,7 @@ import javax.swing.*;
 public class GameMain {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new GameFrame();
+            GameFrame frame = new GameFrame();
         });//todo --> esto implementa una GUI básica que extenderemos en un futuro
 
         ConsoleInteraction ui = new ConsoleInteraction();

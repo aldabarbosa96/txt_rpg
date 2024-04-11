@@ -9,11 +9,9 @@ import game0.player.PlayerOptions;
 import game0.player.PlayerStatistics;
 import playerInteractions.Dice;
 
-import java.util.Scanner;
-
 public class Tutorial {
 
-    public static void tutorialEvent(ConsolePresentation cp,UserInteraction ui, Player player, Enemy enemy, Combat combat, PlayerStatistics ps, Dice dice) { //TUTORIAL
+    public static void tutorialEvent(ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combat, Object entity, PlayerStatistics ps, Dice dado,Attacks attack) { //TUTORIAL
         ui.showMessage("--------------------TUTORIAL--------------------");
         ui.pauseForUserInput();
         ui.showMessage("Narrador: Igual te pensabas que iba a ser otra cosa, pero la verdad es que soy yo de nuevo dándote la turra\n" +
@@ -59,7 +57,7 @@ public class Tutorial {
             } else if (respuesta.equalsIgnoreCase("b")) {
                 esTonto = true;
                 System.out.println("Narrador: No, la hostia no eres porque si lo fueras no tendría que haber hecho la explicación, lumbreras.");
-                combat.combatFlow(cp,player,enemy,ui,ps,dice);
+                combat.combatFlow(cp,player,enemy,ui,ps,dado,attack);
             } else if (respuesta.equalsIgnoreCase("c")) {
                 System.out.println("Narrador: Capullo tu padre. Te vas a enterar <<" + player.getName() + ">>");
                 esTonto = true;
@@ -69,7 +67,7 @@ public class Tutorial {
             }
         }
         ui.pauseForUserInput();
-        combat.combatFlow(cp,player,enemy,ui,ps,dice);
+        combat.combatFlow(cp,player,enemy,ui,ps,dado,attack);
     }
 
     public static void tutorialEvent01(UserInteraction ui, Player player) { //TUTORIAL2

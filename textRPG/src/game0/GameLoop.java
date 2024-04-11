@@ -3,6 +3,7 @@ package game0;
 import game0.NPCs.Enemy;
 import game0.NPCs.Npc;
 import game0.console.ConsolePresentation;
+import game0.events.Attacks;
 import game0.events.Combat;
 import game0.interfaces.UserInteraction;
 import game0.player.Equipment;
@@ -15,14 +16,16 @@ import playerInteractions.GameEnter;
 public class GameLoop {
     public static void run(UserInteraction ui, ConsolePresentation cp) {
         Player player = new Player();
-        GameEnter enter = new GameEnter();
         PlayerStatistics ps = new PlayerStatistics();
+        GameEnter enter = new GameEnter();
         Npc npc = new Npc(); // Considerar manejar NPCs de una forma más dinámica en el futuro
         Dice d6 = new Dice(6); // Dado de diálogo
         Dice d12 = new Dice(12); // Dado de ataque
         Enemy enemigo = new Enemy("Narrador", 15, 3, 5);
         Combat combate = new Combat();
         Equipment equipment = new Equipment();
+        Object entity = new Object();
+        Attacks attack = new Attacks();
 
         // Inicio del juego
         GameStoryTeller.narrar(0, null);
@@ -32,7 +35,7 @@ public class GameLoop {
         ui.pauseForUserInput();
 
         // Estadísticas iniciales del jugador
-        PlayerStatistics.statsPlayer(player, ui);
+        cp.displayStats(ui,player);
         GameStoryTeller.narrar(2, null);
         ui.pauseForUserInput();
         GameStoryTeller.narrar(3, player);
@@ -73,12 +76,12 @@ public class GameLoop {
         ui.pauseForUserInput();
         GameStoryTeller.narrar(15, null);
         ui.pauseForUserInput();
-        GameEvent.gestionEventos01(cp, ui, player, enemigo, combate, ps, d12);
+        GameEvent.gestionEventos01(cp, ui, player, enemigo, combate,entity, ps,d12,attack);
         GameStoryTeller.narrar(22, player);
         ui.pauseForUserInput();
         GameStoryTeller.narrar(23, null);
         ui.pauseForUserInput();
-        GameEvent.gestionEventos02(cp, ui, player, enter, combate, enemigo, ps, d12, equipment);
+        GameEvent.gestionEventos02(cp, ui, player, enter, combate, enemigo, equipment,ps,d12,attack);
         ui.pauseForUserInput();
 
         //continua la historia..

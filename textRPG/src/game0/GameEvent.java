@@ -1,6 +1,7 @@
 package game0;
 
 import game0.console.ConsolePresentation;
+import game0.events.Attacks;
 import game0.events.Combat;
 import game0.events.Tutorial;
 import game0.interfaces.UserInteraction;
@@ -13,24 +14,24 @@ import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 
 public class GameEvent {
-    public static void gestionEventos01(ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combate, PlayerStatistics ps, Dice dice) {
+    public static void gestionEventos01(ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combate, Object entity,PlayerStatistics ps, Dice dado,Attacks attack) {
         boolean esValida = false;
         PlayerOptions.opcion(4, player);
         do {
             String respuesta = ui.getInput().toLowerCase();
-            esValida = handleInputOption(respuesta, cp, ui, player, enemy, combate, ps, dice);
+            esValida = handleInputOption(respuesta, cp, ui, player, enemy, combate, entity,ps,dado,attack);
         } while (!esValida);
     }
 
-    private static boolean handleInputOption(String option, ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combate, PlayerStatistics ps, Dice dice) {
+    private static boolean handleInputOption(String option, ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combate, Object entity, PlayerStatistics ps, Dice dado,Attacks attack) {
         switch (option) {
             case "a":
-                Tutorial.tutorialEvent(cp, ui, player, enemy, combate, ps, dice);
+                Tutorial.tutorialEvent(cp, ui, player, enemy, combate, entity,ps,dado,attack);
                 return true;
             case "b":
             case "c":
                 GameStoryTeller.narrar(17, null);
-                combate.combatFlow(cp, player, enemy, ui, ps, dice);
+                combate.combatFlow(cp, player, enemy, ui,ps,dado,attack);
                 return true;
             default:
                 GameStoryTeller.narrar(26, null);
@@ -38,7 +39,7 @@ public class GameEvent {
         }
     }
 
-    public static void gestionEventos02(ConsolePresentation cp, UserInteraction ui, Player player, GameEnter enter, Combat combat, Enemy enemy, PlayerStatistics ps, Dice dice, Equipment equipment) {
+    public static void gestionEventos02(ConsolePresentation cp, UserInteraction ui, Player player, GameEnter enter, Combat combat, Enemy enemy, Equipment equipment,PlayerStatistics ps, Dice dado,Attacks attack) {
         String opcionEsc = "";
         do {
             PlayerOptions.opcion(6, player);
@@ -58,7 +59,7 @@ public class GameEvent {
                     manageOptionD(ui, player, enter);
                     break;
                 case "e":
-                    manageOptionE(cp, player, enemy, ui, ps, dice, combat);
+                    manageOptionE(cp, player, enemy, ui,combat,ps,dado,attack);
                     break;
                 default:
                     GameStoryTeller.narrar(26, null);
@@ -90,7 +91,7 @@ public class GameEvent {
                     GameStoryTeller.narrar(45, null);
                     ui.pauseForUserInput();
                     break;
-                case "a": //acabar esto
+                case "a": //todo -> acabar esto!!!
                 case "b":
                 case "c":
                 case "e":
@@ -101,7 +102,6 @@ public class GameEvent {
             }
         }
     }
-
     private static void manageOptionA(UserInteraction ui, Player player, Equipment equipment) {
         GameStoryTeller.narrar(24, player);
         ui.pauseForUserInput();
@@ -129,7 +129,7 @@ public class GameEvent {
         PlayerStatistics.statsPlayer(player, ui);
     }
 
-    private static void manageOptionE(ConsolePresentation cp, Player player, Enemy enemy, UserInteraction ui, PlayerStatistics ps, Dice dice, Combat combat) {
-        combat.combatFlow(cp, player, enemy, ui, ps, dice);
+    private static void manageOptionE(ConsolePresentation cp, Player player, Enemy enemy, UserInteraction ui, Combat combat, PlayerStatistics ps, Dice dado, Attacks attack) {
+        combat.combatFlow(cp, player, enemy, ui,ps,dado,attack);
     }
 }

@@ -5,7 +5,6 @@ import game0.NPCs.Npc;
 import game0.NPCs.NpcOptions;
 import game0.interfaces.UserInteraction;
 
-import java.util.Scanner;
 public class Player {
     private String name;
     protected int hp = 25;
@@ -60,7 +59,7 @@ public class Player {
         this.name = name;
     }
     public void setName(UserInteraction ui) {
-        ui.showMessage("Introduce tu nombre:");
+        ui.showMessage("Introduce tu nombre:"); //todo -> será útil en un futuro
         this.name = ui.getInput();
     }
     public void marcarPaz(){
