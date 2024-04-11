@@ -25,7 +25,7 @@ public class GameStoryTeller {
 
     static {
         /*0*/narracion.add("-----------------------------------------------------------------------------\nNarrador: Bienvenid@ a la aventura de tu vida compai; ¿Estás list@ para ponerte de metadona y desnudarte?\n\n¡EMPECEMOS PUES!\n\nNombre y apellido: ");
-        /*1*/narracion.add("Narrador: Mmm con que <<{PlayerName}>> ... Menuda mierda de nombre pero si es el que te ha tocado...\nTe daré 30 puntos de salud para que no te mueras, por ahora, y unos 8 de energía para tus ataques.");
+        /*1*/narracion.add("Narrador: Mmm con que <<{PlayerName}>> ... Menuda mierda de nombre pero si es el que te ha tocado...\nTe daré 25 puntos de salud para que no te mueras, por ahora, y unos 8 de energía para tus ataques.");
         /*2*/narracion.add("Presiona ENTER para empezar tu aventurita :)");
         /*3*/narracion.add("-----------------------------------------------------------------------------\nNarrador : Has aparecido en un mitad del desierto, <<{PlayerName}>> .\nPor suerte para ti estás también en el centro de un oasis con un mercado y multitud de personas.");
         /*4*/narracion.add("Narrador: Se te acerca un guardia de las arenas:");

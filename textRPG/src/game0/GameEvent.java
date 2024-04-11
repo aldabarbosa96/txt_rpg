@@ -1,6 +1,5 @@
 package game0;
 
-import game0.NPCs.Enemy;
 import game0.console.ConsolePresentation;
 import game0.events.Combat;
 import game0.events.Tutorial;
@@ -9,32 +8,34 @@ import game0.player.Equipment;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import game0.player.PlayerStatistics;
+import game0.NPCs.Enemy;
 import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 
 public class GameEvent {
     public static void gestionEventos01(ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combate, PlayerStatistics ps, Dice dice) {
         boolean esValida = false;
-        String respuesta;
         PlayerOptions.opcion(4, player);
         do {
-            respuesta = ui.getInput().toLowerCase();
-
-            switch (respuesta) {
-                case "a":
-                    Tutorial.tutorialEvent(cp, ui, player, enemy, combate, ps, dice);
-                    esValida = true;
-                    break;
-                case "b":
-                case "c":
-                    GameStoryTeller.narrar(17, null);
-                    combate.combatFlow(cp, player, enemy, ui, ps, dice);
-                    esValida = true;
-                    break;
-                default:
-                    GameStoryTeller.narrar(26, null);
-            }
+            String respuesta = ui.getInput().toLowerCase();
+            esValida = handleInputOption(respuesta, cp, ui, player, enemy, combate, ps, dice);
         } while (!esValida);
+    }
+
+    private static boolean handleInputOption(String option, ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combate, PlayerStatistics ps, Dice dice) {
+        switch (option) {
+            case "a":
+                Tutorial.tutorialEvent(cp, ui, player, enemy, combate, ps, dice);
+                return true;
+            case "b":
+            case "c":
+                GameStoryTeller.narrar(17, null);
+                combate.combatFlow(cp, player, enemy, ui, ps, dice);
+                return true;
+            default:
+                GameStoryTeller.narrar(26, null);
+                return false;
+        }
     }
 
     public static void gestionEventos02(ConsolePresentation cp, UserInteraction ui, Player player, GameEnter enter, Combat combat, Enemy enemy, PlayerStatistics ps, Dice dice, Equipment equipment) {
@@ -45,30 +46,19 @@ public class GameEvent {
 
             switch (opcionEsc) {
                 case "a":
-                    GameStoryTeller.narrar(24, player);
-                    ui.pauseForUserInput();
-                    GameStoryTeller.narrar(31, player);
-                    ui.pauseForUserInput();
-                    equipment.equiparManoD("Navaja Multiusos (+1 Fuerza)");
-                    GameStoryTeller.narrar(25, null);
+                    manageOptionA(ui, player, equipment);
                     break;
                 case "c":
-                    GameStoryTeller.narrar(28, null);
-                    System.exit(0);
+                    manageOptionC();
                     break;
                 case "b":
-                    GameStoryTeller.narrar(27, null);
-                    ui.pauseForUserInput();
-                    Tutorial.tutorialEvent01(ui, player);
+                    manageOptionB(ui, player);
                     break;
                 case "d":
-                    GameStoryTeller.narrar(29, null);
-                    player.setName(ui.getInput());
-                    enter.invalidName(ui, player);
-                    PlayerStatistics.statsPlayer(player, ui);
+                    manageOptionD(ui, player, enter);
                     break;
                 case "e":
-                    combat.combatFlow(cp, player, enemy, ui, ps, dice);
+                    manageOptionE(cp, player, enemy, ui, ps, dice, combat);
                     break;
                 default:
                     GameStoryTeller.narrar(26, null);
@@ -77,12 +67,12 @@ public class GameEvent {
         } while (!opcionEsc.equals("a") && !opcionEsc.equals("c"));
     }
 
-
     public static String gestionEventos03(Player player, UserInteraction ui, Equipment equipment) {
         while (true) {
             GameVoiceOver.dialogo(13, player);
             ui.pauseForUserInput();
-            PlayerOptions.opcion(7,player);
+            PlayerOptions.opcion(7, player);
+
             String opcion = ui.getInput().toLowerCase();
             switch (opcion) {
                 case "1":
@@ -100,8 +90,7 @@ public class GameEvent {
                     GameStoryTeller.narrar(45, null);
                     ui.pauseForUserInput();
                     break;
-                case "a":
-
+                case "a": //acabar esto
                 case "b":
                 case "c":
                 case "e":
@@ -113,10 +102,34 @@ public class GameEvent {
         }
     }
 
-    public static void gestionEventos04(UserInteraction ui, Player player, Equipment equipment) {
-        if (gestionEventos03(player, ui, equipment).equalsIgnoreCase("a")) {
-            //implemetar caso "a"
-        }
-        // falta añadir lógica adicional
+    private static void manageOptionA(UserInteraction ui, Player player, Equipment equipment) {
+        GameStoryTeller.narrar(24, player);
+        ui.pauseForUserInput();
+        GameStoryTeller.narrar(31, player);
+        ui.pauseForUserInput();
+        equipment.equiparManoD("Navaja Multiusos (+1 Fuerza)");
+        GameStoryTeller.narrar(25, null);
+    }
+
+    private static void manageOptionB(UserInteraction ui, Player player) {
+        GameStoryTeller.narrar(27, null);
+        ui.pauseForUserInput();
+        Tutorial.tutorialEvent01(ui, player);
+    }
+
+    private static void manageOptionC() {
+        GameStoryTeller.narrar(28, null);
+        System.exit(0);
+    }
+
+    private static void manageOptionD(UserInteraction ui, Player player, GameEnter enter) {
+        GameStoryTeller.narrar(29, null);
+        player.setName(ui.getInput());
+        enter.invalidName(ui, player);
+        PlayerStatistics.statsPlayer(player, ui);
+    }
+
+    private static void manageOptionE(ConsolePresentation cp, Player player, Enemy enemy, UserInteraction ui, PlayerStatistics ps, Dice dice, Combat combat) {
+        combat.combatFlow(cp, player, enemy, ui, ps, dice);
     }
 }
