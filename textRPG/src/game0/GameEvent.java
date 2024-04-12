@@ -12,26 +12,27 @@ import game0.player.PlayerStatistics;
 import game0.NPCs.Enemy;
 import playerInteractions.Dice;
 import playerInteractions.GameEnter;
+import window.GuiInteraction;
 
 public class GameEvent {
-    public static void gestionEventos01(ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combate, Object entity,PlayerStatistics ps, Dice dado,Attacks attack) {
+    public static void gestionEventos01(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combate, Object entity,PlayerStatistics ps, Dice dado,Attacks attack) {
         boolean esValida = false;
         PlayerOptions.opcion(4, player);
         do {
-            String respuesta = ui.getInput().toLowerCase();
-            esValida = handleInputOption(respuesta, cp, ui, player, enemy, combate, entity,ps,dado,attack);
+            String respuesta = gi.getInput().toLowerCase();
+            esValida = handleInputOption(respuesta, cp, gi, player, enemy, combate, ps,attack);
         } while (!esValida);
     }
 
-    private static boolean handleInputOption(String option, ConsolePresentation cp, UserInteraction ui, Player player, Enemy enemy, Combat combate, Object entity, PlayerStatistics ps, Dice dado,Attacks attack) {
+    private static boolean handleInputOption(String option, ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combate, PlayerStatistics ps, Attacks attack) {
         switch (option) {
             case "a":
-                Tutorial.tutorialEvent(cp, ui, player, enemy, combate, entity,ps,dado,attack);
+                Tutorial.tutorialEvent(cp, gi, player, enemy, combate, ps,attack);
                 return true;
             case "b":
             case "c":
                 GameStoryTeller.narrar(17, null);
-                combate.combatFlow(cp, player, enemy, ui,ps,dado,attack);
+                combate.combatFlow(cp, player, enemy,ps,gi,attack);
                 return true;
             default:
                 GameStoryTeller.narrar(26, null);
@@ -39,57 +40,57 @@ public class GameEvent {
         }
     }
 
-    public static void gestionEventos02(ConsolePresentation cp, UserInteraction ui, Player player, GameEnter enter, Combat combat, Enemy enemy, Equipment equipment,PlayerStatistics ps, Dice dado,Attacks attack) {
+    public static void gestionEventos02(ConsolePresentation cp, GuiInteraction gi, Player player, GameEnter enter, Combat combat, Enemy enemy, Equipment equipment,PlayerStatistics ps, Dice dado,Attacks attack) {
         String opcionEsc = "";
         do {
             PlayerOptions.opcion(6, player);
-            opcionEsc = ui.getInput().toLowerCase();
+            opcionEsc = gi.getInput().toLowerCase();
 
             switch (opcionEsc) {
                 case "a":
-                    manageOptionA(ui, player, equipment);
+                    manageOptionA(gi, player, equipment);
                     break;
                 case "c":
                     manageOptionC();
                     break;
                 case "b":
-                    manageOptionB(ui, player);
+                    manageOptionB(gi, player);
                     break;
                 case "d":
-                    manageOptionD(ui, player, enter);
+                    manageOptionD(gi, player, enter);
                     break;
                 case "e":
-                    manageOptionE(cp, player, enemy, ui,combat,ps,dado,attack);
+                    manageOptionE(cp, player, enemy, combat, ps, gi, attack);
                     break;
                 default:
                     GameStoryTeller.narrar(26, null);
-                    ui.showMessage("\n");
+                    gi.showMessage("\n");
             }
         } while (!opcionEsc.equals("a") && !opcionEsc.equals("c"));
     }
 
-    public static String gestionEventos03(Player player, UserInteraction ui, Equipment equipment) {
+    public static String gestionEventos03(Player player, GuiInteraction gi, Equipment equipment) {
         while (true) {
             GameVoiceOver.dialogo(13, player);
-            ui.pauseForUserInput();
+            gi.pauseForUserInput();
             PlayerOptions.opcion(7, player);
 
-            String opcion = ui.getInput().toLowerCase();
+            String opcion = gi.getInput().toLowerCase();
             switch (opcion) {
                 case "1":
-                    GameEnter.enterInv(ui);
+                    GameEnter.enterInv(gi);
                     break;
                 case "2":
-                    GameEnter.enterEquipo(ui, equipment);
+                    GameEnter.enterEquipo(gi, equipment);
                     break;
                 case "3":
-                    PlayerStatistics.statsPlayer(player, ui);
+                    PlayerStatistics.statsPlayer(player, gi);
                     break;
                 case "d":
                     GameVoiceOver.dialogo(18, null);
-                    ui.pauseForUserInput();
+                    gi.pauseForUserInput();
                     GameStoryTeller.narrar(45, null);
-                    ui.pauseForUserInput();
+                    gi.pauseForUserInput();
                     break;
                 case "a": //todo -> acabar esto!!!
                 case "b":
@@ -98,23 +99,23 @@ public class GameEvent {
                     return opcion;
                 default:
                     GameStoryTeller.narrar(26, null);
-                    ui.showMessage("\n");
+                    gi.showMessage("\n");
             }
         }
     }
-    private static void manageOptionA(UserInteraction ui, Player player, Equipment equipment) {
+    private static void manageOptionA(GuiInteraction gi, Player player, Equipment equipment) {
         GameStoryTeller.narrar(24, player);
-        ui.pauseForUserInput();
+        gi.pauseForUserInput();
         GameStoryTeller.narrar(31, player);
-        ui.pauseForUserInput();
+        gi.pauseForUserInput();
         equipment.equiparManoD("Navaja Multiusos (+1 Fuerza)");
         GameStoryTeller.narrar(25, null);
     }
 
-    private static void manageOptionB(UserInteraction ui, Player player) {
+    private static void manageOptionB(GuiInteraction gi, Player player) {
         GameStoryTeller.narrar(27, null);
-        ui.pauseForUserInput();
-        Tutorial.tutorialEvent01(ui, player);
+        gi.pauseForUserInput();
+        Tutorial.tutorialEvent01(gi, player);
     }
 
     private static void manageOptionC() {
@@ -122,14 +123,14 @@ public class GameEvent {
         System.exit(0);
     }
 
-    private static void manageOptionD(UserInteraction ui, Player player, GameEnter enter) {
+    private static void manageOptionD(GuiInteraction gi, Player player, GameEnter enter) {
         GameStoryTeller.narrar(29, null);
-        player.setName(ui.getInput());
-        enter.invalidName(ui, player);
-        PlayerStatistics.statsPlayer(player, ui);
+        player.setName(gi.getInput());
+        enter.invalidName(gi, player);
+        PlayerStatistics.statsPlayer(player, gi);
     }
 
-    private static void manageOptionE(ConsolePresentation cp, Player player, Enemy enemy, UserInteraction ui, Combat combat, PlayerStatistics ps, Dice dado, Attacks attack) {
-        combat.combatFlow(cp, player, enemy, ui,ps,dado,attack);
+    private static void manageOptionE(ConsolePresentation cp, Player player, Enemy enemy, Combat combat, PlayerStatistics ps, GuiInteraction gi, Attacks attack) {
+        combat.combatFlow(cp, player, enemy,ps,gi,attack);
     }
 }

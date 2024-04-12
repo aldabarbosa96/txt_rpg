@@ -1,18 +1,19 @@
 package game0.NPCs;
 
 import game0.interfaces.UserInteraction;
+import window.GuiInteraction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NpcOptions {
-    private static UserInteraction ui;
-    public static void setUserInteraction(UserInteraction userInteraction) {
-        ui = userInteraction;
+    private static GuiInteraction gi;
+    public static void setUserInteraction(GuiInteraction guiInteraction) {
+        gi = guiInteraction ;
     }
     public static void dialogo(int index){
         String opcion = guardiArenas.get(index);
-        ui.showMessage(opcion);
+        gi.showMessage(opcion);
     }
     public static List<String> guardiArenas = new ArrayList<>();
     static {

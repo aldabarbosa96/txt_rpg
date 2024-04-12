@@ -1,16 +1,15 @@
 package game0;
 
-import game0.interfaces.UserInteraction;
 import game0.player.Player;
-
+import window.GuiInteraction;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameStoryTeller {
-    private static UserInteraction ui;
+    private static GuiInteraction gi;
 
-    public static void setUserInteraction(UserInteraction userInteraction) {
-        ui = userInteraction;
+    public static void setUserInteraction(GuiInteraction guiInteraction) {
+        gi = guiInteraction;
     }
 
     public static void narrar(int index, Player player) {
@@ -18,7 +17,7 @@ public class GameStoryTeller {
         if (player != null) {
             narraciones = narraciones.replace("{PlayerName}", player.getName());
         }
-        ui.showMessage(narraciones);
+        gi.showMessage(narraciones);
     }
 
     public static List<String> narracion = new ArrayList<>();
@@ -26,7 +25,7 @@ public class GameStoryTeller {
     static {
         /*0*/narracion.add("-----------------------------------------------------------------------------\n");
         /*1*/narracion.add("Narrador: Mmm con que <<{PlayerName}>> ... Menuda mierda de nombre pero si es el que te ha tocado...\nTe daré 25 puntos de salud para que no te mueras, por ahora, y unos 8 de energía para tus ataques.");
-        /*2*/narracion.add("Presiona ENTER para empezar tu aventurita :)");
+        /*2*/narracion.add("Presiona \"Continuar\" para empezar tu aventurita :)");
         /*3*/narracion.add("-----------------------------------------------------------------------------\nNarrador : Has aparecido en un mitad del desierto, <<{PlayerName}>> .\nPor suerte para ti estás también en el centro de un oasis con un mercado y multitud de personas.");
         /*4*/narracion.add("Narrador: Se te acerca un guardia de las arenas:");
         /*5*/narracion.add("Narrador: El guardia se pone en guardia (valga la redundancia) y se dispone a pelear, pero antes te da una última oportunidad para redimirte.");

@@ -21,6 +21,7 @@ public class GameMain {
                 PlayerOptions.setUserInteraction(guiInteraction);
                 GameVoiceOver.setUserInteraction(guiInteraction);
                 GameLoop.run(guiInteraction, cp);
+
             }).start();
         });
     }

@@ -1,21 +1,22 @@
 package game0.player;
 
 import game0.interfaces.UserInteraction;
+import window.GuiInteraction;
 
 import java.util.ArrayList;
 import java.util.List;
 public class PlayerOptions {
-    private static UserInteraction ui;
+    private static GuiInteraction gi;
 
-    public static void setUserInteraction(UserInteraction userInteraction) {
-        ui = userInteraction;
+    public static void setUserInteraction(GuiInteraction guiInteraction) {
+        gi = guiInteraction;
     }
     public static void opcion(int index,Player player){
         String escoger = opciones.get(index);
         if (player != null) {
             escoger = escoger.replace("{PlayerName}", player.getName());
         }
-        ui.showMessage(escoger);
+        gi.showMessage(escoger);
     }
     public static List<String> opciones = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class PlayerOptions {
         if (player != null) {
             escoger = escoger.replace("{PlayerName}", player.getName());
         }
-        ui.showMessage(escoger);
+        gi.showMessage(escoger);
     }
 
     public static List<String> dialogar = new ArrayList<>();

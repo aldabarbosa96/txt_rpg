@@ -8,57 +8,54 @@ import game0.interfaces.UserInteraction;
 import game0.player.Player;
 import game0.player.PlayerStatistics;
 import playerInteractions.Dice;
+import window.GuiInteraction;
 
 public class Combat {
     private String ganador = "";
     boolean ganaJugador = true;
 
-    public boolean getGanaJugador() {
-        return ganaJugador;
-    }
-
-    public void combatFlow(ConsolePresentation cp, Player player, Enemy enemy, UserInteraction ui,PlayerStatistics ps,Dice dado,Attacks attack){
-        cp.displayCombat(ui,player,enemy);
-        ui.pauseForUserInput();
-        cp.displayStats(ui,player);
-        cp.displayStats(ui,enemy);
+    public void combatFlow(ConsolePresentation cp, Player player, Enemy enemy,PlayerStatistics ps, GuiInteraction gi, Attacks attack){
+        cp.displayCombat(gi,player,enemy);
+        gi.pauseForUserInput();
+        cp.displayStats(gi,player);
+        cp.displayStats(gi,enemy);
 
         while (player.getHp() > 0 && enemy.getLifePoints() > 0){
-            ps.actEstPlayerEnCombate(player,ui,enemy,attack);
+            ps.actEstPlayerEnCombate(player,gi,enemy,attack);
 
             if (enemy.getLifePoints()<=0) {
-                ui.pauseForUserInput();
+                gi.pauseForUserInput();
                 GameVoiceOver.dialogo(9,null);
-                ui.pauseForUserInput();
+                gi.pauseForUserInput();
                 break;
             } else if (player.getHp()<=0 || player.getEnergy() <= 0) {
                 ganaJugador = false;
                 GameVoiceOver.dialogo(9,null);
-                ui.pauseForUserInput();
+                gi.pauseForUserInput();
                 break;
             }
 
-            ps.actEstEnemyEnCombate(player,ui,enemy,attack);
+            ps.actEstEnemyEnCombate(player,gi,enemy,attack);
 
             if (enemy.getLifePoints() <= 0){
                 GameVoiceOver.dialogo(9,null);
-                ui.pauseForUserInput();
+                gi.pauseForUserInput();
                 break;
             }
 
             else if (player.getHp() <=0 || player.getEnergy() <= 0){
                 ganaJugador = false;
                 GameVoiceOver.dialogo(9,null);
-                ui.pauseForUserInput();
+                gi.pauseForUserInput();
                 break;
 
-            } else {ui.pauseForUserInput(); GameVoiceOver.dialogo(10,null);}
+            } else {gi.pauseForUserInput(); GameVoiceOver.dialogo(10,null);}
 
         }
         if (ganaJugador) ganador += "¡¡¡<<"+player.getName()+">> es el ganador!!!";
             else ganador += "¡¡¡<<"+ enemy.getName()+">> es el ganador!!!";
-        ui.showMessage(ganador);
-        ganador(player,enemy); ui.pauseForUserInput();
+        gi.showMessage(ganador);
+        ganador(player,enemy); gi.pauseForUserInput();
     }
     public void ganador(Player player, Enemy enemy){
         if (ganaJugador){

@@ -1,11 +1,9 @@
 package game0.NPCs;
 
 import game0.GameStoryTeller;
-import game0.interfaces.UserInteraction;
 import game0.player.Player;
 import game0.player.PlayerOptions;
-
-import java.util.Scanner;
+import window.GuiInteraction;
 
 public class Npc {
     protected String name;
@@ -23,8 +21,8 @@ public class Npc {
         return name;
     }
     public Npc(){}
-    public static void interactuarNPC00(UserInteraction ui) {
-        GameStoryTeller.narrar(4,null); ui.pauseForUserInput();
+    public static void interactuarNPC00(GuiInteraction gi) {
+        GameStoryTeller.narrar(4,null); gi.pauseForUserInput();
         NpcOptions.dialogo(0);
         GameStoryTeller.narrar(38,null);
         NpcOptions.dialogo(1);

@@ -1,5 +1,7 @@
 package game0.player;
 
+import window.GuiInteraction;
+
 public class Equipment {
     private String cabeza;
     private String torso;
@@ -46,15 +48,15 @@ public class Equipment {
         this.collar = item;
     }
 
-    public void mostrarEquipo() {
-        System.out.println("--------------------EQUIPAMIENTO--------------------\n");
-        System.out.println("Cabeza: " + this.cabeza);
-        System.out.println("Torso: " + this.torso);
-        System.out.println("Mano D: " + this.manoD);
-        System.out.println("Mano I: " + this.manoI);
-        System.out.println("Piernas: " + this.pantalones);
-        System.out.println("Pies: " + this.zapatos);
-        System.out.println("Amuleto: " + this.collar);
+    public void mostrarEquipo(GuiInteraction gi) {
+        gi.showMessage("--------------------EQUIPAMIENTO--------------------\n");
+        gi.showMessage("Cabeza: " + this.cabeza);
+        gi.showMessage("Torso: " + this.torso);
+        gi.showMessage("Mano D: " + this.manoD);
+        gi.showMessage("Mano I: " + this.manoI);
+        gi.showMessage("Piernas: " + this.pantalones);
+        gi.showMessage("Pies: " + this.zapatos);
+        gi.showMessage("Amuleto: " + this.collar);
     }
 }
 

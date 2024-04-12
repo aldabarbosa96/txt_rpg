@@ -35,19 +35,18 @@ public class GameFrame extends JFrame {
         guiInteraction = new GuiInteraction(textArea, this);
         setupKeyBindings();
 
-        // Asegurar que el panel del botón y el campo de entrada están correctamente añadidos y visibles.
         add(inputField, BorderLayout.SOUTH);
-        buttonPanel.add(continueButton);  // Asegúrate de que el botón está en el panel de botones.
+        buttonPanel.add(continueButton);
         add(buttonPanel, BorderLayout.NORTH);
     }
 
     private void setupContinueButton() {
         continueButton = new JButton("Continuar");
         continueButton.addActionListener(e -> {
-            guiInteraction.continueGame(); // Notifica a la interacción para continuar
-            continueButton.setVisible(false); // Oculta el botón después de ser utilizado
+            guiInteraction.continueGame(); //notifica a la interacción para continuar
+            continueButton.setVisible(false); //oculta el botón después de ser utilizado
         });
-        continueButton.setVisible(true); // Inicialmente visible o no según el diseño del juego.
+        continueButton.setVisible(true);
     }
 
     private void setupTextArea() {
@@ -94,13 +93,13 @@ public class GameFrame extends JFrame {
         actionMap.put("openInventory", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryArea.setText(Inventory.getInventoryDisplay()); // Actualiza el área de texto del inventario
+                inventoryArea.setText(Inventory.getInventoryDisplay());
             }
         });
     }
 
     public void showContinueButton(boolean show) {
-        SwingUtilities.invokeLater(() -> continueButton.setVisible(show)); // Asegura que el cambio de visibilidad se haga en el EDT
+        SwingUtilities.invokeLater(() -> continueButton.setVisible(show));
     }
 
     public GuiInteraction getGuiInteraction() {

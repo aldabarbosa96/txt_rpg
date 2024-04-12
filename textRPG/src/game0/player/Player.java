@@ -4,6 +4,7 @@ import game0.GameStoryTeller;
 import game0.NPCs.Npc;
 import game0.NPCs.NpcOptions;
 import game0.interfaces.UserInteraction;
+import window.GuiInteraction;
 
 public class Player {
     private String name;
@@ -58,21 +59,21 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-    public void setName(UserInteraction ui) {
-        ui.showMessage("Introduce tu nombre:"); //todo -> será útil en un futuro
-        this.name = ui.getInput();
+    public void setName(GuiInteraction gi) {
+        gi.showMessage("Introduce tu nombre:"); //todo -> será útil en un futuro
+        this.name = gi.getInput();
     }
     public void marcarPaz(){
         this.resPaz = true;
     }
 
-    public String opcionEscogida0(UserInteraction ui,Player player) {
+    public String opcionEscogida0(GuiInteraction gi,Player player) {
         String respuesta = "";
         boolean respuestaValida = false;
         PlayerOptions.opcion(0,this);
 
         while (!respuestaValida) {
-            respuesta = ui.getInput();
+            respuesta = gi.getInput();
 
             if (respuesta.equalsIgnoreCase("a")) {
                 PlayerOptions.dialogo(0,player);
@@ -91,12 +92,12 @@ public class Player {
         return respuesta;
     }
 
-    public String opcionEscogida01(UserInteraction ui, Player player) {
+    public String opcionEscogida01(GuiInteraction gi, Player player) {
         String respuesta = "";
         boolean respuestaValida = false;
 
         while (!respuestaValida) {
-            respuesta = ui.getInput();
+            respuesta = gi.getInput();
 
             if (respuesta.equalsIgnoreCase("a")) {
                 NpcOptions.dialogo(5);
@@ -113,12 +114,12 @@ public class Player {
         return respuesta;
     }
 
-    public void opcionEscogida02(UserInteraction ui,Player player) {
+    public void opcionEscogida02(GuiInteraction gi,Player player) {
         String respuesta = "";
         boolean respuestaValida = false;
 
         while (!respuestaValida) {
-            respuesta = ui.getInput();
+            respuesta = gi.getInput();
 
             if (respuesta.equalsIgnoreCase("a")){
                 PlayerOptions.dialogo(3,player);
@@ -139,15 +140,15 @@ public class Player {
         NpcOptions.dialogo(7);
         GameStoryTeller.narrar(18,null);
     }
-    public void escogerOpcion(UserInteraction ui, Npc npc, Player player){
+    public void escogerOpcion(GuiInteraction gi, Npc npc, Player player){
         int respuestaNum0 = npc.getRespuestaNum0();
 
         switch (respuestaNum0){
             case 0:
-                opcionEscogida01(ui,player);
+                opcionEscogida01(gi,player);
                 break;
             case 1:
-                opcionEscogida02(ui,player);
+                opcionEscogida02(gi,player);
                 break;
             case 2:
                 opcionEscogida03();

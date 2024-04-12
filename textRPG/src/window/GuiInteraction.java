@@ -23,7 +23,7 @@ public class GuiInteraction implements UserInteraction {
     @Override
     public String getInput() {
         try {
-            return inputQueue.take(); // Espera y toma el siguiente input
+            return inputQueue.take(); //toma el siguiente input
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return null;
@@ -31,7 +31,7 @@ public class GuiInteraction implements UserInteraction {
     }
 
     public void continueGame() {
-        inputQueue.offer("CONTINUE"); // Envía un comando especial o un marcador.
+        inputQueue.offer("CONTINUE");
     }
 
     @Override
@@ -40,9 +40,9 @@ public class GuiInteraction implements UserInteraction {
             frame.showContinueButton(true);
         });
         try {
-            String input = inputQueue.take(); // Bloquea hasta que se reciba "CONTINUE".
+            String input = inputQueue.take(); //bloquea hasta que se reciba "CONTINUE".
             while (!"CONTINUE".equals(input)) {
-                input = inputQueue.take(); // Espera activa hasta que se reciba "CONTINUE".
+                input = inputQueue.take(); //espera activa hasta que se reciba "CONTINUE".
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -50,7 +50,7 @@ public class GuiInteraction implements UserInteraction {
         }
 
         SwingUtilities.invokeLater(() -> {
-            frame.showContinueButton(false); // Oculta el botón 'Continuar' después de ser utilizado.
+            frame.showContinueButton(false); //oculta el botón
         });
     }
 

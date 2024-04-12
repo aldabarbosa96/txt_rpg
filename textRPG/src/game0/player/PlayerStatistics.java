@@ -6,26 +6,28 @@ import game0.events.Attacks;
 import game0.interfaces.UserInteraction;
 import playerInteractions.Dice;
 import playerInteractions.GameEnter;
+import window.GuiInteraction;
+
 import java.util.Scanner;
 public class PlayerStatistics {
     public PlayerStatistics() {
     }
 
-    public static void statsPlayer(Player player, UserInteraction ui) {
-        ui.showMessage("--------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense());
-        ui.pauseForUserInput();
+    public static void statsPlayer(Player player, GuiInteraction gi) {
+        gi.showMessage("--------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense());
+        gi.pauseForUserInput();
     }
 
-    public void actEstPlayerEnCombate(Player player, UserInteraction ui, Enemy enemigo, Attacks attack) {
+    public void actEstPlayerEnCombate(Player player, GuiInteraction gi, Enemy enemigo, Attacks attack) {
         GameVoiceOver.dialogo(5, player);
-        attack.playerAttack(player, enemigo, ui);
+        attack.playerAttack(player, enemigo, gi);
     }
 
-    public void actEstEnemyEnCombate(Player player, UserInteraction ui, Enemy enemigo, Attacks attack) {
-        ui.pauseForUserInput();
+    public void actEstEnemyEnCombate(Player player, GuiInteraction gi, Enemy enemigo, Attacks attack) {
+        gi.pauseForUserInput();
         GameVoiceOver.dialogo(7, null);
-        ui.pauseForUserInput();
-        attack.enemyAttacks(player, enemigo, ui);
+        gi.pauseForUserInput();
+        attack.enemyAttacks(player, enemigo, gi);
 
     }
 }

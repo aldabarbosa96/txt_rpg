@@ -11,9 +11,6 @@ public class Inventory {
             slots[i] = "Slot Vacío";
         }
     }
-    public static String[] getSlots(){
-        return slots;
-    }
     public static boolean addToInventory(String item){
         for (int i=0; i< slots.length; i++) {
             if (slots[i].equals("Slot Vacío")) {
@@ -23,7 +20,6 @@ public class Inventory {
         }
         GameVoiceOver.dialogo(4,null);
             return false;
-
     }
     public static String getInventoryDisplay() {
         StringBuilder inventoryContents = new StringBuilder("INVENTARIO\n");
@@ -32,6 +28,5 @@ public class Inventory {
         }
         return inventoryContents.toString();
     }
-
 }
 
