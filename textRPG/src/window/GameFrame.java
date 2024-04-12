@@ -70,6 +70,7 @@ public class GameFrame extends JFrame {
                 inputField.setText("");
             }
         });
+        inputField.setPreferredSize(new Dimension(inputField.getWidth(), 30));
         add(inputField, BorderLayout.SOUTH);
     }
 
