@@ -22,7 +22,7 @@ public class GameEnter {
         GameVoiceOver.dialogo(11,null);
         GameVoiceOver.dialogo(0,null);
         ui.pauseForUserInput();
-        Inventory.mostrarInv();
+        Inventory.getInventoryDisplay();
         ui.pauseForUserInput();
     }
     public static int enterDadoAtaquePlayer(UserInteraction ui,Player player){
