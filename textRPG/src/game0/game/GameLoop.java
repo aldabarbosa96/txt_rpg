@@ -25,6 +25,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         Equipment equipment = new Equipment();
         Attacks attack = new Attacks();
         GameContext gc = new GameContext(cp,gi,player,enemigo,combate,equipment,ps,d12,attack,ge);
+        Inventory inventory = new Inventory();
 
         String playerName = "";
         do {
@@ -65,10 +66,10 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             gi.pauseForUserInput();
             GameStoryTeller.narrar(10, null);
             gi.pauseForUserInput();
-            if (player.ResPaz()) GameStoryTeller.narrar(11, null);
+            if (player.ResPaz()) GameVoiceOver.separador(gi);
 
             //manejo del inventario y uso de objetos
-            Inventory.addToInventory("\"DADO\"");
+            Inventory.addToInventory("DADO");
             GameEnter.enterInv(gi);
             GameStoryTeller.narrar(12, null);
             gi.pauseForUserInput();
@@ -91,6 +92,6 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             gi.pauseForUserInput();
 
             //continua la historia...
-            GameEvent.gestionEventos03(player, gi, equipment);
+            GameEvent.gestionEventos03(player, gi);
     }
 }

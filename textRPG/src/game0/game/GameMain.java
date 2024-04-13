@@ -2,6 +2,8 @@ package game0.game;
 
 import game0.NPCs.NpcOptions;
 import game0.console.ConsolePresentation;
+import game0.player.Equipment;
+import game0.player.Inventory;
 import game0.player.PlayerOptions;
 import window.GameFrame;
 import window.GuiInteraction;
@@ -10,7 +12,10 @@ import javax.swing.*;
 public class GameMain {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            GameFrame frame = new GameFrame();
+            Inventory inventory = new Inventory();
+            Equipment equipment = new Equipment();
+            GameFrame frame = new GameFrame(inventory, equipment);
+
             GuiInteraction guiInteraction = frame.getGuiInteraction();
 
             new Thread(() -> {

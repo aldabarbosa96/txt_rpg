@@ -20,12 +20,18 @@ public class Inventory {
         GameVoiceOver.dialogo(4,null);
             return false;
     }
-    public static String getInventoryDisplay() {
-        StringBuilder inventoryContents = new StringBuilder("\n             INVENTARIO\n\n");
+    public String getInventoryDisplay() {
+        StringBuilder inventoryContents = new StringBuilder("\n\n--------INVENTARIO------------\n\n");
         for (int i = 0; i < slots.length; i++) {
-            inventoryContents.append("    ").append(i + 1).append(".          ").append(slots[i]).append("\n");
+            if (i <=8) {
+                inventoryContents.append("    ").append(i + 1).append(".         ").append(slots[i]).append("\n");
+            }
+            else {
+                inventoryContents.append("    ").append(i + 1).append(".       ").append(slots[i]).append("\n");
+            }
         }
-        return inventoryContents.toString();
+        inventoryContents.append("\n------------------------------");
+            return inventoryContents.toString();
     }
 }
 

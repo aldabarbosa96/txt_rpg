@@ -8,7 +8,7 @@ import window.GuiInteraction;
 public class Player {
     private String name;
     protected int hp = 25;
-    protected int energy = 8;
+    protected int energy = 10;
     protected int attack = 1;
     protected int deffense = 1;
 
@@ -104,6 +104,7 @@ public class Player {
                 NpcOptions.dialogo(6);
                 respuestaValida = true;
                 GameStoryTeller.narrar(32,player);
+                gi.pauseForUserInput();
                 System.exit(0);
             } else {
                 GameStoryTeller.narrar(26,null);
@@ -134,7 +135,7 @@ public class Player {
         }
     }
     public void opcionEscogida03(){
-        Inventory.addToInventory("\"trozo de pan\"");
+        Inventory.addToInventory("trozo de pan");
         NpcOptions.dialogo(7);
         GameStoryTeller.narrar(18,null);
     }

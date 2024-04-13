@@ -10,7 +10,7 @@ public class PlayerStatistics {
     }
 
     public static void statsPlayer(Player player, GuiInteraction gi) {
-        gi.showMessage("--------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense());
+        gi.showMessage("---------------------------------------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense());
         gi.pauseForUserInput();
     }
 

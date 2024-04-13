@@ -56,7 +56,12 @@ public class GuiInteraction implements UserInteraction {
         });
     }
 
+    public GameFrame getFrame() {
+        return frame;
+    }
+
     public void processUserInput(String input) {
         inputQueue.offer(input); //añade la entrada al queue
     }
 }
+

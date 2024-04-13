@@ -1,9 +1,6 @@
 package game0.game;
 
-import game0.player.Equipment;
-import game0.player.Player;
-import game0.player.PlayerOptions;
-import game0.player.PlayerStatistics;
+import game0.player.*;
 import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
@@ -45,7 +42,7 @@ public class GameEvent {
         } while (!opcionEsc.equals("a") && !opcionEsc.equals("c"));
     }
 
-    public static String gestionEventos03(Player player, GuiInteraction gi, Equipment equipment) {
+    public static String gestionEventos03(Player player, GuiInteraction gi) {
         while (true) {
             GameVoiceOver.dialogo(13, player);
             gi.pauseForUserInput();
@@ -54,12 +51,6 @@ public class GameEvent {
             String opcion = gi.getInput().toLowerCase();
             switch (opcion) {
                 case "1":
-                    GameEnter.enterInv(gi);
-                    break;
-                case "2":
-                    GameEnter.enterEquipo(gi, equipment);
-                    break;
-                case "3":
                     PlayerStatistics.statsPlayer(player, gi);
                     break;
                 case "d":

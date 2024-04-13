@@ -28,8 +28,10 @@ public class GameOptionManager {
         gi.pauseForUserInput();
         GameStoryTeller.narrar(31, player);
         gi.pauseForUserInput();
-        equipment.equiparManoD("Navaja Multiusos (+1 Fuerza)");
+        equipment.equiparItem("manoD","Navaja Multiusos (+1 Fuerza)");
         GameStoryTeller.narrar(25, null);
+        gi.getFrame().updateEquipmentDisplay();
+        System.out.println("Item equipado"); //depuración
     }
 
     protected static void manageOption02B(GuiInteraction gi, Player player) {

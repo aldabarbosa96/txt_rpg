@@ -12,7 +12,7 @@ public class Tutorial {
     public static void tutorialEvent(GameContext gc) {//TUTORIAL
         GuiInteraction gi = gc.getGuiInteraction();
         Player player = gc.getPlayer();
-        gi.showMessage("--------------------TUTORIAL--------------------");
+        gi.showMessage("\n--------------------TUTORIAL--------------------\n");
         gi.pauseForUserInput();
         gi.showMessage("Narrador: Igual te pensabas que iba a ser otra cosa, pero la verdad es que soy yo de nuevo dándote la turra\n" +
                 "porque eres t-o-n-t-i-t-@ y no puedes hacerte a la idea de como funciona un combate en un juego tan simple como este...");
@@ -28,7 +28,7 @@ public class Tutorial {
                 "En cristiano: si el guacho tiene 10 de defensa y tu tirada es 12(+1 de tu fuerza) = 13 --> le quitas 3 puntos de vida. En cambio, si tu tirada es de 8 perderías TÚ 1  punto de vida.\n" +
                 "Esto se aplica igual a todo el mundo, por ahora.");
         gi.pauseForUserInput();
-        gi.showMessage("Alguna duda más >>" + player.getName() + "<<?\n"); gi.getInput();
+        gi.showMessage("Alguna duda más >>" + player.getName() + "<<?\n"); gi.pauseForUserInput();
 
         PlayerOptions.opcion(5,player);
         boolean esTonto = false;

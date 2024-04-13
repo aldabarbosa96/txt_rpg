@@ -23,10 +23,10 @@ public class GameStoryTeller {
     public static List<String> narracion = new ArrayList<>();
 
     static {
-        /*0*/narracion.add("-----------------------------------------------------------------------------\n");
+        /*0*/narracion.add("---------------------------------------------------\n");
         /*1*/narracion.add("Narrador: Mmm con que <<{PlayerName}>> ... Menuda mierda de nombre pero si es el que te ha tocado...\nTe daré 25 puntos de salud para que no te mueras, por ahora, y unos 8 de energía para tus ataques.");
         /*2*/narracion.add("Presiona \"Continuar\" para empezar tu aventurita :)");
-        /*3*/narracion.add("-----------------------------------------------------------------------------\nNarrador : Has aparecido en un mitad del desierto, <<{PlayerName}>> .\nPor suerte para ti estás también en el centro de un oasis con un mercado y multitud de personas.");
+        /*3*/narracion.add("---------------------------------------------------\nNarrador : Has aparecido en un mitad del desierto, <<{PlayerName}>> .\nPor suerte para ti estás también en el centro de un oasis con un mercado y multitud de personas.");
         /*4*/narracion.add("Narrador: Se te acerca un guardia de las arenas:");
         /*5*/narracion.add("Narrador: El guardia se pone en guardia (valga la redundancia) y se dispone a pelear, pero antes te da una última oportunidad para redimirte.");
         /*6*/narracion.add("Narrador: El guardia cae redondo al suelo y se desnuca con una botella rota que había por ahí.");
@@ -47,7 +47,7 @@ public class GameStoryTeller {
         /*21*/narracion.add("Narrador: Hay que ser pringao para perder contra mí JA JA JA...\n");
         /*22*/narracion.add("Narrador: Llegados a este punto, si te ves preparad@ para emprender tu viaje <<{PlayerName}>> tengo algo para ti.");
         /*23*/narracion.add("Narrador: Por el contrario, si prefieres practicar un poco más con el combate, que te R-E-P-I-T-A el T-U-T-O-R-I-A-L o prefieres abandonar aquí, ahora es el momento:\n");
-        /*24*/narracion.add("Narrador: Lo vas a flipar <<{PlayerName}>>\n\n¡QUE EMPIECE EL JUEGO!\n----------------------------------------");
+        /*24*/narracion.add("Narrador: Lo vas a flipar <<{PlayerName}>>\n\n¡QUE EMPIECE EL JUEGO!\n---------------------------------------------------\n");
         /*25*/narracion.add("Narrador: Estás en el centro del oasis \"Centro\", un peculiar, maravilloso y peligroso lugar en el corazón del desierto del \"Santako\".");
         /*26*/narracion.add("Narrador: Prueba de nuevo, lumbreras.");
         /*27*/narracion.add("Narrador: La santa puta virgen del señor...");

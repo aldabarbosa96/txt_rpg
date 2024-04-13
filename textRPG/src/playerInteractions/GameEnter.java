@@ -18,10 +18,10 @@ public class GameEnter {
     }
     public static void enterInv(GuiInteraction gi){
         GameVoiceOver.separador(gi);
-        GameVoiceOver.dialogo(0,null);
-        Inventory.getInventoryDisplay();
+        GameVoiceOver.dialogo(0, null);
         gi.pauseForUserInput();
     }
+
     public static int enterDadoAtaquePlayer(GuiInteraction gi,Player player){
         GameVoiceOver.separador(gi);
         GameVoiceOver.dialogo(1,null);
@@ -44,12 +44,13 @@ public class GameEnter {
         GameVoiceOver.dialogo(2,null);
         gi.pauseForUserInput();
     }
-    public static void enterEquipo(GuiInteraction gi,Equipment equipment){
+    public static void enterEquipo(GuiInteraction gi, Equipment equipment) {
         GameVoiceOver.separador(gi);
-        GameVoiceOver.dialogo(14,null);
-        equipment.mostrarEquipo(gi);
+        GameVoiceOver.dialogo(14, null);
+        gi.showMessage(equipment.toString());
         gi.pauseForUserInput();
     }
+
     public static void enterDadoDialogo(GuiInteraction gi){
         GameVoiceOver.dialogo(3,null);
         gi.pauseForUserInput();
