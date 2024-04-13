@@ -25,7 +25,6 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         Equipment equipment = new Equipment();
         Attacks attack = new Attacks();
         GameContext gc = new GameContext(cp,gi,player,enemigo,combate,equipment,ps,d12,attack,ge);
-        GameOptionManager gom = new GameOptionManager();
 
         String playerName = "";
         do {
@@ -36,19 +35,19 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         gi.continueGame();
         player.setName(playerName);
 
-            // Inicio del juego
+            //inicio del juego
             GameStoryTeller.narrar(0, null);
             GameStoryTeller.narrar(1, player);
             gi.pauseForUserInput();
 
-            // Estadísticas iniciales del jugador
+            //estadísticas iniciales del jugador
             cp.displayStats(gi, player);
             GameStoryTeller.narrar(2, null);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(3, player);
             gi.pauseForUserInput();
 
-            // Interacción inicial con NPC
+            //interacción inicial con NPC
             Npc.interactuarNPC00(gi);
             gi.pauseForUserInput();
             String respuesta = player.opcionEscogida0(gi, player);
@@ -56,19 +55,19 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             gi.pauseForUserInput();
             Npc.interactuarNPC02(player);
 
-            // Decisión del jugador y progreso del juego
+            //decisión del jugador y progreso del juego
             player.escogerOpcion(gi, npc, player);
             GameStoryTeller.narrar(8, player);
             gi.pauseForUserInput();
 
-            // Más narrativas y decisiones
+            //más narrativas y decisiones
             GameStoryTeller.narrar(9, player);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(10, null);
             gi.pauseForUserInput();
             if (player.ResPaz()) GameStoryTeller.narrar(11, null);
 
-            // Manejo del inventario y uso de objetos
+            //manejo del inventario y uso de objetos
             Inventory.addToInventory("\"DADO\"");
             GameEnter.enterInv(gi);
             GameStoryTeller.narrar(12, null);
@@ -78,7 +77,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             GameStoryTeller.narrar(14, player);
             gi.pauseForUserInput();
 
-            // Simulación de combate, combate y otras acciones
+            //simulación de combate, combate y otras acciones
             GameEnter.enterDadoAtaquePlayer(gi, player);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(15, null);

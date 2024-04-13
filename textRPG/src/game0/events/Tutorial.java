@@ -12,7 +12,6 @@ public class Tutorial {
     public static void tutorialEvent(GameContext gc) {//TUTORIAL
         GuiInteraction gi = gc.getGuiInteraction();
         Player player = gc.getPlayer();
-        ConsolePresentation cp = gc.getConsolePresentation();
         gi.showMessage("--------------------TUTORIAL--------------------");
         gi.pauseForUserInput();
         gi.showMessage("Narrador: Igual te pensabas que iba a ser otra cosa, pero la verdad es que soy yo de nuevo dándote la turra\n" +

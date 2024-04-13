@@ -24,7 +24,7 @@ public class KeyBoard implements KeyListener {
             case KeyEvent.VK_I:
                 handler.onToggleInventory();
                 break;
-            //agregar más teclas y acciones
+            // todo -> agregar más teclas aquí
         }
     }
     @Override

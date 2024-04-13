@@ -1,6 +1,5 @@
 package window;
 
-import game0.Inputs.KeyBoard;
 import game0.interfaces.KeyActionHandler;
 import game0.player.Inventory;
 import javax.swing.*;
@@ -15,7 +14,7 @@ public class GameFrame extends JFrame implements KeyActionHandler {
     private JPanel buttonPanel;
     private JTextArea inventoryArea;
     private JButton continueButton;
-    private JScrollPane textScrollPane; // Cambiado el nombre para clarificar su uso
+    private JScrollPane textScrollPane;
     private JScrollPane inventoryScrollPane;
 
     public GameFrame() {
@@ -32,17 +31,13 @@ public class GameFrame extends JFrame implements KeyActionHandler {
         setFocusable(true);
         setVisible(true);
     }
-
     private void initializeComponents() {
         setupTextArea();
-        setupInputField();
-        setupButtonPanel();
         setupInventoryArea();
-        setupContinueButton();
+        setupButtonPanel();
         setupKeyBindings();
         guiInteraction = new GuiInteraction(textArea, this);
     }
-
     private void setupTextArea() {
         textArea = new JTextArea();
         textArea.setEditable(false);
@@ -59,7 +54,13 @@ public class GameFrame extends JFrame implements KeyActionHandler {
 
         add(textScrollPane, BorderLayout.CENTER);
     }
-
+    private void setupButtonPanel() {
+        buttonPanel = new JPanel(new BorderLayout());
+        setupInputField();
+        setupContinueButton();
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
     private void setupInputField() {
         inputField = new JTextField();
         inputField.addActionListener(e -> {
@@ -70,14 +71,9 @@ public class GameFrame extends JFrame implements KeyActionHandler {
             }
         });
         inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 40));
-        add(inputField, BorderLayout.SOUTH);
+        inputField.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+        buttonPanel.add(inputField, BorderLayout.CENTER);
     }
-
-    private void setupButtonPanel() {
-        buttonPanel = new JPanel(new FlowLayout());
-        add(buttonPanel, BorderLayout.NORTH);
-    }
-
     private void setupContinueButton() {
         continueButton = new JButton("CONTINUAR");
         continueButton.addActionListener(e -> {
@@ -85,9 +81,9 @@ public class GameFrame extends JFrame implements KeyActionHandler {
             continueButton.setVisible(false);
         });
         continueButton.setVisible(false);
-        buttonPanel.add(continueButton);
+        continueButton.setPreferredSize(new Dimension(150, 40));
+        buttonPanel.add(continueButton, BorderLayout.EAST);
     }
-
     private void setupInventoryArea() {
         inventoryArea = new JTextArea(30, 15);
         inventoryArea.setEditable(false);
@@ -97,21 +93,21 @@ public class GameFrame extends JFrame implements KeyActionHandler {
         inventoryScrollPane.setVisible(false);
         add(inventoryScrollPane, BorderLayout.EAST);
     }
-
     private void setupKeyBindings() {
-        JRootPane rootPane = getRootPane();
-        InputMap inputMap = rootPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        ActionMap actionMap = rootPane.getActionMap();
+        InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = getRootPane().getActionMap();
 
+        //la acción de inventario solo debería activarse si el campo de texto no tiene el foco.
         inputMap.put(KeyStroke.getKeyStroke("I"), "toggleInventory");
         actionMap.put("toggleInventory", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                toggleInventoryVisibility();
+                if (!inputField.isFocusOwner()) { //verifica que el cuadro de texto no tenga el foco.
+                    toggleInventoryVisibility();
+                }
             }
         });
     }
-
     private void toggleInventoryVisibility() {
         SwingUtilities.invokeLater(() -> {
             boolean isVisible = inventoryScrollPane.isVisible();
@@ -119,18 +115,17 @@ public class GameFrame extends JFrame implements KeyActionHandler {
             if (!isVisible) {
                 inventoryArea.setText(Inventory.getInventoryDisplay());
             }
+            getContentPane().revalidate();
+            getContentPane().repaint();
         });
     }
-
     @Override
     public void onToggleInventory() {
         toggleInventoryVisibility();
     }
-
     public void showContinueButton(boolean show) {
         SwingUtilities.invokeLater(() -> continueButton.setVisible(show));
     }
-
     public GuiInteraction getGuiInteraction() {
         return guiInteraction;
     }

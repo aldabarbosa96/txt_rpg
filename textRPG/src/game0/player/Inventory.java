@@ -7,12 +7,12 @@ public class Inventory {
 
     static {
         for (int i = 0; i< slots.length; i++){
-            slots[i] = "Slot Vacío";
+            slots[i] = "Vacío";
         }
     }
     public static boolean addToInventory(String item){
         for (int i=0; i< slots.length; i++) {
-            if (slots[i].equals("Slot Vacío")) {
+            if (slots[i].equals("Vacío")) {
                 slots[i] = item;
                 return true;
             }
@@ -23,7 +23,7 @@ public class Inventory {
     public static String getInventoryDisplay() {
         StringBuilder inventoryContents = new StringBuilder("\n             INVENTARIO\n\n");
         for (int i = 0; i < slots.length; i++) {
-            inventoryContents.append("  ").append(i + 1).append(".           ").append(slots[i]).append("\n\n");
+            inventoryContents.append("    ").append(i + 1).append(".          ").append(slots[i]).append("\n");
         }
         return inventoryContents.toString();
     }
