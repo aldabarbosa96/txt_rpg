@@ -1,38 +1,32 @@
 package game0;
 
-import game0.console.ConsolePresentation;
-import game0.events.Attacks;
-import game0.events.Combat;
 import game0.events.Tutorial;
-import game0.interfaces.UserInteraction;
 import game0.player.Equipment;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import game0.player.PlayerStatistics;
-import game0.NPCs.Enemy;
-import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
 public class GameEvent {
-    public static void gestionEventos01(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combate, Object entity,PlayerStatistics ps, Dice dado,Attacks attack) {
+    public static void gestionEventos01(GameContext gc) {
         boolean esValida = false;
-        PlayerOptions.opcion(4, player);
+        PlayerOptions.opcion(4, gc.getPlayer());
         do {
-            String respuesta = gi.getInput().toLowerCase();
-            esValida = handleInputOption(respuesta, cp, gi, player, enemy, combate, ps,attack);
+            String respuesta = gc.getGuiInteraction().getInput().toLowerCase();
+            esValida = handleInputOption(respuesta, gc);
         } while (!esValida);
     }
 
-    private static boolean handleInputOption(String option, ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combate, PlayerStatistics ps, Attacks attack) {
+    private static boolean handleInputOption(String option, GameContext gc) {
         switch (option) {
             case "a":
-                Tutorial.tutorialEvent(cp, gi, player, enemy, combate, ps,attack);
+                Tutorial.tutorialEvent(gc);
                 return true;
             case "b":
             case "c":
                 GameStoryTeller.narrar(17, null);
-                combate.combatFlow(cp, player, enemy,ps,gi,attack);
+                gc.getCombat().combatFlow(gc);
                 return true;
             default:
                 GameStoryTeller.narrar(26, null);
@@ -40,31 +34,31 @@ public class GameEvent {
         }
     }
 
-    public static void gestionEventos02(ConsolePresentation cp, GuiInteraction gi, Player player, GameEnter enter, Combat combat, Enemy enemy, Equipment equipment,PlayerStatistics ps, Dice dado,Attacks attack) {
+    public static void gestionEventos02(GameContext gc) {
         String opcionEsc = "";
         do {
-            PlayerOptions.opcion(6, player);
-            opcionEsc = gi.getInput().toLowerCase();
+            PlayerOptions.opcion(6, gc.getPlayer());
+            opcionEsc = gc.getGuiInteraction().getInput().toLowerCase();
 
             switch (opcionEsc) {
                 case "a":
-                    manageOptionA(gi, player, equipment);
+                    manageOptionA(gc.getGuiInteraction(), gc.getPlayer(), gc.getEquipment());
                     break;
                 case "c":
                     manageOptionC();
                     break;
                 case "b":
-                    manageOptionB(gi, player);
+                    manageOptionB(gc.getGuiInteraction(), gc.getPlayer());
                     break;
                 case "d":
-                    manageOptionD(gi, player, enter);
+                    manageOptionD(gc.getGuiInteraction(), gc.getPlayer(), gc.getGameEnter());
                     break;
                 case "e":
-                    manageOptionE(cp, player, enemy, combat, ps, gi, attack);
+                    manageOptionE(gc);
                     break;
                 default:
                     GameStoryTeller.narrar(26, null);
-                    gi.showMessage("\n");
+                    gc.getGuiInteraction().showMessage("\n");
             }
         } while (!opcionEsc.equals("a") && !opcionEsc.equals("c"));
     }
@@ -130,7 +124,7 @@ public class GameEvent {
         PlayerStatistics.statsPlayer(player, gi);
     }
 
-    private static void manageOptionE(ConsolePresentation cp, Player player, Enemy enemy, Combat combat, PlayerStatistics ps, GuiInteraction gi, Attacks attack) {
-        combat.combatFlow(cp, player, enemy,ps,gi,attack);
+    private static void manageOptionE(GameContext gc) {
+        gc.getCombat().combatFlow(gc);
     }
 }

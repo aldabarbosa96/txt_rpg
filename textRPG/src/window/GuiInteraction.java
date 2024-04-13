@@ -9,6 +9,7 @@ public class GuiInteraction implements UserInteraction {
     private JTextArea textArea;
     private GameFrame frame;
     private final BlockingQueue<String> inputQueue = new ArrayBlockingQueue<>(1);
+    private StringBuilder textBuilder = new StringBuilder();
 
     public GuiInteraction(JTextArea textArea, GameFrame frame) {
         this.textArea = textArea;
@@ -17,7 +18,8 @@ public class GuiInteraction implements UserInteraction {
 
     @Override
     public void showMessage(String message) {
-        SwingUtilities.invokeLater(() -> textArea.append(message + "\n"));
+        textBuilder.append(message).append("\n");
+        SwingUtilities.invokeLater(() -> textArea.setText(textBuilder.toString()));
     }
 
     @Override
@@ -50,13 +52,11 @@ public class GuiInteraction implements UserInteraction {
         }
 
         SwingUtilities.invokeLater(() -> {
-            frame.showContinueButton(false); //oculta el botón
+            frame.showContinueButton(false);
         });
     }
 
     public void processUserInput(String input) {
-        inputQueue.offer(input); // Añade la entrada al queue para su procesamiento posterior.
+        inputQueue.offer(input); //añade la entrada al queue
     }
-
-
 }

@@ -1,68 +1,69 @@
 package game0.events;
 
+import game0.GameContext;
 import game0.GameStoryTeller;
 import game0.GameVoiceOver;
 import game0.NPCs.Enemy;
-import game0.console.ConsolePresentation;
-import game0.interfaces.UserInteraction;
 import game0.player.Player;
-import game0.player.PlayerStatistics;
-import playerInteractions.Dice;
 import window.GuiInteraction;
 
 public class Combat {
-    private String ganador = "";
-    boolean ganaJugador = true;
+    private String winnerMessage = "";
+    boolean playerWins = true;
 
-    public void combatFlow(ConsolePresentation cp, Player player, Enemy enemy,PlayerStatistics ps, GuiInteraction gi, Attacks attack){
-        cp.displayCombat(gi,player,enemy);
+    public void combatFlow(GameContext gc) {
+        GuiInteraction gi = gc.getGuiInteraction();
+        Player player = gc.getPlayer();
+        Enemy enemy = gc.getEnemy();
+        Attacks attacks = new Attacks();
+
+
+        gc.getConsolePresentation().displayCombat(gi, player, enemy);
         gi.pauseForUserInput();
-        cp.displayStats(gi,player);
-        cp.displayStats(gi,enemy);
+        gc.getConsolePresentation().displayStats(gi, player);
+        gc.getConsolePresentation().displayStats(gi, enemy);
 
-        while (player.getHp() > 0 && enemy.getLifePoints() > 0){
-            ps.actEstPlayerEnCombate(player,gi,enemy,attack);
+        while (player.getHp() > 0 && enemy.getLifePoints() > 0) {
+            attacks.playerAttack(player, enemy, gi);
 
-            if (enemy.getLifePoints()<=0) {
-                gi.pauseForUserInput();
-                GameVoiceOver.dialogo(9,null);
-                gi.pauseForUserInput();
+            if (enemy.getLifePoints() <= 0) {
+                GameVoiceOver.dialogo(9, null);
                 break;
-            } else if (player.getHp()<=0 || player.getEnergy() <= 0) {
-                ganaJugador = false;
-                GameVoiceOver.dialogo(9,null);
-                gi.pauseForUserInput();
+            } else if (player.getHp() <= 0 || player.getEnergy() <= 0) {
+                playerWins = false;
+                GameVoiceOver.dialogo(9, null);
                 break;
             }
 
-            ps.actEstEnemyEnCombate(player,gi,enemy,attack);
+            attacks.enemyAttacks(player, enemy, gi);
 
-            if (enemy.getLifePoints() <= 0){
-                GameVoiceOver.dialogo(9,null);
-                gi.pauseForUserInput();
+            if (enemy.getLifePoints() <= 0) {
+                GameVoiceOver.dialogo(9, null);
                 break;
+            } else if (player.getHp() <= 0 || player.getEnergy() <= 0) {
+                playerWins = false;
+                GameVoiceOver.dialogo(9, null);
+                break;
+            } else {
+                gi.pauseForUserInput();
+                GameVoiceOver.dialogo(10, null);
             }
-
-            else if (player.getHp() <=0 || player.getEnergy() <= 0){
-                ganaJugador = false;
-                GameVoiceOver.dialogo(9,null);
-                gi.pauseForUserInput();
-                break;
-
-            } else {gi.pauseForUserInput(); GameVoiceOver.dialogo(10,null);}
-
         }
-        if (ganaJugador) ganador += "¡¡¡<<"+player.getName()+">> es el ganador!!!";
-            else ganador += "¡¡¡<<"+ enemy.getName()+">> es el ganador!!!";
-        gi.showMessage(ganador);
-        ganador(player,enemy); gi.pauseForUserInput();
+
+        if (playerWins) {
+            winnerMessage = "¡¡¡<<"+player.getName()+">> es el ganador!!!";
+        } else {
+            winnerMessage = "¡¡¡<<"+ enemy.getName()+">> es el ganador!!!";
+        }
+        gi.showMessage(winnerMessage);
+        resetParticipants(player, enemy);
     }
-    public void ganador(Player player, Enemy enemy){
-        if (ganaJugador){
-            GameStoryTeller.narrar(19,player);
-            GameStoryTeller.narrar(20,null);
-        }
-        else {
+
+    private void resetParticipants(Player player, Enemy enemy) {
+        if (playerWins) {
+            GameStoryTeller.narrar(19, player);
+            GameStoryTeller.narrar(20, null);
+        } else {
             GameStoryTeller.narrar(21, null);
             GameStoryTeller.narrar(40, player);
         }

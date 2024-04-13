@@ -1,5 +1,6 @@
 package game0.events;
 
+import game0.GameContext;
 import game0.GameStoryTeller;
 import game0.NPCs.Enemy;
 import game0.console.ConsolePresentation;
@@ -12,7 +13,10 @@ import window.GuiInteraction;
 
 public class Tutorial {
 
-    public static void tutorialEvent(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combat, PlayerStatistics ps, Attacks attack) { //TUTORIAL
+    public static void tutorialEvent(GameContext gc) {//TUTORIAL
+        GuiInteraction gi = gc.getGuiInteraction();
+        Player player = gc.getPlayer();
+        ConsolePresentation cp = gc.getConsolePresentation();
         gi.showMessage("--------------------TUTORIAL--------------------");
         gi.pauseForUserInput();
         gi.showMessage("Narrador: Igual te pensabas que iba a ser otra cosa, pero la verdad es que soy yo de nuevo dándote la turra\n" +
@@ -58,7 +62,7 @@ public class Tutorial {
             } else if (respuesta.equalsIgnoreCase("b")) {
                 esTonto = true;
                 gi.showMessage("Narrador: No, la hostia no eres porque si lo fueras no tendría que haber hecho la explicación, lumbreras.");
-                combat.combatFlow(cp,player,enemy,ps,gi,attack);
+                gc.getCombat().combatFlow(gc);
             } else if (respuesta.equalsIgnoreCase("c")) {
                 gi.showMessage("Narrador: Capullo tu padre. Te vas a enterar <<" + player.getName() + ">>");
                 esTonto = true;
@@ -68,7 +72,7 @@ public class Tutorial {
             }
         }
         gi.pauseForUserInput();
-        combat.combatFlow(cp,player,enemy,ps,gi,attack);
+        gc.getCombat().combatFlow(gc);
     }
 
     public static void tutorialEvent01(GuiInteraction gi, Player player) { //TUTORIAL2

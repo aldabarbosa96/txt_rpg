@@ -20,6 +20,9 @@ public class GameVoiceOver {
         }
         gi.showMessage(voz);
     }
+    public static void separador(GuiInteraction gi){
+        gi.showMessage("---------------------------------------------------");
+    }
     public static List<String> vozEnOff = new ArrayList<>();
     static {
         /*0*/vozEnOff.add("Pulsa \"I\" para abrir tu inventario:");

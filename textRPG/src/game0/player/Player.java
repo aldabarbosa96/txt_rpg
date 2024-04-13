@@ -61,7 +61,6 @@ public class Player {
     }
     public void setName(GuiInteraction gi) {
         gi.showMessage("Introduce tu nombre:"); //todo -> será útil en un futuro
-        this.name = gi.getInput();
     }
     public void marcarPaz(){
         this.resPaz = true;

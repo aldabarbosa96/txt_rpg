@@ -11,20 +11,20 @@ import window.GuiInteraction;
 public class GameEnter {
     static Dice d12 = new Dice(12);
     public void invalidName(GuiInteraction gi,Player player){
-        while (player.getName().isEmpty()){
+        while (player.getName().isEmpty() || player.getName().length() >= 20){
             GameStoryTeller.narrar(30,null);
             player.setName(gi.getInput());
         }
     }
     public static void enterInv(GuiInteraction gi){
-        GameVoiceOver.dialogo(11,null);
+        GameVoiceOver.separador(gi);
         GameVoiceOver.dialogo(0,null);
         gi.pauseForUserInput();
         Inventory.getInventoryDisplay();
         gi.pauseForUserInput();
     }
     public static int enterDadoAtaquePlayer(GuiInteraction gi,Player player){
-        GameVoiceOver.dialogo(11,null);
+        GameVoiceOver.separador(gi);
         GameVoiceOver.dialogo(1,null);
         gi.pauseForUserInput();
         int resultadoAt0 = d12.lanzar();
@@ -32,7 +32,7 @@ public class GameEnter {
         return  resultadoAt0;
     }
     public static int enterDadoAtaqueEnemy(GuiInteraction gi,Enemy enemy){
-        GameVoiceOver.dialogo(11,null);
+        GameVoiceOver.separador(gi);
         GameVoiceOver.dialogo(12,null);
         gi.pauseForUserInput();
         int resultadoAt0 = d12.lanzar();
@@ -41,12 +41,12 @@ public class GameEnter {
     }
 
     public static void enterAtaque(GuiInteraction gi){ //todo -> REVISAR
-        GameVoiceOver.dialogo(11,null);
+        GameVoiceOver.separador(gi);
         GameVoiceOver.dialogo(2,null);
         gi.pauseForUserInput();
     }
     public static void enterEquipo(GuiInteraction gi,Equipment equipment){
-        GameVoiceOver.dialogo(11,null);
+        GameVoiceOver.separador(gi);
         GameVoiceOver.dialogo(14,null);
         equipment.mostrarEquipo(gi);
         gi.pauseForUserInput();

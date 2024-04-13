@@ -3,12 +3,9 @@ package game0.player;
 import game0.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.events.Attacks;
-import game0.interfaces.UserInteraction;
 import playerInteractions.Dice;
-import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
-import java.util.Scanner;
 public class PlayerStatistics {
     public PlayerStatistics() {
     }

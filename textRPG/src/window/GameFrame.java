@@ -2,6 +2,7 @@ package window;
 
 import game0.player.Inventory;
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -15,7 +16,7 @@ public class GameFrame extends JFrame {
 
     public GameFrame() {
         setTitle("txt_rpg");
-        setSize(1280, 720);
+        setSize(1600, 1080);
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.black);
@@ -43,10 +44,10 @@ public class GameFrame extends JFrame {
     private void setupContinueButton() {
         continueButton = new JButton("Continuar");
         continueButton.addActionListener(e -> {
-            guiInteraction.continueGame(); //notifica a la interacción para continuar
-            continueButton.setVisible(false); //oculta el botón después de ser utilizado
+            guiInteraction.continueGame();
+            continueButton.setVisible(false);
         });
-        continueButton.setVisible(true);
+        continueButton.setVisible(false);
     }
 
     private void setupTextArea() {
@@ -54,9 +55,17 @@ public class GameFrame extends JFrame {
         textArea.setEditable(false);
         textArea.setBackground(Color.black);
         textArea.setForeground(Color.white);
-        textArea.setFont(new Font("Monospaced", Font.PLAIN, 15));
+        textArea.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+        textArea.setMargin(new Insets(5, 5, 20, 5));
+
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        //esta mierda setea la scrollbar abajo
+        DefaultCaret caret = (DefaultCaret) textArea.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+
         add(scrollPane, BorderLayout.CENTER);
     }
 
@@ -69,7 +78,7 @@ public class GameFrame extends JFrame {
                 inputField.setText("");
             }
         });
-        inputField.setPreferredSize(new Dimension(inputField.getWidth(), 30));
+        inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 35));
         add(inputField, BorderLayout.SOUTH);
     }
 
@@ -79,16 +88,16 @@ public class GameFrame extends JFrame {
     }
 
     private void setupInventoryArea() {
-        inventoryArea = new JTextArea(10, 30);
+        inventoryArea = new JTextArea(30, 15);
         inventoryArea.setEditable(false);
         JScrollPane inventoryScrollPane = new JScrollPane(inventoryArea);
         inventoryScrollPane.setBorder(BorderFactory.createTitledBorder("Inventario"));
         add(inventoryScrollPane, BorderLayout.EAST);
     }
+
     private void setupKeyBindings() {
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap actionMap = getRootPane().getActionMap();
-
         inputMap.put(KeyStroke.getKeyStroke("I"), "openInventory");
         actionMap.put("openInventory", new AbstractAction() {
             @Override
