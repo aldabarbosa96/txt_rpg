@@ -1,18 +1,22 @@
 package window;
 
+import game0.Inputs.KeyBoard;
+import game0.interfaces.KeyActionHandler;
 import game0.player.Inventory;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class GameFrame extends JFrame {
+public class GameFrame extends JFrame implements KeyActionHandler {
     private JTextArea textArea;
     private JTextField inputField;
     private GuiInteraction guiInteraction;
     private JPanel buttonPanel;
     private JTextArea inventoryArea;
     private JButton continueButton;
+    private JScrollPane textScrollPane; // Cambiado el nombre para clarificar su uso
+    private JScrollPane inventoryScrollPane;
 
     public GameFrame() {
         setTitle("txt_rpg");
@@ -24,6 +28,8 @@ public class GameFrame extends JFrame {
         setLocationRelativeTo(null);
 
         initializeComponents();
+
+        setFocusable(true);
         setVisible(true);
     }
 
@@ -33,40 +39,25 @@ public class GameFrame extends JFrame {
         setupButtonPanel();
         setupInventoryArea();
         setupContinueButton();
-        guiInteraction = new GuiInteraction(textArea, this);
         setupKeyBindings();
-
-        add(inputField, BorderLayout.SOUTH);
-        buttonPanel.add(continueButton);
-        add(buttonPanel, BorderLayout.NORTH);
-    }
-
-    private void setupContinueButton() {
-        continueButton = new JButton("Continuar");
-        continueButton.addActionListener(e -> {
-            guiInteraction.continueGame();
-            continueButton.setVisible(false);
-        });
-        continueButton.setVisible(false);
+        guiInteraction = new GuiInteraction(textArea, this);
     }
 
     private void setupTextArea() {
         textArea = new JTextArea();
         textArea.setEditable(false);
         textArea.setBackground(Color.black);
-        textArea.setForeground(Color.white);
+        textArea.setForeground(Color.orange);
         textArea.setFont(new Font("Century Gothic", Font.PLAIN, 16));
-        textArea.setMargin(new Insets(5, 5, 20, 5));
+        textArea.setMargin(new Insets(15, 12, 300, 5));
 
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        textScrollPane = new JScrollPane(textArea);
+        textScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 
-        //esta mierda setea la scrollbar abajo
         DefaultCaret caret = (DefaultCaret) textArea.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
-        add(scrollPane, BorderLayout.CENTER);
+        add(textScrollPane, BorderLayout.CENTER);
     }
 
     private void setupInputField() {
@@ -78,7 +69,7 @@ public class GameFrame extends JFrame {
                 inputField.setText("");
             }
         });
-        inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 35));
+        inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 40));
         add(inputField, BorderLayout.SOUTH);
     }
 
@@ -87,24 +78,53 @@ public class GameFrame extends JFrame {
         add(buttonPanel, BorderLayout.NORTH);
     }
 
+    private void setupContinueButton() {
+        continueButton = new JButton("CONTINUAR");
+        continueButton.addActionListener(e -> {
+            guiInteraction.continueGame();
+            continueButton.setVisible(false);
+        });
+        continueButton.setVisible(false);
+        buttonPanel.add(continueButton);
+    }
+
     private void setupInventoryArea() {
         inventoryArea = new JTextArea(30, 15);
         inventoryArea.setEditable(false);
-        JScrollPane inventoryScrollPane = new JScrollPane(inventoryArea);
+        inventoryArea.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+        inventoryScrollPane = new JScrollPane(inventoryArea);
         inventoryScrollPane.setBorder(BorderFactory.createTitledBorder("Inventario"));
+        inventoryScrollPane.setVisible(false);
         add(inventoryScrollPane, BorderLayout.EAST);
     }
 
     private void setupKeyBindings() {
-        InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        ActionMap actionMap = getRootPane().getActionMap();
-        inputMap.put(KeyStroke.getKeyStroke("I"), "openInventory");
-        actionMap.put("openInventory", new AbstractAction() {
+        JRootPane rootPane = getRootPane();
+        InputMap inputMap = rootPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = rootPane.getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke("I"), "toggleInventory");
+        actionMap.put("toggleInventory", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                toggleInventoryVisibility();
+            }
+        });
+    }
+
+    private void toggleInventoryVisibility() {
+        SwingUtilities.invokeLater(() -> {
+            boolean isVisible = inventoryScrollPane.isVisible();
+            inventoryScrollPane.setVisible(!isVisible);
+            if (!isVisible) {
                 inventoryArea.setText(Inventory.getInventoryDisplay());
             }
         });
+    }
+
+    @Override
+    public void onToggleInventory() {
+        toggleInventoryVisibility();
     }
 
     public void showContinueButton(boolean show) {

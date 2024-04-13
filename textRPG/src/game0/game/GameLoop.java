@@ -1,4 +1,4 @@
-package game0;
+package game0.game;
 
 import game0.NPCs.Enemy;
 import game0.NPCs.Npc;
@@ -25,6 +25,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         Equipment equipment = new Equipment();
         Attacks attack = new Attacks();
         GameContext gc = new GameContext(cp,gi,player,enemigo,combate,equipment,ps,d12,attack,ge);
+        GameOptionManager gom = new GameOptionManager();
 
         String playerName = "";
         do {
@@ -90,7 +91,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             GameEvent.gestionEventos02(gc);
             gi.pauseForUserInput();
 
-            //continua la historia..
+            //continua la historia...
             GameEvent.gestionEventos03(player, gi, equipment);
     }
 }

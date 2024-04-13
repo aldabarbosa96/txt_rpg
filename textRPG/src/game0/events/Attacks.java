@@ -1,8 +1,7 @@
 package game0.events;
 
-import game0.GameVoiceOver;
+import game0.game.GameVoiceOver;
 import game0.NPCs.Enemy;
-import game0.interfaces.UserInteraction;
 import game0.player.Player;
 import game0.player.PlayerStatistics;
 import playerInteractions.GameEnter;

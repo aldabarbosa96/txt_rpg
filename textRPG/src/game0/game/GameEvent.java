@@ -1,6 +1,5 @@
-package game0;
+package game0.game;
 
-import game0.events.Tutorial;
 import game0.player.Equipment;
 import game0.player.Player;
 import game0.player.PlayerOptions;
@@ -14,26 +13,9 @@ public class GameEvent {
         PlayerOptions.opcion(4, gc.getPlayer());
         do {
             String respuesta = gc.getGuiInteraction().getInput().toLowerCase();
-            esValida = handleInputOption(respuesta, gc);
+            esValida = GameOptionManager.manageOption01(respuesta, gc);
         } while (!esValida);
     }
-
-    private static boolean handleInputOption(String option, GameContext gc) {
-        switch (option) {
-            case "a":
-                Tutorial.tutorialEvent(gc);
-                return true;
-            case "b":
-            case "c":
-                GameStoryTeller.narrar(17, null);
-                gc.getCombat().combatFlow(gc);
-                return true;
-            default:
-                GameStoryTeller.narrar(26, null);
-                return false;
-        }
-    }
-
     public static void gestionEventos02(GameContext gc) {
         String opcionEsc = "";
         do {
@@ -42,19 +24,19 @@ public class GameEvent {
 
             switch (opcionEsc) {
                 case "a":
-                    manageOptionA(gc.getGuiInteraction(), gc.getPlayer(), gc.getEquipment());
+                    GameOptionManager.manageOption02A(gc.getGuiInteraction(), gc.getPlayer(), gc.getEquipment());
                     break;
                 case "c":
-                    manageOptionC();
+                    GameOptionManager.manageOption02C();
                     break;
                 case "b":
-                    manageOptionB(gc.getGuiInteraction(), gc.getPlayer());
+                    GameOptionManager.manageOption02B(gc.getGuiInteraction(), gc.getPlayer());
                     break;
                 case "d":
-                    manageOptionD(gc.getGuiInteraction(), gc.getPlayer(), gc.getGameEnter());
+                    GameOptionManager.manageOption02D(gc.getGuiInteraction(), gc.getPlayer(), gc.getGameEnter());
                     break;
                 case "e":
-                    manageOptionE(gc);
+                    GameOptionManager.manageOption02E(gc);
                     break;
                 default:
                     GameStoryTeller.narrar(26, null);
@@ -86,7 +68,7 @@ public class GameEvent {
                     GameStoryTeller.narrar(45, null);
                     gi.pauseForUserInput();
                     break;
-                case "a": //todo -> acabar esto!!!
+                case "a": //todo -> SEGUIR POR AQUÍ!!!
                 case "b":
                 case "c":
                 case "e":
@@ -96,35 +78,5 @@ public class GameEvent {
                     gi.showMessage("\n");
             }
         }
-    }
-    private static void manageOptionA(GuiInteraction gi, Player player, Equipment equipment) {
-        GameStoryTeller.narrar(24, player);
-        gi.pauseForUserInput();
-        GameStoryTeller.narrar(31, player);
-        gi.pauseForUserInput();
-        equipment.equiparManoD("Navaja Multiusos (+1 Fuerza)");
-        GameStoryTeller.narrar(25, null);
-    }
-
-    private static void manageOptionB(GuiInteraction gi, Player player) {
-        GameStoryTeller.narrar(27, null);
-        gi.pauseForUserInput();
-        Tutorial.tutorialEvent01(gi, player);
-    }
-
-    private static void manageOptionC() {
-        GameStoryTeller.narrar(28, null);
-        System.exit(0);
-    }
-
-    private static void manageOptionD(GuiInteraction gi, Player player, GameEnter enter) {
-        GameStoryTeller.narrar(29, null);
-        player.setName(gi.getInput());
-        enter.invalidName(gi, player);
-        PlayerStatistics.statsPlayer(player, gi);
-    }
-
-    private static void manageOptionE(GameContext gc) {
-        gc.getCombat().combatFlow(gc);
     }
 }

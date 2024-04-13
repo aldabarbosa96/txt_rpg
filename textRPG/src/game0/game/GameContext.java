@@ -1,4 +1,4 @@
-package game0;
+package game0.game;
 
 import game0.console.ConsolePresentation;
 import game0.events.Attacks;

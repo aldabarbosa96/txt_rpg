@@ -1,8 +1,8 @@
 package game0.events;
 
-import game0.GameContext;
-import game0.GameStoryTeller;
-import game0.GameVoiceOver;
+import game0.game.GameContext;
+import game0.game.GameStoryTeller;
+import game0.game.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Player;
 import window.GuiInteraction;

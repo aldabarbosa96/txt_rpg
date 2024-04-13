@@ -1,7 +1,6 @@
 package game0.player;
 
-import game0.GameVoiceOver;
-import game0.interfaces.UserInteraction;
+import game0.game.GameVoiceOver;
 
 public class Inventory {
     private static String[] slots = new String[12];
@@ -22,9 +21,9 @@ public class Inventory {
             return false;
     }
     public static String getInventoryDisplay() {
-        StringBuilder inventoryContents = new StringBuilder("INVENTARIO\n");
+        StringBuilder inventoryContents = new StringBuilder("\n             INVENTARIO\n\n");
         for (int i = 0; i < slots.length; i++) {
-            inventoryContents.append(i + 1).append(". ").append(slots[i]).append("\n");
+            inventoryContents.append("  ").append(i + 1).append(".           ").append(slots[i]).append("\n\n");
         }
         return inventoryContents.toString();
     }

@@ -1,4 +1,4 @@
-package game0;
+package game0.game;
 
 import game0.player.Player;
 import window.GuiInteraction;

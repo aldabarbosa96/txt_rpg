@@ -1,6 +1,6 @@
 package game0.NPCs;
 
-import game0.GameStoryTeller;
+import game0.game.GameStoryTeller;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import window.GuiInteraction;

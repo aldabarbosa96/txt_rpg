@@ -1,4 +1,4 @@
-package game0;
+package game0.game;
 
 import game0.NPCs.NpcOptions;
 import game0.console.ConsolePresentation;

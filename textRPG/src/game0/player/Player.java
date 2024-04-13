@@ -1,9 +1,8 @@
 package game0.player;
 
-import game0.GameStoryTeller;
+import game0.game.GameStoryTeller;
 import game0.NPCs.Npc;
 import game0.NPCs.NpcOptions;
-import game0.interfaces.UserInteraction;
 import window.GuiInteraction;
 
 public class Player {
