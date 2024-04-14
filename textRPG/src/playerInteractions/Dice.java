@@ -46,7 +46,7 @@ public class Dice {
             case 4:
                 gi.showMessage("+-------+");
                 gi.showMessage("| o   o |");
-                gi.showMessage("|          |");
+                gi.showMessage("|         |");
                 gi.showMessage("| o   o |");
                 gi.showMessage("+-------+");
                 gi.showMessage("\nResultado ataque: 4 + ("+ player.getAttack()+")");

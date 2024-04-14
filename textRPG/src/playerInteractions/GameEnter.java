@@ -17,7 +17,6 @@ public class GameEnter {
         }
     }
     public static void enterInv(GuiInteraction gi){
-        GameVoiceOver.separador(gi);
         GameVoiceOver.dialogo(0, null);
         gi.pauseForUserInput();
     }

@@ -31,6 +31,7 @@ public class GameFrame extends JFrame{
     private Equipment equipment;
     private Player player;
     private Enemy enemy;
+    private Timer updateTimer;
     private ConsolePresentation consolePresentation = new ConsolePresentation();
 
     public GameFrame(Inventory inventory, Equipment equipment, Player player, Enemy enemy) { // todo -> esta clase solamente debería inicializar los componentes (modular clase en un futuro)
@@ -46,6 +47,7 @@ public class GameFrame extends JFrame{
         setLocationRelativeTo(null);
 
         initializeComponents();
+        startUpdateTimer();
 
         setFocusable(true);
         setVisible(true);
@@ -57,6 +59,22 @@ public class GameFrame extends JFrame{
         setupButtonPanel();
         setupKeyBindings();
         guiInteraction = new GuiInteraction(textArea, this);
+    }
+    private void startUpdateTimer() {
+        updateTimer = new Timer(100, e -> updateUIAreas());  // Actualizar cada 1000 ms = 1 segundo
+        updateTimer.start();
+    }
+
+    private void updateUIAreas() {
+        if (inventoryScrollPane.isVisible()) {
+            inventoryArea.setText(inventory.getInventoryDisplay());
+        }
+        if (equipmentScrollPane.isVisible()) {
+            equipmentArea.setText(equipment.toString());
+        }
+        if (statsScrollPane.isVisible()) {
+            statsArea.setText(consolePresentation.displayStats(guiInteraction, player));
+        }
     }
     private void setupTextArea() {
         textArea = new JTextArea();
