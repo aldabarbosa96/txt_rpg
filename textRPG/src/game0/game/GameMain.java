@@ -16,7 +16,7 @@ public class GameMain {
         SwingUtilities.invokeLater(() -> {
             Inventory inventory = new Inventory();
             Equipment equipment = new Equipment();
-            Player player = new Player();
+            Player player = new Player(25,10,1,1);
             Enemy enemy = new Enemy("Narrador",15,3,5);
             GameFrame frame = new GameFrame(inventory, equipment,player, enemy);
 
@@ -29,7 +29,7 @@ public class GameMain {
                 NpcOptions.setUserInteraction(guiInteraction);
                 PlayerOptions.setUserInteraction(guiInteraction);
                 GameVoiceOver.setUserInteraction(guiInteraction);
-                GameLoop.run(guiInteraction, cp);
+                GameLoop.run(guiInteraction, cp,player);
 
             }).start();
         });

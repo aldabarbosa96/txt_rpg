@@ -14,8 +14,7 @@ import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
 public class GameLoop { // todo -> modularizar esta clase en un futuro para manejabilidad y comprensión
-    public static void run(GuiInteraction gi, ConsolePresentation cp) {
-        Player player = new Player();
+    public static void run(GuiInteraction gi, ConsolePresentation cp, Player player) {
         PlayerStatistics ps = new PlayerStatistics();
         GameEnter ge = new GameEnter();
         Dice d12 = new Dice(12);
@@ -31,7 +30,6 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             player.setName(gi);
             playerName = gi.getInput();
         } while (playerName == null || playerName.trim().isEmpty());
-
         gi.continueGame();
         player.setName(playerName);
 

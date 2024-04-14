@@ -42,11 +42,11 @@ public class Player {
         this.hp = hp;
     }
 
-    public Player(String name, int hp, int energy, int attack) {
-        this.name = name;
+    public Player( int hp, int energy, int attack,int deffense) {
         this.hp = hp;
         this.energy = energy;
         this.attack = attack;
+        this.deffense = deffense;
     }
 
     public void setEnergy(int energy) {
