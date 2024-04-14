@@ -89,7 +89,7 @@ public class Dice {
             case 9:
                 gi.showMessage("+-----+");
                 gi.showMessage(" # # #  ");
-                gi.showMessage(" #      #");
+                gi.showMessage(" #     #");
                 gi.showMessage(" # # #  ");
                 gi.showMessage("       #");
                 gi.showMessage("       #");
@@ -146,22 +146,22 @@ public class Dice {
                 gi.showMessage("+-------+");
                 gi.showMessage("| o       |");
                 gi.showMessage("|          |");
-                gi.showMessage("|     o   |");
+                gi.showMessage("|      o  |");
                 gi.showMessage("+-------+");
                 gi.showMessage("\nResultado ataque: 2 + (" + enemy.getAttackPoints() + ")");
                 break;
             case 3:
                 gi.showMessage("+-------+");
-                gi.showMessage("| o     |");
-                gi.showMessage("|   o   |");
-                gi.showMessage("|     o |");
+                gi.showMessage("| o      |");
+                gi.showMessage("|   o    |");
+                gi.showMessage("|      o |");
                 gi.showMessage("+-------+");
                 gi.showMessage("\nResultado ataque: 3 + (" + enemy.getAttackPoints() + ")");
                 break;
             case 4:
                 gi.showMessage("+-------+");
                 gi.showMessage("| o    o |");
-                gi.showMessage("|           |");
+                gi.showMessage("|          |");
                 gi.showMessage("| o    o |");
                 gi.showMessage("+-------+");
                 gi.showMessage("\nResultado ataque: 4 + (" + enemy.getAttackPoints() + ")");
@@ -204,7 +204,7 @@ public class Dice {
             case 9:
                 gi.showMessage("+-----+");
                 gi.showMessage(" # # #  ");
-                gi.showMessage(" #      #");
+                gi.showMessage(" #     #");
                 gi.showMessage(" # # #  ");
                 gi.showMessage("       #");
                 gi.showMessage("       #");

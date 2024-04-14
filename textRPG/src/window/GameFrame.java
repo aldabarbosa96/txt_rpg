@@ -1,6 +1,6 @@
 package window;
 
-import game0.interfaces.KeyActionHandler;
+
 import game0.player.Inventory;
 import game0.player.Equipment;
 import javax.swing.*;
@@ -8,7 +8,7 @@ import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class GameFrame extends JFrame implements KeyActionHandler {
+public class GameFrame extends JFrame{
     private JTextArea textArea;
     private JTextField inputField;
     private GuiInteraction guiInteraction;
@@ -19,7 +19,7 @@ public class GameFrame extends JFrame implements KeyActionHandler {
     private JScrollPane textScrollPane;
     private JScrollPane inventoryScrollPane;
     private JScrollPane equipmentScrollPane;
-    private JPanel sidePanel; //panel que contiene ambos
+    private JPanel sidePanel;
     private Inventory inventory;
     private Equipment equipment;
 
@@ -40,7 +40,7 @@ public class GameFrame extends JFrame implements KeyActionHandler {
     }
     private void initializeComponents() {
         setupTextArea();
-        setupSidePanel(); // Método nuevo para configurar el panel lateral
+        setupSidePanel();
         setupButtonPanel();
         setupKeyBindings();
         guiInteraction = new GuiInteraction(textArea, this);
@@ -50,11 +50,12 @@ public class GameFrame extends JFrame implements KeyActionHandler {
         textArea.setEditable(false);
         textArea.setBackground(Color.black);
         textArea.setForeground(Color.orange);
-        textArea.setFont(new Font("Century Gothic", Font.PLAIN, 16));
-        textArea.setMargin(new Insets(15, 12, 300, 5));
+        textArea.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+        textArea.setMargin(new Insets(15, 13, 300, 5));
 
         textScrollPane = new JScrollPane(textArea);
         textScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        textScrollPane.setBorder(BorderFactory.createEmptyBorder());
 
         DefaultCaret caret = (DefaultCaret) textArea.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
@@ -65,7 +66,7 @@ public class GameFrame extends JFrame implements KeyActionHandler {
         buttonPanel = new JPanel(new BorderLayout());
         setupInputField();
         setupContinueButton();
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 2, 0));
         buttonPanel.setBackground(Color.black);
         add(buttonPanel, BorderLayout.SOUTH);
     }
@@ -80,8 +81,9 @@ public class GameFrame extends JFrame implements KeyActionHandler {
         });
         inputField.setBackground(Color.black);
         inputField.setForeground(Color.orange);
+        inputField.setCaretColor(Color.orange);
         inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 40));
-        inputField.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+        inputField.setFont(new Font("Century Gothic", Font.PLAIN, 17));
         buttonPanel.add(inputField, BorderLayout.CENTER);
     }
     private void setupContinueButton() {
@@ -93,7 +95,7 @@ public class GameFrame extends JFrame implements KeyActionHandler {
         continueButton.setVisible(false);
         continueButton.setBackground(Color.black);
         continueButton.setForeground(Color.orange);
-        continueButton.setPreferredSize(new Dimension(245, 40));
+        continueButton.setPreferredSize(new Dimension(250, 40));
         buttonPanel.add(continueButton, BorderLayout.EAST);
     }
     private void setupSidePanel() {
@@ -112,7 +114,7 @@ public class GameFrame extends JFrame implements KeyActionHandler {
         inventoryArea.setFont(new Font("Verdana", Font.BOLD, 16));
         inventoryScrollPane = new JScrollPane(inventoryArea);
         inventoryScrollPane.setVisible(false);
-        inventoryScrollPane.setBorder(BorderFactory.createEtchedBorder(Color.black,Color.orange));
+        inventoryScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange,4));
         inventoryScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         parent.add(inventoryScrollPane);
     }
@@ -121,11 +123,12 @@ public class GameFrame extends JFrame implements KeyActionHandler {
         equipmentArea.setEditable(false);
         equipmentArea.setBackground(Color.black);
         equipmentArea.setForeground(Color.orange);
-        equipmentArea.setFont(new Font("Verdana", Font.BOLD, 16));
+        equipmentArea.setFont(new Font("Verdana", Font.BOLD, 14));
         equipmentScrollPane = new JScrollPane(equipmentArea);
         equipmentScrollPane.setVisible(false);
-        equipmentScrollPane.setBorder(BorderFactory.createTitledBorder("Equipo"));
+        equipmentScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange,4));
         equipmentScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        equipmentScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         parent.add(equipmentScrollPane);
     }
     private void setupKeyBindings() {
@@ -152,22 +155,6 @@ public class GameFrame extends JFrame implements KeyActionHandler {
             }
         });
     }
-    private void toggleInventoryVisibility() {
-        SwingUtilities.invokeLater(() -> {
-            boolean isVisible = inventoryScrollPane.isVisible();
-            inventoryScrollPane.setVisible(!isVisible);
-            if (!isVisible) {
-                inventoryArea.setText(inventory.getInventoryDisplay());
-            }
-            getContentPane().revalidate();
-            getContentPane().repaint();
-        });
-    }
-    @Override
-    public void onToggleInventory() {
-        toggleInventoryVisibility();
-    }
-
     private void togglePanelVisibility(JScrollPane scrollPane, boolean isInventory) {
         SwingUtilities.invokeLater(() -> {
             boolean isVisible = scrollPane.isVisible();
@@ -182,15 +169,7 @@ public class GameFrame extends JFrame implements KeyActionHandler {
             getContentPane().repaint();
         });
     }
-    public void updateEquipmentDisplay() {
-        SwingUtilities.invokeLater(() -> {
-            if (equipmentArea != null && equipment != null) {
-                equipmentArea.setText(equipment.toString());
-                equipmentArea.revalidate();
-                equipmentArea.repaint();
-            }
-        });
-    }
+
     public void showContinueButton(boolean show) {
         SwingUtilities.invokeLater(() -> continueButton.setVisible(show));
     }

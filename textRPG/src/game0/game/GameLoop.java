@@ -69,7 +69,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             if (player.ResPaz()) GameVoiceOver.separador(gi);
 
             //manejo del inventario y uso de objetos
-            Inventory.addToInventory("DADO");
+            Inventory.addToInventory("Dado.12");
             GameEnter.enterInv(gi);
             GameStoryTeller.narrar(12, null);
             gi.pauseForUserInput();

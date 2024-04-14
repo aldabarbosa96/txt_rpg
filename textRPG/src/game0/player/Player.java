@@ -55,6 +55,10 @@ public class Player {
 
     public int getAttack(){return attack;}
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -135,7 +139,7 @@ public class Player {
         }
     }
     public void opcionEscogida03(){
-        Inventory.addToInventory("trozo de pan");
+        Inventory.addToInventory("Trozo de pan");
         NpcOptions.dialogo(7);
         GameStoryTeller.narrar(18,null);
     }

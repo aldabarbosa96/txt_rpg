@@ -21,7 +21,7 @@ public class GameEvent {
 
             switch (opcionEsc) {
                 case "a":
-                    GameOptionManager.manageOption02A(gc.getGuiInteraction(), gc.getPlayer(), gc.getEquipment());
+                    GameOptionManager.manageOption02A(gc.getGuiInteraction(), gc.getPlayer(),gc.getEquipment());
                     break;
                 case "c":
                     GameOptionManager.manageOption02C();

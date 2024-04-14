@@ -3,13 +3,13 @@ package game0.player;
 import game0.game.GameVoiceOver;
 
 public class Equipment {
-    private  String cabeza;
-    private String torso;
-    private String manoD;
-    private String manoI;
-    private String pantalones;
-    private String zapatos;
-    private String collar;
+    private static String cabeza;
+    private static String torso;
+    private static String manoD;
+    private static String manoI;
+    private static String pantalones;
+    private static String zapatos;
+    private static String collar;
 
     public Equipment() {
         this.cabeza = "---";
@@ -21,48 +21,48 @@ public class Equipment {
         this.collar = "---";
     }
 
-    public boolean equiparItem(String tipo, String item) {
+    public static boolean equiparItem(String tipo, String item) {
         switch (tipo) {
             case "cabeza":
-                if (this.cabeza.equals("---")) {
-                    this.cabeza = item;
+                if (cabeza.equals("---")) {
+                    cabeza = item;
                     return true;
                 }
                 break;
             case "torso":
-                if (this.torso.equals("---")) {
-                    this.torso = item;
+                if (torso.equals("---")) {
+                    torso = item;
                     return true;
                 }
                 break;
             case "manoD":
-                if (this.manoD.equals("---")) {
-                    this.manoD = item;
+                if (manoD.equals("---")) {
+                    manoD = item;
                     System.out.println("Item equipado: " + item);//depuración
                     return true;
                 }
                 break;
             case "manoI":
-                if (this.manoI.equals("---")) {
-                    this.manoI = item;
+                if (manoI.equals("---")) {
+                    manoI = item;
                     return true;
                 }
                 break;
             case "pantalones":
-                if (this.pantalones.equals("---")) {
-                    this.pantalones = item;
+                if (pantalones.equals("---")) {
+                    pantalones = item;
                     return true;
                 }
                 break;
             case "zapatos":
-                if (this.zapatos.equals("---")) {
-                    this.zapatos = item;
+                if (zapatos.equals("---")) {
+                    zapatos = item;
                     return true;
                 }
                 break;
             case "collar":
-                if (this.collar.equals("---")) {
-                    this.collar = item;
+                if (collar.equals("---")) {
+                    collar = item;
                     return true;
                 }
                 break;
@@ -75,15 +75,15 @@ public class Equipment {
     }
 
     @Override
-    public String toString() {
-        return "\n\n----------EQUIPO--------------------\n\n" +
-                "   Cabeza: " + cabeza + "\n\n" +
-                "   Torso: " + torso + "\n\n" +
-                "   Mano D: " + manoD + "\n\n" +
-                "   Mano I: " + manoI + "\n\n" +
-                "   Piernas: " + pantalones + "\n\n" +
-                "   Pies: " + zapatos + "\n\n" +
-                "   Amuleto: " + collar + "\n\n" +
-                "------------------------------";
+    public  String toString() {
+        return "\n\n-------------EQUIPO--------------------\n\n" +
+                "   Cabeza: \n     " + cabeza + "\n\n" +
+                "   Torso: \n     " + torso + "\n\n" +
+                "   Mano D: \n     " + manoD + "\n\n" +
+                "   Mano I: \n     " + manoI + "\n\n" +
+                "   Piernas: \n     " + pantalones + "\n\n" +
+                "   Pies: \n     " + zapatos + "\n\n" +
+                "   Amuleto: \n     " + collar + "\n\n" +
+                "---------------------------------";
     }
 }
