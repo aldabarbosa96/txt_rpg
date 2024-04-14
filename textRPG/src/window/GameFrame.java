@@ -1,8 +1,11 @@
 package window;
 
 
+import game0.console.ConsolePresentation;
 import game0.player.Inventory;
 import game0.player.Equipment;
+import game0.player.Player;
+
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
@@ -15,19 +18,24 @@ public class GameFrame extends JFrame{
     private JPanel buttonPanel;
     private JTextArea inventoryArea;
     private JTextArea equipmentArea;
+    private JTextArea statsArea;
     private JButton continueButton;
     private JScrollPane textScrollPane;
     private JScrollPane inventoryScrollPane;
     private JScrollPane equipmentScrollPane;
+    private JScrollPane statsScrollPane;
     private JPanel sidePanel;
+    private JPanel statsPanel;
     private Inventory inventory;
     private Equipment equipment;
+    private Player player;
+    private ConsolePresentation consolePresentation = new ConsolePresentation();
 
-    public GameFrame(Inventory inventory,Equipment equipment) {
+    public GameFrame(Inventory inventory,Equipment equipment) { // todo -> esta clase solamente debería inicializar los componentes (modular clase en un futuro)
         this.inventory = inventory;
         this.equipment = equipment;
         setTitle("txt_rpg");
-        setSize(1600, 1080);
+        setSize(1800, 1080);
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -41,6 +49,7 @@ public class GameFrame extends JFrame{
     private void initializeComponents() {
         setupTextArea();
         setupSidePanel();
+        setupStatsPanel();
         setupButtonPanel();
         setupKeyBindings();
         guiInteraction = new GuiInteraction(textArea, this);
@@ -98,6 +107,30 @@ public class GameFrame extends JFrame{
         continueButton.setPreferredSize(new Dimension(250, 40));
         buttonPanel.add(continueButton, BorderLayout.EAST);
     }
+    private void setupStatsPanel() {
+        statsPanel = new JPanel();
+        statsPanel.setLayout(new BoxLayout(statsPanel,BoxLayout.PAGE_AXIS));
+        statsPanel.setBackground(Color.black);
+        setupStatsArea(statsPanel);
+
+        add(statsPanel, BorderLayout.WEST); // Ubicación del panel de estadísticas en el lado izquierdo
+    }
+    private void setupStatsArea(JPanel parent) {
+        statsArea = new JTextArea(8, 8);
+        statsArea.setEditable(false);
+        statsArea.setBackground(Color.black);
+        statsArea.setForeground(Color.orange);
+        statsArea.setFont(new Font("Verdana", Font.BOLD, 14));
+
+        statsScrollPane = new JScrollPane(statsArea);
+        statsScrollPane.setPreferredSize(new Dimension(200,400));
+        statsScrollPane.setVisible(false);
+        statsScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange, 4));
+        statsScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        statsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+
+        parent.add(statsScrollPane);
+    }
     private void setupSidePanel() {
         sidePanel = new JPanel(new GridLayout(2, 1));
         setupInventoryArea(sidePanel);
@@ -116,6 +149,7 @@ public class GameFrame extends JFrame{
         inventoryScrollPane.setVisible(false);
         inventoryScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange,4));
         inventoryScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        inventoryScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         parent.add(inventoryScrollPane);
     }
     private void setupEquipmentArea(JPanel parent) {
@@ -135,40 +169,64 @@ public class GameFrame extends JFrame{
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap actionMap = getRootPane().getActionMap();
 
+        // Inventario
         inputMap.put(KeyStroke.getKeyStroke("I"), "toggleInventory");
         actionMap.put("toggleInventory", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!inputField.isFocusOwner()) {
-                    togglePanelVisibility(inventoryScrollPane, true);
+                    togglePanelVisibility(inventoryScrollPane);
                 }
             }
         });
 
+        // Equipo
         inputMap.put(KeyStroke.getKeyStroke("E"), "toggleEquipment");
         actionMap.put("toggleEquipment", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!inputField.isFocusOwner()) {
-                    togglePanelVisibility(equipmentScrollPane, false);
+                    togglePanelVisibility(equipmentScrollPane);
+                }
+            }
+        });
+
+        // Estadísticas
+        inputMap.put(KeyStroke.getKeyStroke("S"), "toggleStats");
+        actionMap.put("toggleStats", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!inputField.isFocusOwner()) {
+                    togglePanelVisibility(statsScrollPane);
                 }
             }
         });
     }
-    private void togglePanelVisibility(JScrollPane scrollPane, boolean isInventory) {
+    private void togglePanelVisibility(JScrollPane scrollPane) {
         SwingUtilities.invokeLater(() -> {
             boolean isVisible = scrollPane.isVisible();
-            scrollPane.setVisible(!isVisible);
             JTextArea textArea = (JTextArea) scrollPane.getViewport().getView();
+
             if (isVisible) {
                 textArea.setText("");
             } else {
-                textArea.setText(isInventory ? inventory.getInventoryDisplay() : equipment.toString());
+                if (scrollPane == inventoryScrollPane) {
+                    textArea.setText(inventory.getInventoryDisplay());
+                } else if (scrollPane == equipmentScrollPane) {
+                    textArea.setText(equipment.toString());
+                } else if (scrollPane == statsScrollPane) {
+                    String stats = consolePresentation.displayStats(guiInteraction,player);
+                    textArea.setText(stats);
+                }
             }
+
+            scrollPane.setVisible(!isVisible); // Cambia la visibilidad después de actualizar el contenido.
             getContentPane().revalidate();
             getContentPane().repaint();
         });
     }
+
+
 
     public void showContinueButton(boolean show) {
         SwingUtilities.invokeLater(() -> continueButton.setVisible(show));

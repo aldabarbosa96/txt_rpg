@@ -24,7 +24,7 @@ public class Combat {
         gc.getConsolePresentation().displayStats(gi, enemy);
 
         while (player.getHp() > 0 && enemy.getLifePoints() > 0) {
-            attacks.playerAttack(player, enemy, gi);
+            attacks.playerAttack(player, enemy, gi,gc.getConsolePresentation());
 
             if (enemy.getLifePoints() <= 0) {
                 GameVoiceOver.dialogo(9, null);
@@ -35,7 +35,7 @@ public class Combat {
                 break;
             }
 
-            attacks.enemyAttacks(player, enemy, gi);
+            attacks.enemyAttacks(player, enemy, gi,gc.getConsolePresentation());
 
             if (enemy.getLifePoints() <= 0) {
                 GameVoiceOver.dialogo(9, null);
@@ -56,10 +56,10 @@ public class Combat {
             winnerMessage = "¡¡¡<<"+ enemy.getName()+">> es el ganador!!!";
         }
         gi.showMessage(winnerMessage);
-        resetParticipants(player, enemy);
+        resetParticipantsNarrador(player, enemy);
     }
 
-    private void resetParticipants(Player player, Enemy enemy) {
+    private void resetParticipantsNarrador(Player player, Enemy enemy) {
         if (playerWins) {
             GameStoryTeller.narrar(19, player);
             GameStoryTeller.narrar(20, null);

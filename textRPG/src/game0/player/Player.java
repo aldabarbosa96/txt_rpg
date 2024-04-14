@@ -69,7 +69,7 @@ public class Player {
         this.resPaz = true;
     }
 
-    public String opcionEscogida0(GuiInteraction gi,Player player) {
+    public String opcionEscogida0(GuiInteraction gi,Player player) { //todo -> mover todos los métodos a otra clase para que Player solo gestione la información del mismo
         String respuesta = "";
         boolean respuestaValida = false;
         PlayerOptions.opcion(0,this);

@@ -13,7 +13,6 @@ public class Enemy extends Npc {
         this.attackPoints = ataque;
         this.deffensePoints = defensa;
     }
-
     public int getDeffensePoints() {
         return deffensePoints;
     }
@@ -27,9 +26,6 @@ public class Enemy extends Npc {
 
     public void setLifePoints(int lifePoints) {
         this.lifePoints = lifePoints;
-    }
-    public static void statsEnemy(GuiInteraction gi, Enemy enemy) {
-        gi.showMessage("--------------------\nEnemigo: " + enemy.getName() + "\nVida: " + enemy.getLifePoints() + "\nFuerza: " + enemy.getAttackPoints()+"\nDefensa: "+enemy.getDeffensePoints());
     }
 }
 

@@ -1,5 +1,6 @@
 package game0.game;
 
+import game0.console.ConsolePresentation;
 import game0.events.Tutorial;
 import game0.player.Equipment;
 import game0.player.Player;

@@ -1,5 +1,6 @@
 package game0.events;
 
+import game0.console.ConsolePresentation;
 import game0.game.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Player;
@@ -8,7 +9,7 @@ import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
 public class Attacks {
-    public void playerAttack(Player player, Enemy enemigo, GuiInteraction gi){
+    public void playerAttack(Player player, Enemy enemigo, GuiInteraction gi,ConsolePresentation cp){
         int resultadoDado = GameEnter.enterDadoAtaquePlayer(gi,player);
 
         player.setEnergy(player.getEnergy() - 1);
@@ -27,10 +28,11 @@ public class Attacks {
             gi.showMessage(player.getName() + " se hirió " + daño + " a si mismo.");
             gi.pauseForUserInput();
         }
-        PlayerStatistics.statsPlayer(player,gi);
-        Enemy.statsEnemy(gi,enemigo);
+        cp.displayStats(gi,player);
+        gi.pauseForUserInput();
+        cp.displayStats(gi,player);
     }
-    public void enemyAttacks(Player player,Enemy enemigo,GuiInteraction gi){
+    public void enemyAttacks(Player player,Enemy enemigo,GuiInteraction gi,ConsolePresentation cp){
         int resultadoDado = GameEnter.enterDadoAtaqueEnemy(gi,enemigo)+enemigo.getAttackPoints();
         gi.showMessage("Resultado del ataque: "+resultadoDado);
         int daño = resultadoDado - player.getDeffense(); gi.pauseForUserInput();
@@ -56,8 +58,9 @@ public class Attacks {
         } else if (player.getHp()<=0) {
             player.setHp(0);
         }
-        PlayerStatistics.statsPlayer(player,gi);
-        Enemy.statsEnemy(gi,enemigo);
+        cp.displayStats(gi,player);
+        gi.pauseForUserInput();
+        cp.displayStats(gi,enemigo);
     }
 }
 

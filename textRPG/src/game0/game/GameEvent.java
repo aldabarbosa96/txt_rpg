@@ -1,11 +1,12 @@
 package game0.game;
 
+import game0.console.ConsolePresentation;
 import game0.player.*;
 import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
 public class GameEvent {
-    public static void gestionEventos01(GameContext gc) {
+    public static void gestionEventos01(GameContext gc, ConsolePresentation cp) {
         boolean esValida = false;
         PlayerOptions.opcion(4, gc.getPlayer());
         do {

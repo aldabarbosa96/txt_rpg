@@ -25,7 +25,6 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         Equipment equipment = new Equipment();
         Attacks attack = new Attacks();
         GameContext gc = new GameContext(cp,gi,player,enemigo,combate,equipment,ps,d12,attack,ge);
-        Inventory inventory = new Inventory();
 
         String playerName = "";
         do {
@@ -83,7 +82,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             gi.pauseForUserInput();
             GameStoryTeller.narrar(15, null);
             gi.pauseForUserInput();
-            GameEvent.gestionEventos01(gc);
+            GameEvent.gestionEventos01(gc,cp);
             GameStoryTeller.narrar(22, player);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(23, null);
@@ -91,7 +90,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             GameEvent.gestionEventos02(gc);
             gi.pauseForUserInput();
 
-            //continua la historia...
+            //todo -> continuar la historia...
             GameEvent.gestionEventos03(player, gi);
     }
 }

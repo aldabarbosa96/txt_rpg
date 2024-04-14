@@ -79,9 +79,9 @@ public class Dice {
             case 8:
                 gi.showMessage("+-----+");
                 gi.showMessage(" # # # #");
-                gi.showMessage(" #        #");
+                gi.showMessage(" #       #");
                 gi.showMessage(" # # # #");
-                gi.showMessage(" #        #");
+                gi.showMessage(" #       #");
                 gi.showMessage(" # # # # ");
                 gi.showMessage("+-----+");
                 gi.showMessage("\nResultado ataque: 8 + ("+ player.getAttack()+")");
@@ -194,9 +194,9 @@ public class Dice {
             case 8:
                 gi.showMessage("+-----+");
                 gi.showMessage(" # # # #");
-                gi.showMessage(" #       #");
+                gi.showMessage(" #      #");
                 gi.showMessage(" # # # #");
-                gi.showMessage(" #       #");
+                gi.showMessage(" #      #");
                 gi.showMessage(" # # # # ");
                 gi.showMessage("+-----+");
                 gi.showMessage("\nResultado ataque: 8 + (" + enemy.getAttackPoints() + ")");

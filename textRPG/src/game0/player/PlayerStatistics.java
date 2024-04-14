@@ -5,18 +5,18 @@ import game0.NPCs.Enemy;
 import game0.events.Attacks;
 import window.GuiInteraction;
 
-public class PlayerStatistics {
+public class PlayerStatistics { // todo -> Esta clase se eliminará en un futuro
     public PlayerStatistics() {
     }
 
-    public static void statsPlayer(Player player, GuiInteraction gi) {
+    public static void statsPlayer(Player player, GuiInteraction gi) { // todo -> reemplazar llamadas a este método por displayStats de ConsolePresentation
         gi.showMessage("---------------------------------------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense());
         gi.pauseForUserInput();
     }
 
-    public void actEstPlayerEnCombate(Player player, GuiInteraction gi, Enemy enemigo, Attacks attack) {
+    /*public void actEstPlayerEnCombate(Player player, GuiInteraction gi, Enemy enemigo, Attacks attack) {
         GameVoiceOver.dialogo(5, player);
-        attack.playerAttack(player, enemigo, gi);
+        attack.playerAttack(player, enemigo, gi,cp);
     }
 
     public void actEstEnemyEnCombate(Player player, GuiInteraction gi, Enemy enemigo, Attacks attack) {
@@ -25,7 +25,7 @@ public class PlayerStatistics {
         gi.pauseForUserInput();
         attack.enemyAttacks(player, enemigo, gi);
 
-    }
+    }*/
 }
 
 

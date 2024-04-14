@@ -7,7 +7,8 @@ import game0.NPCs.Enemy;
 
 public class ConsolePresentation implements GamePresentation {
     @Override
-    public void displayStats(UserInteraction ui,Object entity) {
+    public String displayStats(UserInteraction ui, Object entity) {
+        StringBuilder stats = new StringBuilder();
         if (entity instanceof Player) {
             Player player = (Player) entity;
             ui.showMessage("\n---------------------------------------------------\n");
@@ -19,24 +20,24 @@ public class ConsolePresentation implements GamePresentation {
             ui.showMessage("\n---------------------------------------------------\n");
         } else if (entity instanceof Enemy) {
             Enemy enemy = (Enemy) entity;
-            ui.showMessage("---------------------------------------------------\n");
             ui.showMessage("Enemigo: " + enemy.getName());
             ui.showMessage("Vida: " + enemy.getLifePoints());
             ui.showMessage("Fuerza: " + enemy.getAttackPoints());
             ui.showMessage("Defensa: " + enemy.getDeffensePoints());
             ui.showMessage("\n---------------------------------------------------\n");
         }
+        return stats.toString();
     }
 
     @Override
     public void displayCombat(UserInteraction ui,Player player, Enemy enemy) {
-        ui.showMessage("--------------------FIGHT--------------------\n" +
+        ui.showMessage("\n--------------------FIGHT--------------------\n" +
                 "\n"+
-                "                  O         O\n" +
+                "                  O          O\n" +
                 "                 /|\\/         /|\\\\\n" +
-                "                //\\   VS   |\\\\\n" +
+                "                //\\    VS   |\\\\\n" +
                 "               //  \\         /  \\\\\n" +
                 "\n"+
-                "     "+ player.getName()+"   VS     "+enemy.getName()+"\n");
+                "     "+ player.getName()+"    VS    "+enemy.getName()+"\n");
     }
 }
