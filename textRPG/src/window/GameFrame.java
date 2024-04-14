@@ -1,6 +1,7 @@
 package window;
 
 
+import game0.NPCs.Enemy;
 import game0.console.ConsolePresentation;
 import game0.player.Inventory;
 import game0.player.Equipment;
@@ -29,11 +30,14 @@ public class GameFrame extends JFrame{
     private Inventory inventory;
     private Equipment equipment;
     private Player player;
+    private Enemy enemy;
     private ConsolePresentation consolePresentation = new ConsolePresentation();
 
-    public GameFrame(Inventory inventory,Equipment equipment) { // todo -> esta clase solamente debería inicializar los componentes (modular clase en un futuro)
+    public GameFrame(Inventory inventory, Equipment equipment, Player player, Enemy enemy) { // todo -> esta clase solamente debería inicializar los componentes (modular clase en un futuro)
         this.inventory = inventory;
         this.equipment = equipment;
+        this.player = player;
+        this.enemy = enemy;
         setTitle("txt_rpg");
         setSize(1800, 1080);
         setResizable(true);
@@ -215,18 +219,16 @@ public class GameFrame extends JFrame{
                 } else if (scrollPane == equipmentScrollPane) {
                     textArea.setText(equipment.toString());
                 } else if (scrollPane == statsScrollPane) {
-                    String stats = consolePresentation.displayStats(guiInteraction,player);
+
+                    String stats = consolePresentation.displayStats(guiInteraction, player);
                     textArea.setText(stats);
                 }
             }
-
-            scrollPane.setVisible(!isVisible); // Cambia la visibilidad después de actualizar el contenido.
+            scrollPane.setVisible(!isVisible);
             getContentPane().revalidate();
             getContentPane().repaint();
         });
     }
-
-
 
     public void showContinueButton(boolean show) {
         SwingUtilities.invokeLater(() -> continueButton.setVisible(show));
