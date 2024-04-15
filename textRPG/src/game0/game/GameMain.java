@@ -3,37 +3,45 @@ package game0.game;
 import game0.NPCs.Enemy;
 import game0.NPCs.NpcOptions;
 import game0.console.ConsolePresentation;
+import game0.events.Attacks;
+import game0.events.Combat;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
-import game0.player.Equipment;
-import game0.player.Inventory;
-import game0.player.Player;
-import game0.player.PlayerOptions;
+import game0.player.*;
+import playerInteractions.Dice;
+import playerInteractions.GameEnter;
 import window.GameFrame;
 import window.GuiInteraction;
-
 import javax.swing.*;
 public class GameMain {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+            //inicializamos componentes
             Inventory inventory = new Inventory();
             Equipment equipment = new Equipment();
-            Player player = new Player(25,10,1,1);
-            Enemy enemy = new Enemy("Narrador",15,3,5);
-            GameFrame frame = new GameFrame(inventory, equipment,player, enemy);
-
+            Player player = new Player(30, 10, 1, 1);
+            Enemy enemy = new Enemy("Narrador", 18, 3, 5);
+            GameFrame frame = new GameFrame(inventory, equipment, player, enemy);
             GuiInteraction guiInteraction = frame.getGuiInteraction();
+            ConsolePresentation consolePresentation = new ConsolePresentation();
+            Combat combat = new Combat();
+            PlayerStatistics playerStatistics = new PlayerStatistics();
+            Dice d12 = new Dice(12);
+            Attacks attacks = new Attacks();
+            GameEnter gameEnter = new GameEnter();
 
+            //contexto del juego
+            GameContext gc = new GameContext(consolePresentation, guiInteraction, player, enemy, combat, equipment, playerStatistics, d12, attacks, gameEnter);
+
+            //ejecución del bucle principal
             new Thread(() -> {
-                ConsolePresentation cp = new ConsolePresentation();
-
                 GameStoryTeller.setUserInteraction(guiInteraction);
                 NpcOptions.setUserInteraction(guiInteraction);
                 PlayerOptions.setUserInteraction(guiInteraction);
                 GameVoiceOver.setUserInteraction(guiInteraction);
-                GameLoop.run(guiInteraction, cp,player,enemy);
-
+                GameLoop.run(gc);
             }).start();
         });
     }
 }
+

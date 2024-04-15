@@ -15,48 +15,21 @@ public class Combat {
         GuiInteraction gi = gc.getGuiInteraction();
         Player player = gc.getPlayer();
         Enemy enemy = gc.getEnemy();
-        Attacks attacks = new Attacks();
-
 
         gc.getConsolePresentation().displayCombat(gi, player, enemy);
         gi.pauseForUserInput();
         gc.getConsolePresentation().displayStats(gi, player);
         gc.getConsolePresentation().displayStats(gi, enemy);
 
-        while (player.getHp() > 0 && enemy.getLifePoints() > 0) {
-            attacks.playerAttack(player, enemy, gi,gc.getConsolePresentation());
-
-            if (enemy.getLifePoints() <= 0) {
-                GameVoiceOver.dialogo(9, null);
-                break;
-            } else if (player.getHp() <= 0 || player.getEnergy() <= 0) {
-                playerWins = false;
-                GameVoiceOver.dialogo(9, null);
-                break;
-            }
-
-            attacks.enemyAttacks(player, enemy, gi,gc.getConsolePresentation());
-
-            if (enemy.getLifePoints() <= 0) {
-                GameVoiceOver.dialogo(9, null);
-                break;
-            } else if (player.getHp() <= 0 || player.getEnergy() <= 0) {
-                playerWins = false;
-                GameVoiceOver.dialogo(9, null);
-                break;
-            } else {
-                GameVoiceOver.dialogo(10, null);
-                gi.pauseForUserInput();
-                GameVoiceOver.separador(gi);
-            }
-        }
-
+        combatLogic(gc); //gestiona la lógica de la pelea
+        gi.pauseForUserInput();
         if (playerWins) {
-            winnerMessage = "¡¡¡<<"+player.getName()+">> es el ganador!!!";
+            winnerMessage = "¡¡¡<<" + player.getName() + ">> es el ganador!!!";
         } else {
-            winnerMessage = "¡¡¡<<"+ enemy.getName()+">> es el ganador!!!";
+            winnerMessage = "¡¡¡<<" + enemy.getName() + ">> es el ganador!!!";
         }
         gi.showMessage(winnerMessage);
+        gi.pauseForUserInput();
         resetParticipantsNarrador(player, enemy);
     }
 
@@ -71,5 +44,31 @@ public class Combat {
         player.setEnergy(10);
         player.setHp(30);
         enemy.setLifePoints(20);
+    }
+
+    public void combatLogic(GameContext gc) {
+
+        while (gc.getPlayer().getHp() > 0 && gc.getEnemy().getLifePoints() > 0) {
+            gc.getAttacks().playerAttack(gc.getPlayer(), gc.getEnemy(), gc.getGuiInteraction(), gc.getConsolePresentation());
+            gc.getAttacks().enemyAttacks(gc.getPlayer(), gc.getEnemy(), gc.getGuiInteraction(), gc.getConsolePresentation());
+
+            while (gc.getPlayer().getHp() > 0 && gc.getEnemy().getLifePoints() > 0) {
+
+                gc.getAttacks().playerAttack(gc.getPlayer(), gc.getEnemy(), gc.getGuiInteraction(), gc.getConsolePresentation());
+                if (gc.getEnemy().getLifePoints() <= 0) {
+                    GameVoiceOver.dialogo(9, null);
+                    break;
+                }
+                gc.getAttacks().enemyAttacks(gc.getPlayer(), gc.getEnemy(), gc.getGuiInteraction(), gc.getConsolePresentation());
+                if (gc.getPlayer().getHp() <= 0 || gc.getPlayer().getEnergy() <= 0) {
+                    playerWins = false;
+                    GameVoiceOver.dialogo(9, null);
+                    break;
+                }
+                GameVoiceOver.dialogo(10, null);
+                gc.getGuiInteraction().pauseForUserInput();
+                GameVoiceOver.separador(gc.getGuiInteraction());
+            }
+        }
     }
 }

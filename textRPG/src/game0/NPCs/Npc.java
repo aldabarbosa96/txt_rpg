@@ -45,7 +45,6 @@ public class Npc {
                 respuestaNum0 = 2;
                 NpcOptions.dialogo(4);
                 GameStoryTeller.narrar(7,null);
-                GameVoiceOver.separador(gi);
                 break;
             } else {
                 respuestaNum0 = 3;

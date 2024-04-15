@@ -1,6 +1,5 @@
 package game0.game;
 
-import game0.console.ConsolePresentation;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.player.*;

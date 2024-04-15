@@ -34,7 +34,9 @@ public class GameContext { //esta clase encapsula muchas otras clases y la puedo
         this.attacks = attacks;
         this.gameEnter = ge;
     }
-        public void setPlayer(Player player) {
+
+
+    public void setPlayer(Player player) {
         this.player = player;
     }
 

@@ -1,97 +1,84 @@
 package game0.game;
 
-import game0.NPCs.Enemy;
 import game0.NPCs.Npc;
-import game0.console.ConsolePresentation;
-import game0.events.Attacks;
-import game0.events.Combat;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
-import game0.player.Equipment;
 import game0.player.Inventory;
-import game0.player.Player;
-import game0.player.PlayerStatistics;
-import playerInteractions.Dice;
 import playerInteractions.GameEnter;
-import window.GuiInteraction;
-
 public class GameLoop { // todo -> modularizar esta clase en un futuro para manejabilidad y comprensión
-    public static void run(GuiInteraction gi, ConsolePresentation cp, Player player,Enemy enemigo) {
-        PlayerStatistics ps = new PlayerStatistics();
-        GameEnter ge = new GameEnter();
-        Dice d12 = new Dice(12);
+    public static void run(GameContext gc) {
         Npc npc = new Npc(); // todo -> considerar manejar NPCs de una forma más dinámica en el futuro
-        Combat combate = new Combat();
-        Equipment equipment = new Equipment();
-        Attacks attack = new Attacks();
-        GameContext gc = new GameContext(cp,gi,player,enemigo,combate,equipment,ps,d12,attack,ge);
 
         String playerName = "";
         do {
-            player.setName(gi);
-            playerName = gi.getInput();
+            gc.getPlayer().setName(gc.getGuiInteraction());
+            playerName = gc.getGuiInteraction().getInput();
         } while (playerName == null || playerName.trim().isEmpty());
-        gi.continueGame();
-        player.setName(playerName);
-        gi.showMessage(player.getName());
+        gc.getGuiInteraction().continueGame();
+        gc.getPlayer().setName(playerName);
+        gc.getGuiInteraction().showMessage(gc.getPlayer().getName());
 
             //inicio del juego
-            GameStoryTeller.narrar(0, null);
-            GameStoryTeller.narrar(1, player);
-            gi.pauseForUserInput();
+        GameStoryTeller.narrar(0, null);
+        gc.getGuiInteraction().pauseForUserInput();
+        GameStoryTeller.narrar(1, gc.getPlayer());
+        gc.getGuiInteraction().pauseForUserInput();
+        GameStoryTeller.narrar(47,null);
+        GameVoiceOver.dialogo(19,null);
+        gc.getGuiInteraction().pauseForUserInput(); GameVoiceOver.separador(gc.getGuiInteraction());
 
             //estadísticas iniciales del jugador
 
-            GameStoryTeller.narrar(2, null);
-            gi.pauseForUserInput();
-            GameStoryTeller.narrar(3, player);
-            gi.pauseForUserInput();
+        GameStoryTeller.narrar(2, null);
+        gc.getGuiInteraction().pauseForUserInput();
+        GameStoryTeller.narrar(3, gc.getPlayer());
+        gc.getGuiInteraction().pauseForUserInput();
 
             //interacción inicial con NPC
-            Npc.interactuarNPC00(gi);
-            gi.pauseForUserInput();
-            String respuesta = player.opcionEscogida0(gi, player);
-            npc.interactuarNPC01(respuesta,gi);
-            gi.pauseForUserInput();
-            Npc.interactuarNPC02(player);
+        Npc.interactuarNPC00(gc.getGuiInteraction());
+        gc.getGuiInteraction().pauseForUserInput();
+        String respuesta = gc.getPlayer().opcionEscogida0(gc.getGuiInteraction(), gc.getPlayer());
+        npc.interactuarNPC01(respuesta,gc.getGuiInteraction());
+        gc.getGuiInteraction().pauseForUserInput();
+        Npc.interactuarNPC02(gc.getPlayer());
 
             //decisión del jugador y progreso del juego
-            player.escogerOpcion(gi, npc, player);
-            GameVoiceOver.separador(gi);
-            GameStoryTeller.narrar(8, player);
-            gi.pauseForUserInput();
+        gc.getPlayer().escogerOpcion(gc.getGuiInteraction(), npc, gc.getPlayer());
+        gc.getGuiInteraction().pauseForUserInput();
+        GameStoryTeller.narrar(8, gc.getPlayer());
+        gc.getGuiInteraction().pauseForUserInput();
             //más narrativas y decisiones
-            GameStoryTeller.narrar(9, player);
-            gi.pauseForUserInput(); GameVoiceOver.separador(gi);
-            GameStoryTeller.narrar(10, null);
-            gi.pauseForUserInput();
-            if (player.ResPaz()) GameVoiceOver.separador(gi);
+        GameStoryTeller.narrar(9, gc.getPlayer());
+        gc.getGuiInteraction().pauseForUserInput(); GameVoiceOver.separador(gc.getGuiInteraction());
+        GameStoryTeller.narrar(10, null);
+        gc.getGuiInteraction().pauseForUserInput();
+        if (gc.getPlayer().ResPaz()) GameVoiceOver.separador(gc.getGuiInteraction());
 
             //manejo del inventario y uso de objetos
-            Inventory.addToInventory("Dado.12");
-            GameEnter.enterInv(gi); GameVoiceOver.separador(gi);
-            GameStoryTeller.narrar(12, null);
-            gi.pauseForUserInput();
-            GameStoryTeller.narrar(13, null);
-            gi.pauseForUserInput();
-            GameStoryTeller.narrar(14, player);
-            gi.pauseForUserInput(); GameVoiceOver.separador(gi);
-            GameStoryTeller.narrar(46,player);
+        Inventory.addToInventory("Dado.12");
+        GameEnter.enterInv(gc.getGuiInteraction()); GameVoiceOver.separador(gc.getGuiInteraction());
+        GameStoryTeller.narrar(12, null);
+        gc.getGuiInteraction().pauseForUserInput();
+        GameStoryTeller.narrar(13, null);
+        gc.getGuiInteraction().pauseForUserInput();
+        GameStoryTeller.narrar(14, gc.getPlayer());
+        gc.getGuiInteraction().pauseForUserInput(); GameVoiceOver.separador(gc.getGuiInteraction());
+        GameStoryTeller.narrar(46,gc.getPlayer());
 
             //simulación de combate, combate y otras acciones
-            GameEnter.enterDadoAtaquePlayer(gi, player);
-            gi.pauseForUserInput();
-            GameStoryTeller.narrar(15, null);
-            gi.pauseForUserInput();
-            GameEvent.gestionEventos01(gc);
-            GameStoryTeller.narrar(22, player);
-            gi.pauseForUserInput();
-            GameStoryTeller.narrar(23, null);
-            gi.pauseForUserInput();
-            GameEvent.gestionEventos02(gc);
-            gi.pauseForUserInput();
+        GameEnter.enterDadoAtaquePlayer(gc.getGuiInteraction(), gc.getPlayer());
+        gc.getGuiInteraction().pauseForUserInput();
+        GameStoryTeller.narrar(15, null);
+        gc.getGuiInteraction().pauseForUserInput();
+        GameEvent.gestionEventos01(gc);
+        GameStoryTeller.narrar(22, gc.getPlayer());
+        gc.getGuiInteraction().pauseForUserInput();
+        GameStoryTeller.narrar(23, null);
+        gc.getGuiInteraction().pauseForUserInput();
+        GameEvent.gestionEventos02(gc);
+        gc.getGuiInteraction().pauseForUserInput();
 
-            //todo -> continuar la historia...
-            GameEvent.gestionEventos03(player, gi);
+        //todo -> continuar la historia...
+        GameEvent.gestionEventos03(gc.getPlayer(), gc.getGuiInteraction());
     }
 }

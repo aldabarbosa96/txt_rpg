@@ -59,6 +59,7 @@ public class Tutorial {
             } else if (respuesta.equalsIgnoreCase("b")) {
                 esTonto = true;
                 gi.showMessage("Narrador: No, la hostia no eres porque si lo fueras no tendría que haber hecho la explicación, lumbreras.");
+                gi.pauseForUserInput();
                 gc.getCombat().combatFlowNarrator(gc);
             } else if (respuesta.equalsIgnoreCase("c")) {
                 gi.showMessage("Narrador: Capullo tu padre. Te vas a enterar <<" + player.getName() + ">>");

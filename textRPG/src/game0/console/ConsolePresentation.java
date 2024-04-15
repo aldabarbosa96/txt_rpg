@@ -35,8 +35,8 @@ public class ConsolePresentation implements GamePresentation {
                 "\n"+
                 "                  O          O\n" +
                 "                 /|\\/         /|\\\\\n" +
-                "                //\\    VS   |\\\\\n" +
-                "               //  \\         /  \\\\\n" +
+                "                //\\    VS    |\\\\\n" +
+                "               //  \\          /  \\\\\n" +
                 "\n"+
                 "     "+ player.getName()+"    VS    "+enemy.getName()+"\n");
     }

@@ -7,10 +7,10 @@ import window.GuiInteraction;
 
 public class Player {
     private String name;
-    protected int hp = 25;
-    protected int energy = 10;
-    protected int attack = 1;
-    protected int deffense = 1;
+    protected int hp;
+    protected int energy;
+    protected int attack;
+    protected int deffense;
 
     public int getDeffense() {
         return deffense;
