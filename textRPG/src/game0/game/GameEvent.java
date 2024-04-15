@@ -52,7 +52,7 @@ public class GameEvent {
             String opcion = gi.getInput().toLowerCase();
             switch (opcion) {
                 case "1":
-                    PlayerStatistics.statsPlayer(player, gi);
+                    Player.statsPlayer(player, gi);
                     break;
                 case "d":
                     GameVoiceOver.dialogo(18, null);

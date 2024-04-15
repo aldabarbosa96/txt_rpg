@@ -6,7 +6,6 @@ import game0.game.narrative.GameVoiceOver;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import window.GuiInteraction;
-
 public class Tutorial {
 
     public static void tutorialEvent(GameContext gc) {//TUTORIAL
@@ -72,7 +71,6 @@ public class Tutorial {
         gi.pauseForUserInput();
         gc.getCombat().combatFlowNarrator(gc);
     }
-
     public static void tutorialEvent01(GuiInteraction gi, Player player) { //TUTORIAL2
         gi.showMessage("--------------------TUTORIAL--------------------");
         gi.pauseForUserInput();

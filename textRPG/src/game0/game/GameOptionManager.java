@@ -4,7 +4,6 @@ import game0.events.Tutorial;
 import game0.game.narrative.GameStoryTeller;
 import game0.player.Equipment;
 import game0.player.Player;
-import game0.player.PlayerStatistics;
 import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
@@ -49,7 +48,7 @@ public class GameOptionManager {
         GameStoryTeller.narrar(29, null);
         player.setName(gi.getInput());
         enter.invalidName(gi, player);
-        PlayerStatistics.statsPlayer(player, gi);
+        Player.statsPlayer(player, gi);
     }
 
     protected static void manageOption02E(GameContext gc) {

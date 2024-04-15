@@ -1,17 +1,14 @@
 package window;
 
-
 import game0.NPCs.Enemy;
 import game0.console.ConsolePresentation;
 import game0.player.Inventory;
 import game0.player.Equipment;
 import game0.player.Player;
-
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-
 public class GameFrame extends JFrame{
     private JTextArea textArea;
     private JTextField inputField;
@@ -237,7 +234,6 @@ public class GameFrame extends JFrame{
                 } else if (scrollPane == equipmentScrollPane) {
                     textArea.setText(equipment.toString());
                 } else if (scrollPane == statsScrollPane) {
-                    // Siempre actualiza basado en el estado actual, que se gestiona en combatFlowNarrator
                     textArea.setText(consolePresentation.displayStats(guiInteraction, player, enemy));
                 }
             }
@@ -246,9 +242,6 @@ public class GameFrame extends JFrame{
             getContentPane().repaint();
         });
     }
-
-
-
     public void showContinueButton(boolean show) {
         SwingUtilities.invokeLater(() -> continueButton.setVisible(show));
     }

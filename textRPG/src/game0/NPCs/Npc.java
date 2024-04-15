@@ -6,7 +6,7 @@ import game0.player.Player;
 import game0.player.PlayerOptions;
 import window.GuiInteraction;
 
-public class Npc {
+public class Npc { //todo -> separar la clase NPC de la lógica de sus interacciones
     protected String name;
 
     public void setName(String name) {
@@ -29,17 +29,17 @@ public class Npc {
     public static void interactuarNPC00(GuiInteraction gi) {
         GameStoryTeller.narrar(4,null); gi.pauseForUserInput();
         GameVoiceOver.separador(gi);
-        NpcOptions.dialogo(0);
+        NpcNarration.dialogo(0);
         GameStoryTeller.narrar(38,null);
-        NpcOptions.dialogo(1);
+        NpcNarration.dialogo(1);
     }
     public void interactuarNPC01(String respuesta,GuiInteraction gi) {
         while (respuestaNum0 <= 3) {
             if (respuesta.equalsIgnoreCase("a")) {
                 respuestaNum0 = 0;
-                NpcOptions.dialogo(2);
+                NpcNarration.dialogo(2);
                 GameStoryTeller.narrar(5,null);
-                NpcOptions.dialogo(3);
+                NpcNarration.dialogo(3);
                 break;
             } else if (respuesta.equalsIgnoreCase("b")) {
                 respuestaNum0 = 1;
@@ -47,7 +47,7 @@ public class Npc {
                 break;
             } else if (respuesta.equalsIgnoreCase("c")) {
                 respuestaNum0 = 2;
-                NpcOptions.dialogo(4);
+                NpcNarration.dialogo(4);
                 GameStoryTeller.narrar(7,null);
                 break;
             } else {

@@ -5,32 +5,29 @@ import game0.events.Attacks;
 import game0.events.Combat;
 import game0.player.Equipment;
 import game0.player.Player;
-import game0.player.PlayerStatistics;
 import game0.NPCs.Enemy;
 import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
-public class GameContext { //esta clase encapsula muchas otras clases y la puedo usar como parámetro para ahorrar parámetros
+public class GameContext { //esta clase encapsula muchas otras clases
     private ConsolePresentation consolePresentation;
     private GuiInteraction guiInteraction;
     private Player player;
     private Enemy enemy;
     private Combat combat;
     private Equipment equipment;
-    private PlayerStatistics playerStatistics;
     private Attacks attacks;
     private GameEnter gameEnter;
     private Dice diceForAttack;
 
-    public GameContext(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combat, Equipment equipment, PlayerStatistics ps,Dice diceForAttack, Attacks attacks,GameEnter ge) {
+    public GameContext(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combat, Equipment equipment,Dice diceForAttack, Attacks attacks,GameEnter ge) {
         this.consolePresentation = cp;
         this.guiInteraction = gi;
         this.player = player;
         this.enemy = enemy;
         this.combat = combat;
         this.equipment = equipment;
-        this.playerStatistics = ps;
         this.attacks = attacks;
         this.gameEnter = ge;
     }
@@ -46,10 +43,6 @@ public class GameContext { //esta clase encapsula muchas otras clases y la puedo
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
-    }
-
-    public void setPlayerStatistics(PlayerStatistics playerStatistics) {
-        this.playerStatistics = playerStatistics;
     }
 
     public void setAttacks(Attacks attacks) {
@@ -85,10 +78,6 @@ public class GameContext { //esta clase encapsula muchas otras clases y la puedo
 
     public Equipment getEquipment() {
         return equipment;
-    }
-
-    public PlayerStatistics getPlayerStatistics() {
-        return playerStatistics;
     }
 
     public Attacks getAttacks() {

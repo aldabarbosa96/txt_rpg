@@ -1,7 +1,7 @@
 package game0.game;
 
 import game0.NPCs.Enemy;
-import game0.NPCs.NpcOptions;
+import game0.NPCs.NpcNarration;
 import game0.console.ConsolePresentation;
 import game0.events.Attacks;
 import game0.events.Combat;
@@ -25,21 +25,21 @@ public class GameMain {
             GuiInteraction guiInteraction = frame.getGuiInteraction();
             ConsolePresentation consolePresentation = new ConsolePresentation();
             Combat combat = new Combat();
-            PlayerStatistics playerStatistics = new PlayerStatistics();
             Dice d12 = new Dice(12);
             Attacks attacks = new Attacks();
             GameEnter gameEnter = new GameEnter();
+            PlayerInteractions pi = new PlayerInteractions(player, guiInteraction);
 
             //contexto del juego
-            GameContext gc = new GameContext(consolePresentation, guiInteraction, player, enemy, combat, equipment, playerStatistics, d12, attacks, gameEnter);
+            GameContext gc = new GameContext(consolePresentation, guiInteraction, player, enemy, combat, equipment, d12, attacks, gameEnter);
 
             //ejecución del bucle principal
             new Thread(() -> {
                 GameStoryTeller.setUserInteraction(guiInteraction);
-                NpcOptions.setUserInteraction(guiInteraction);
+                NpcNarration.setUserInteraction(guiInteraction);
                 PlayerOptions.setUserInteraction(guiInteraction);
                 GameVoiceOver.setUserInteraction(guiInteraction);
-                GameLoop.run(gc);
+                GameLoop.run(gc,pi);
             }).start();
         });
     }

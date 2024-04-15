@@ -1,12 +1,11 @@
 package game0.NPCs;
 
-import game0.interfaces.UserInteraction;
 import window.GuiInteraction;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NpcOptions {
+public class NpcNarration {
     private static GuiInteraction gi;
     public static void setUserInteraction(GuiInteraction guiInteraction) {
         gi = guiInteraction ;

@@ -99,8 +99,8 @@ public class Dice {
             case 10:
                 gi.showMessage("+-------+");
                 gi.showMessage(" #  # # #");
-                gi.showMessage(" #  #    #");
-                gi.showMessage(" #  #    #");
+                gi.showMessage(" # #     #");
+                gi.showMessage(" # #     #");
                 gi.showMessage(" #  # # #");
                 gi.showMessage("+-------+");
                 gi.showMessage("\nResultado ataque: 10 + ("+ player.getAttack()+")");
@@ -184,7 +184,7 @@ public class Dice {
                 break;
             case 7:
                 gi.showMessage("+-----+");
-                gi.showMessage(" # # #  ");
+                gi.showMessage(" # # #  #");
                 gi.showMessage("       # ");
                 gi.showMessage("       # ");
                 gi.showMessage("       # ");
@@ -194,18 +194,18 @@ public class Dice {
             case 8:
                 gi.showMessage("+-----+");
                 gi.showMessage(" # # # #");
-                gi.showMessage(" #      #");
+                gi.showMessage("#       #");
                 gi.showMessage(" # # # #");
-                gi.showMessage(" #      #");
+                gi.showMessage("#       #");
                 gi.showMessage(" # # # # ");
                 gi.showMessage("+-----+");
                 gi.showMessage("\nResultado ataque: 8 + (" + enemy.getAttackPoints() + ")");
                 break;
             case 9:
                 gi.showMessage("+-----+");
-                gi.showMessage(" # # #  ");
+                gi.showMessage(" # # #  #");
                 gi.showMessage(" #     #");
-                gi.showMessage(" # # #  ");
+                gi.showMessage(" # # #  #");
                 gi.showMessage("       #");
                 gi.showMessage("       #");
                 gi.showMessage("+-----+");
@@ -214,8 +214,8 @@ public class Dice {
             case 10:
                 gi.showMessage("+-------+");
                 gi.showMessage(" #  # # #");
-                gi.showMessage(" #  #    #");
-                gi.showMessage(" #  #    #");
+                gi.showMessage(" # #     #");
+                gi.showMessage(" # #     #");
                 gi.showMessage(" #  # # #");
                 gi.showMessage("+-------+");
                 gi.showMessage("\nResultado ataque: 10 + (" + enemy.getAttackPoints() + ")");

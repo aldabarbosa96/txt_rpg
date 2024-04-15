@@ -1,7 +1,6 @@
 package game0.player;
 
 import window.GuiInteraction;
-
 import java.util.ArrayList;
 import java.util.List;
 public class PlayerOptions {

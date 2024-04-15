@@ -4,9 +4,10 @@ import game0.NPCs.Npc;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.player.Inventory;
+import game0.player.PlayerInteractions;
 import playerInteractions.GameEnter;
 public class GameLoop { // todo -> modularizar esta clase en un futuro para manejabilidad y comprensión
-    public static void run(GameContext gc) {
+    public static void run(GameContext gc, PlayerInteractions pi) {
         Npc npc = new Npc(); // todo -> considerar manejar NPCs de una forma más dinámica en el futuro
         gc.getConsolePresentation().displayStats(gc.getGuiInteraction(),gc.getPlayer(),null);
 
@@ -38,13 +39,13 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             //interacción inicial con NPC
         Npc.interactuarNPC00(gc.getGuiInteraction());
         gc.getGuiInteraction().pauseForUserInput();
-        String respuesta = gc.getPlayer().opcionEscogida0(gc.getGuiInteraction(), gc.getPlayer());
+        String respuesta = pi.opcionEscogida0(gc.getGuiInteraction(), gc.getPlayer());
         npc.interactuarNPC01(respuesta,gc.getGuiInteraction());
         gc.getGuiInteraction().pauseForUserInput();
         Npc.interactuarNPC02(gc.getPlayer());
 
             //decisión del jugador y progreso del juego
-        gc.getPlayer().escogerOpcion(gc.getGuiInteraction(), npc, gc.getPlayer());
+        pi.escogerOpcion(gc.getGuiInteraction(), npc, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
         GameStoryTeller.narrar(8, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
