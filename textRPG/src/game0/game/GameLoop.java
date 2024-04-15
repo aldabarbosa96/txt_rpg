@@ -5,6 +5,8 @@ import game0.NPCs.Npc;
 import game0.console.ConsolePresentation;
 import game0.events.Attacks;
 import game0.events.Combat;
+import game0.game.narrative.GameStoryTeller;
+import game0.game.narrative.GameVoiceOver;
 import game0.player.Equipment;
 import game0.player.Inventory;
 import game0.player.Player;
@@ -14,12 +16,11 @@ import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
 public class GameLoop { // todo -> modularizar esta clase en un futuro para manejabilidad y comprensión
-    public static void run(GuiInteraction gi, ConsolePresentation cp, Player player) {
+    public static void run(GuiInteraction gi, ConsolePresentation cp, Player player,Enemy enemigo) {
         PlayerStatistics ps = new PlayerStatistics();
         GameEnter ge = new GameEnter();
         Dice d12 = new Dice(12);
         Npc npc = new Npc(); // todo -> considerar manejar NPCs de una forma más dinámica en el futuro
-        Enemy enemigo = new Enemy("Narrador", 15, 3, 5);
         Combat combate = new Combat();
         Equipment equipment = new Equipment();
         Attacks attack = new Attacks();
@@ -32,6 +33,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         } while (playerName == null || playerName.trim().isEmpty());
         gi.continueGame();
         player.setName(playerName);
+        gi.showMessage(player.getName());
 
             //inicio del juego
             GameStoryTeller.narrar(0, null);
@@ -39,7 +41,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             gi.pauseForUserInput();
 
             //estadísticas iniciales del jugador
-            cp.displayStats(gi, player);
+
             GameStoryTeller.narrar(2, null);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(3, player);
@@ -49,38 +51,39 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
             Npc.interactuarNPC00(gi);
             gi.pauseForUserInput();
             String respuesta = player.opcionEscogida0(gi, player);
-            npc.interactuarNPC01(respuesta);
+            npc.interactuarNPC01(respuesta,gi);
             gi.pauseForUserInput();
             Npc.interactuarNPC02(player);
 
             //decisión del jugador y progreso del juego
             player.escogerOpcion(gi, npc, player);
+            GameVoiceOver.separador(gi);
             GameStoryTeller.narrar(8, player);
             gi.pauseForUserInput();
-
             //más narrativas y decisiones
             GameStoryTeller.narrar(9, player);
-            gi.pauseForUserInput();
+            gi.pauseForUserInput(); GameVoiceOver.separador(gi);
             GameStoryTeller.narrar(10, null);
             gi.pauseForUserInput();
             if (player.ResPaz()) GameVoiceOver.separador(gi);
 
             //manejo del inventario y uso de objetos
             Inventory.addToInventory("Dado.12");
-            GameEnter.enterInv(gi);
+            GameEnter.enterInv(gi); GameVoiceOver.separador(gi);
             GameStoryTeller.narrar(12, null);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(13, null);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(14, player);
-            gi.pauseForUserInput();
+            gi.pauseForUserInput(); GameVoiceOver.separador(gi);
+            GameStoryTeller.narrar(46,player);
 
             //simulación de combate, combate y otras acciones
             GameEnter.enterDadoAtaquePlayer(gi, player);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(15, null);
             gi.pauseForUserInput();
-            GameEvent.gestionEventos01(gc,cp);
+            GameEvent.gestionEventos01(gc);
             GameStoryTeller.narrar(22, player);
             gi.pauseForUserInput();
             GameStoryTeller.narrar(23, null);

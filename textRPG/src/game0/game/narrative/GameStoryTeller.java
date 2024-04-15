@@ -1,4 +1,4 @@
-package game0.game;
+package game0.game.narrative;
 
 import game0.player.Player;
 import window.GuiInteraction;
@@ -24,7 +24,7 @@ public class GameStoryTeller {
 
     static {
         /*0*/narracion.add("---------------------------------------------------\n");
-        /*1*/narracion.add("Narrador: Mmm con que <<{PlayerName}>> ... Menuda mierda de nombre pero si es el que te ha tocado...\nTe daré 25 puntos de salud para que no te mueras, por ahora, y unos 8 de energía para tus ataques.");
+        /*1*/narracion.add("Narrador: Mmm con que <<{PlayerName}>> ... Menuda mierda de nombre pero si es el que te ha tocado...\nTe daré 25 puntos de salud para que no te mueras, por ahora, y unos 10 de energía para tus ataques.");
         /*2*/narracion.add("Presiona \"Continuar\" para empezar tu aventurita :)");
         /*3*/narracion.add("---------------------------------------------------\nNarrador : Has aparecido en un mitad del desierto, <<{PlayerName}>> .\nPor suerte para ti estás también en el centro de un oasis con un mercado y multitud de personas.");
         /*4*/narracion.add("Narrador: Se te acerca un guardia de las arenas:");
@@ -37,7 +37,7 @@ public class GameStoryTeller {
         /*11*/narracion.add("PD: por haber sido bueno y pacífico además del \"DADO\" has obtenido un roñoso pero comestible \"trozo de pan.\"");
         /*12*/narracion.add("Narrador: Como habrás visto ya dispones de un DADO en tu inventario.");
         /*13*/narracion.add("Narrador: ¡Vamos a probar ese DADO! Primero que sepas que es un DADO algo mágico; puede tener diversas caras.");
-        /*14*/narracion.add("Narrador: Hay una amplia variedad de DADOS por descubrir...\nAhora, centrémonos en el DADO de ataque (el de 12 caras) y simulemos un ataque.\n\nTú contra mí: ¡El pringao de <<{PlayerName}>> contra el maravilloso, el magnífico, el omnipotente y omnipresente NARRADOOORRRRRR!");
+        /*14*/narracion.add("Narrador: Hay una amplia variedad de DADOS por descubrir... Ahora, centrémonos en el DADO de ataque (el de 12 caras) y simulemos un ataque.");
         /*15*/narracion.add("Narrador: Bien, ahora que ya has visto el \"complejo\" sistema de lanzamiento de dados, quieres que te parta la boca ya o prefieres el T-U-T-O-R-I-A-L para T-O-N-T-I-T-O-S ?");
         /*16*/narracion.add("Narrador del Narrador: El Narrador se enfada.");
         /*17*/narracion.add("Narrador: Se han acabado ya las mamarrachadas, a partirse la boca YA:");
@@ -69,5 +69,6 @@ public class GameStoryTeller {
         /*43*/narracion.add("Narrador: Muy atrevido por tu parte <<{PlayerName}>> ; buena suerte en la Jungla de los \"Horrores\", je je je...");
         /*44*/narracion.add("Narrador: Te recomendaría pasar desapercibid@. Esta zona es bastante peliaguda.");
         /*45*/narracion.add("Narrador: Para tu información, toda la zona de Singuerlín está bajo los dominios de la S.C.F (Singuerlín Clan Fentanílico) y no son muy amigables que digamos...");
+        /*46*/narracion.add("Narrador: Tú contra mí: ¡El pringao de <<{PlayerName}>> contra el maravilloso, el magnífico, el omnipotente y omnipresente NARRADOOORRRRRR!\"");
     }
 }

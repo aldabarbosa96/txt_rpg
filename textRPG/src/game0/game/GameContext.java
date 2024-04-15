@@ -11,7 +11,7 @@ import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
-public class GameContext {
+public class GameContext { //esta clase encapsula muchas otras clases y la puedo usar como parámetro para ahorrar parámetros
     private ConsolePresentation consolePresentation;
     private GuiInteraction guiInteraction;
     private Player player;

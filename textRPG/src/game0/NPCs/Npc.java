@@ -1,6 +1,7 @@
 package game0.NPCs;
 
-import game0.game.GameStoryTeller;
+import game0.game.narrative.GameStoryTeller;
+import game0.game.narrative.GameVoiceOver;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import window.GuiInteraction;
@@ -23,11 +24,12 @@ public class Npc {
     public Npc(){}
     public static void interactuarNPC00(GuiInteraction gi) {
         GameStoryTeller.narrar(4,null); gi.pauseForUserInput();
+        GameVoiceOver.separador(gi);
         NpcOptions.dialogo(0);
         GameStoryTeller.narrar(38,null);
         NpcOptions.dialogo(1);
     }
-    public void interactuarNPC01(String respuesta) {
+    public void interactuarNPC01(String respuesta,GuiInteraction gi) {
         while (respuestaNum0 <= 3) {
             if (respuesta.equalsIgnoreCase("a")) {
                 respuestaNum0 = 0;
@@ -43,6 +45,7 @@ public class Npc {
                 respuestaNum0 = 2;
                 NpcOptions.dialogo(4);
                 GameStoryTeller.narrar(7,null);
+                GameVoiceOver.separador(gi);
                 break;
             } else {
                 respuestaNum0 = 3;

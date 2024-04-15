@@ -1,7 +1,5 @@
 package game0.NPCs;
 
-import window.GuiInteraction;
-
 public class Enemy extends Npc {
     private int lifePoints;
     private int attackPoints;

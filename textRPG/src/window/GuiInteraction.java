@@ -42,9 +42,9 @@ public class GuiInteraction implements UserInteraction {
             frame.showContinueButton(true);
         });
         try {
-            String input = inputQueue.take(); //bloquea hasta que se reciba "CONTINUE".
+            String input = inputQueue.take(); //bloquea hasta que se recibe "CONTINUE".
             while (!"CONTINUE".equals(input)) {
-                input = inputQueue.take(); //espera activa hasta que se reciba "CONTINUE".
+                input = inputQueue.take(); //espera activa hasta que se recibe "CONTINUE".
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
@@ -56,12 +56,8 @@ public class GuiInteraction implements UserInteraction {
         });
     }
 
-    public GameFrame getFrame() {
-        return frame;
-    }
-
     public void processUserInput(String input) {
-        inputQueue.offer(input); //añade la entrada al queue
+        inputQueue.offer(input); //añade entrada a la cola
     }
 }
 

@@ -1,13 +1,14 @@
 package game0.game;
 
 import game0.console.ConsolePresentation;
+import game0.game.narrative.GameStoryTeller;
+import game0.game.narrative.GameVoiceOver;
 import game0.player.*;
-import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
 public class GameEvent {
-    public static void gestionEventos01(GameContext gc, ConsolePresentation cp) {
-        boolean esValida = false;
+    public static void gestionEventos01(GameContext gc) {
+        boolean esValida;
         PlayerOptions.opcion(4, gc.getPlayer());
         do {
             String respuesta = gc.getGuiInteraction().getInput().toLowerCase();

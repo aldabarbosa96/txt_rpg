@@ -1,8 +1,8 @@
 package game0.events;
 
 import game0.game.GameContext;
-import game0.game.GameStoryTeller;
-import game0.game.GameVoiceOver;
+import game0.game.narrative.GameStoryTeller;
+import game0.game.narrative.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Player;
 import window.GuiInteraction;
@@ -11,7 +11,7 @@ public class Combat {
     private String winnerMessage = "";
     boolean playerWins = true;
 
-    public void combatFlow(GameContext gc) {
+    public void combatFlowNarrator(GameContext gc) { //todo -> implementar una clase (o interfaz) que controle y estructure el combate de forma genérica
         GuiInteraction gi = gc.getGuiInteraction();
         Player player = gc.getPlayer();
         Enemy enemy = gc.getEnemy();
@@ -45,8 +45,9 @@ public class Combat {
                 GameVoiceOver.dialogo(9, null);
                 break;
             } else {
-                gi.pauseForUserInput();
                 GameVoiceOver.dialogo(10, null);
+                gi.pauseForUserInput();
+                GameVoiceOver.separador(gi);
             }
         }
 
@@ -67,7 +68,7 @@ public class Combat {
             GameStoryTeller.narrar(21, null);
             GameStoryTeller.narrar(40, player);
         }
-        player.setEnergy(8);
+        player.setEnergy(10);
         player.setHp(30);
         enemy.setLifePoints(20);
     }

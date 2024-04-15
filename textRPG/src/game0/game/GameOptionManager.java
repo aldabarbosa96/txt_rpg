@@ -1,7 +1,7 @@
 package game0.game;
 
-import game0.console.ConsolePresentation;
 import game0.events.Tutorial;
+import game0.game.narrative.GameStoryTeller;
 import game0.player.Equipment;
 import game0.player.Player;
 import game0.player.PlayerStatistics;
@@ -17,7 +17,7 @@ public class GameOptionManager {
             case "b":
             case "c":
                 GameStoryTeller.narrar(17, null);
-                gc.getCombat().combatFlow(gc);
+                gc.getCombat().combatFlowNarrator(gc);
                 return true;
             default:
                 GameStoryTeller.narrar(26, null);
@@ -32,9 +32,7 @@ public class GameOptionManager {
         equipment.equiparItem("manoD", "Navaja (+1 Fuerza)"); //todo -> esto hay que manejarlo de forma dinámica
         player.setAttack(player.getAttack() + 1);
         GameStoryTeller.narrar(25, null);
-        System.out.println("Item equipado"); //depuración
     }
-
 
     protected static void manageOption02B(GuiInteraction gi, Player player) {
         GameStoryTeller.narrar(27, null);
@@ -55,6 +53,6 @@ public class GameOptionManager {
     }
 
     protected static void manageOption02E(GameContext gc) {
-        gc.getCombat().combatFlow(gc);
+        gc.getCombat().combatFlowNarrator(gc);
     }
 }

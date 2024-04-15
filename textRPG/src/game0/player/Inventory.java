@@ -1,6 +1,6 @@
 package game0.player;
 
-import game0.game.GameVoiceOver;
+import game0.game.narrative.GameVoiceOver;
 
 public class Inventory {
     private static String[] slots = new String[12];
@@ -30,7 +30,7 @@ public class Inventory {
                 inventoryContents.append("    ").append(i + 1).append(".    ").append(slots[i]).append("\n");
             }
         }
-        inventoryContents.append("\n------------------------------");
+        inventoryContents.append("\n\n\n\n\n\n------------------------------");
             return inventoryContents.toString();
     }
 }

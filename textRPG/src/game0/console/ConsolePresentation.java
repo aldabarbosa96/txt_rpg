@@ -16,8 +16,9 @@ public class ConsolePresentation implements GamePresentation {
             stats.append("  Energía: ").append(player.getEnergy()).append("\n\n");
             stats.append("  Fuerza: ").append(player.getAttack()).append("\n\n");
             stats.append("  Defensa: ").append(player.getDeffense()).append("\n");
+        } if (entity instanceof Enemy enemy) {
+            stats.append("          VS");
             stats.append("\n\n---------------------------------------------------");
-        } else if (entity instanceof Enemy enemy) {
             stats.append("Enemigo: ").append(enemy.getName()).append("\n\n");
             stats.append("Vida: ").append(enemy.getLifePoints()).append("\n\n");
             stats.append("Fuerza: ").append(enemy.getAttackPoints()).append("\n\n");

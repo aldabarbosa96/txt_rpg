@@ -1,7 +1,5 @@
 package game0.player;
 
-import game0.game.GameVoiceOver;
-import game0.interfaces.UserInteraction;
 import window.GuiInteraction;
 
 import java.util.ArrayList;

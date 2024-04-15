@@ -1,8 +1,8 @@
 package game0.events;
 
 import game0.game.GameContext;
-import game0.game.GameStoryTeller;
-import game0.console.ConsolePresentation;
+import game0.game.narrative.GameStoryTeller;
+import game0.game.narrative.GameVoiceOver;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import window.GuiInteraction;
@@ -24,6 +24,8 @@ public class Tutorial {
                 "Fuerza: " + player.getAttack() + " --> esto representa tu poder de ataque, que se sumará a tu tirada de dados para sumar el daño total del golpe.\n\n" +
                 "Defensa: "+player.getDeffense()+ " --> esto representa tu \"armadura\", para resistir el ataque del enemigo.");
         gi.pauseForUserInput();
+        GameVoiceOver.separador(gi);
+        GameVoiceOver.separador(gc.getGuiInteraction());
         gi.showMessage("El sistema de combate es muy simple: lanzas los dados de ataque, sumas tu fuerza al resultado y a eso le restas la defensa del enemigo; ese será el daño total que ejerzas.\n" +
                 "En cristiano: si el guacho tiene 10 de defensa y tu tirada es 12(+1 de tu fuerza) = 13 --> le quitas 3 puntos de vida. En cambio, si tu tirada es de 8 perderías TÚ 1  punto de vida.\n" +
                 "Esto se aplica igual a todo el mundo, por ahora.");
@@ -57,7 +59,7 @@ public class Tutorial {
             } else if (respuesta.equalsIgnoreCase("b")) {
                 esTonto = true;
                 gi.showMessage("Narrador: No, la hostia no eres porque si lo fueras no tendría que haber hecho la explicación, lumbreras.");
-                gc.getCombat().combatFlow(gc);
+                gc.getCombat().combatFlowNarrator(gc);
             } else if (respuesta.equalsIgnoreCase("c")) {
                 gi.showMessage("Narrador: Capullo tu padre. Te vas a enterar <<" + player.getName() + ">>");
                 esTonto = true;
@@ -67,7 +69,7 @@ public class Tutorial {
             }
         }
         gi.pauseForUserInput();
-        gc.getCombat().combatFlow(gc);
+        gc.getCombat().combatFlowNarrator(gc);
     }
 
     public static void tutorialEvent01(GuiInteraction gi, Player player) { //TUTORIAL2
@@ -82,6 +84,7 @@ public class Tutorial {
                 "Fuerza: " + player.getAttack() + " --> esto representa tu poder de ataque, que se sumará a tu tirada de dados para sumar el daño total del golpe.\n\n" +
                 "Defensa: "+player.getDeffense()+ " --> esto representa tu \"armadura\", si el atacante hace 5 de daño y tu defensa es de 1, el daño total es 4.");
         gi.pauseForUserInput();
+        GameVoiceOver.separador(gi);
         gi.showMessage("El sistema de combate es muy simple: lanzas los dados de ataque, sumas tu fuerza al resultado y a eso le restas la defensa del enemigo; ese será el daño total que ejerzas.\n" +
                 "En cristiano: si el guacho tiene 10 de defensa y tu tirada es 12(+1 de tu fuerza) = 13 --> le quitas 3 puntos de vida. En cambio, si tu tirada es de 8 perderías TÚ 1  punto de vida.\n" +
                 "Esto se aplica igual a todo el mundo, por ahora.");

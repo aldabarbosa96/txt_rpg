@@ -1,4 +1,4 @@
-package game0.game;
+package game0.game.narrative;
 
 import game0.interfaces.UserInteraction;
 import game0.player.Player;

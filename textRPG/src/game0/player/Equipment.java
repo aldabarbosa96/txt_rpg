@@ -1,6 +1,6 @@
 package game0.player;
 
-import game0.game.GameVoiceOver;
+import game0.game.narrative.GameVoiceOver;
 
 public class Equipment {
     private static String cabeza;
@@ -21,7 +21,7 @@ public class Equipment {
         this.collar = "---";
     }
 
-    public static boolean equiparItem(String tipo, String item) {
+    public boolean equiparItem(String tipo, String item) {
         switch (tipo) {
             case "cabeza":
                 if (cabeza.equals("---")) {
@@ -38,7 +38,6 @@ public class Equipment {
             case "manoD":
                 if (manoD.equals("---")) {
                     manoD = item;
-                    System.out.println("Item equipado: " + item);//depuración
                     return true;
                 }
                 break;
@@ -84,6 +83,6 @@ public class Equipment {
                 "   Piernas: \n     " + pantalones + "\n\n" +
                 "   Pies: \n     " + zapatos + "\n\n" +
                 "   Amuleto: \n     " + collar + "\n\n" +
-                "---------------------------------";
+                "\n----------------------------------";
     }
 }

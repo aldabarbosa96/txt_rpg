@@ -1,10 +1,9 @@
 package playerInteractions;
 
-import game0.game.GameStoryTeller;
-import game0.game.GameVoiceOver;
+import game0.game.narrative.GameStoryTeller;
+import game0.game.narrative.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Equipment;
-import game0.player.Inventory;
 import game0.player.Player;
 import window.GuiInteraction;
 

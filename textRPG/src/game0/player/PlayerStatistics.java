@@ -1,8 +1,5 @@
 package game0.player;
 
-import game0.game.GameVoiceOver;
-import game0.NPCs.Enemy;
-import game0.events.Attacks;
 import window.GuiInteraction;
 
 public class PlayerStatistics { // todo -> Esta clase se eliminará en un futuro
