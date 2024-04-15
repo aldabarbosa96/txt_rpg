@@ -20,7 +20,7 @@ public class GameMain {
             Inventory inventory = new Inventory();
             Equipment equipment = new Equipment();
             Player player = new Player(30, 10, 1, 1);
-            Enemy enemy = new Enemy("Narrador", 18, 3, 5);
+            Enemy enemy = new Enemy();
             GameFrame frame = new GameFrame(inventory, equipment, player, enemy);
             GuiInteraction guiInteraction = frame.getGuiInteraction();
             ConsolePresentation consolePresentation = new ConsolePresentation();

@@ -73,7 +73,7 @@ public class GameFrame extends JFrame{
             equipmentArea.setText(equipment.toString());
         }
         if (statsScrollPane.isVisible()) {
-            statsArea.setText(consolePresentation.displayStats(guiInteraction, player));
+            statsArea.setText(consolePresentation.displayStats(guiInteraction, player,enemy));
         }
     }
     private void setupTextArea() {
@@ -237,9 +237,8 @@ public class GameFrame extends JFrame{
                 } else if (scrollPane == equipmentScrollPane) {
                     textArea.setText(equipment.toString());
                 } else if (scrollPane == statsScrollPane) {
-
-                    String stats = consolePresentation.displayStats(guiInteraction, player);
-                    textArea.setText(stats);
+                    // Siempre actualiza basado en el estado actual, que se gestiona en combatFlowNarrator
+                    textArea.setText(consolePresentation.displayStats(guiInteraction, player, enemy));
                 }
             }
             scrollPane.setVisible(!isVisible);
@@ -247,6 +246,8 @@ public class GameFrame extends JFrame{
             getContentPane().repaint();
         });
     }
+
+
 
     public void showContinueButton(boolean show) {
         SwingUtilities.invokeLater(() -> continueButton.setVisible(show));

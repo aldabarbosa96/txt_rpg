@@ -25,8 +25,7 @@ public class Attacks {
             gi.showMessage(player.getName() + " se hirió " + daño + " a si mismo.");
         }
         set0ifNegative(enemy, player);
-        cp.displayStats(gi,player);
-        cp.displayStats(gi,enemy);
+        cp.displayStats(gi,player,enemy);
     }
     public void enemyAttacks(Player player,Enemy enemy,GuiInteraction gi,ConsolePresentation cp){
         int resultadoDado = GameEnter.enterDadoAtaqueEnemy(gi,enemy)+enemy.getAttackPoints();
@@ -45,8 +44,7 @@ public class Attacks {
             gi.showMessage(enemy.getName() + " se hirió " + daño + " a si mismo.");
         }
         set0ifNegative(enemy, player);
-        cp.displayStats(gi,player);
-        cp.displayStats(gi,enemy);
+        cp.displayStats(gi,player,enemy);
     }
     public void set0ifNegative(Enemy enemy, Player player){
         if (enemy.getLifePoints()<=0){

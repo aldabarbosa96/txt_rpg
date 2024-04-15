@@ -15,13 +15,13 @@ public class Combat {
         GuiInteraction gi = gc.getGuiInteraction();
         Player player = gc.getPlayer();
         Enemy enemy = gc.getEnemy();
+        enemy.setUpEnemy("Narrador",15,3,5);
 
         gc.getConsolePresentation().displayCombat(gi, player, enemy);
         gi.pauseForUserInput();
-        gc.getConsolePresentation().displayStats(gi, player);
-        gc.getConsolePresentation().displayStats(gi, enemy);
 
         combatLogic(gc); //gestiona la lógica de la pelea
+
         gi.pauseForUserInput();
         if (playerWins) {
             winnerMessage = "¡¡¡<<" + player.getName() + ">> es el ganador!!!";
@@ -29,6 +29,7 @@ public class Combat {
             winnerMessage = "¡¡¡<<" + enemy.getName() + ">> es el ganador!!!";
         }
         gi.showMessage(winnerMessage);
+        gc.getConsolePresentation().displayStats(gi,player,null);
         gi.pauseForUserInput();
         resetParticipantsNarrador(player, enemy);
     }
@@ -43,7 +44,7 @@ public class Combat {
         }
         player.setEnergy(10);
         player.setHp(30);
-        enemy.setLifePoints(20);
+        enemy.setUpEnemy("",0,0,0);
     }
 
     public void combatLogic(GameContext gc) {

@@ -9,6 +9,10 @@ import window.GuiInteraction;
 public class Npc {
     protected String name;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     protected static int respuestaNum0 = 0;
 
     public int getRespuestaNum0() {

@@ -8,6 +8,7 @@ import playerInteractions.GameEnter;
 public class GameLoop { // todo -> modularizar esta clase en un futuro para manejabilidad y comprensión
     public static void run(GameContext gc) {
         Npc npc = new Npc(); // todo -> considerar manejar NPCs de una forma más dinámica en el futuro
+        gc.getConsolePresentation().displayStats(gc.getGuiInteraction(),gc.getPlayer(),null);
 
         String playerName = "";
         do {
