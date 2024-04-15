@@ -3,6 +3,7 @@ package game0.player;
 import game0.NPCs.Npc;
 import game0.NPCs.NpcNarration;
 import game0.game.narrative.GameStoryTeller;
+import game0.game.narrative.GameVoiceOver;
 import window.GuiInteraction;
 
 public class PlayerInteractions extends Player{
@@ -77,12 +78,15 @@ public class PlayerInteractions extends Player{
             respuesta = gi.getInput();
 
             if (respuesta.equalsIgnoreCase("a")){
+                GameVoiceOver.separador(gi);
                 PlayerOptions.dialogo(3,player);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {
+                GameVoiceOver.separador(gi);
                 GameStoryTeller.narrar(33,player);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("c")) {
+                GameVoiceOver.separador(gi);
                 GameStoryTeller.narrar(34,null);
                 System.exit(0);
             } else {

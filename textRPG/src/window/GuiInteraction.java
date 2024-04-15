@@ -42,9 +42,9 @@ public class GuiInteraction implements UserInteraction {
             frame.showContinueButton(true);
         });
         try {
-            String input = inputQueue.take(); //bloquea hasta que se recibe "CONTINUE".
+            String input = inputQueue.take(); //bloquea la cola hasta que se recibe "CONTINUE".
             while (!"CONTINUE".equals(input)) {
-                input = inputQueue.take(); //espera activa hasta que se recibe "CONTINUE".
+                input = inputQueue.take();
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

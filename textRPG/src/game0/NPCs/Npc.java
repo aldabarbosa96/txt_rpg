@@ -33,7 +33,7 @@ public class Npc { //todo -> separar la clase NPC de la lógica de sus interacci
         GameStoryTeller.narrar(38,null);
         NpcNarration.dialogo(1);
     }
-    public void interactuarNPC01(String respuesta,GuiInteraction gi) {
+    public void interactuarNPC01(String respuesta) {
         while (respuestaNum0 <= 3) {
             if (respuesta.equalsIgnoreCase("a")) {
                 respuestaNum0 = 0;

@@ -40,7 +40,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         Npc.interactuarNPC00(gc.getGuiInteraction());
         gc.getGuiInteraction().pauseForUserInput();
         String respuesta = pi.opcionEscogida0(gc.getGuiInteraction(), gc.getPlayer());
-        npc.interactuarNPC01(respuesta,gc.getGuiInteraction());
+        npc.interactuarNPC01(respuesta);
         gc.getGuiInteraction().pauseForUserInput();
         Npc.interactuarNPC02(gc.getPlayer());
 
@@ -49,6 +49,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         gc.getGuiInteraction().pauseForUserInput();
         GameStoryTeller.narrar(8, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
+        GameVoiceOver.separador(gc.getGuiInteraction());
             //más narrativas y decisiones
         GameStoryTeller.narrar(9, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput(); GameVoiceOver.separador(gc.getGuiInteraction());

@@ -14,13 +14,13 @@ public class Attacks {
         player.setEnergy(player.getEnergy() - 1);
 
         if ((resultadoDado + player.getAttack()) > enemy.getDeffensePoints()) {
-            int daño = (resultadoDado + player.getAttack() - enemy.getDeffensePoints());
+            float daño = (resultadoDado + player.getAttack() - enemy.getDeffensePoints());
             enemy.setLifePoints(enemy.getLifePoints() - daño);
             gi.showMessage("El ataque ha hecho " + daño + " de daño al enemigo.");
         } else if ((resultadoDado + player.getAttack()) == enemy.getDeffensePoints()) {
             GameVoiceOver.dialogo(6,null);
         } else {
-            int daño = enemy.getDeffensePoints() - (resultadoDado+player.getAttack());
+            float daño = enemy.getDeffensePoints() - (resultadoDado+player.getAttack());
             player.setHp(player.getHp() - daño);
             gi.showMessage(player.getName() + " se hirió " + daño + " a si mismo.");
         }
@@ -28,8 +28,8 @@ public class Attacks {
         cp.displayStats(gi,player,enemy);
     }
     public void enemyAttacks(Player player,Enemy enemy,GuiInteraction gi,ConsolePresentation cp){
-        int resultadoDado = GameEnter.enterDadoAtaqueEnemy(gi,enemy)+enemy.getAttackPoints();
-        int daño = resultadoDado - player.getDeffense();
+        float resultadoDado = GameEnter.enterDadoAtaqueEnemy(gi,enemy)+enemy.getAttackPoints();
+        float daño = resultadoDado - player.getDeffense();
 
         if (daño<0){
             daño *= -1;

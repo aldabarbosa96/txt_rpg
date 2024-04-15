@@ -5,6 +5,7 @@ import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Player;
+import playerInteractions.Dice;
 import window.GuiInteraction;
 
 public class Combat {
@@ -15,7 +16,8 @@ public class Combat {
         GuiInteraction gi = gc.getGuiInteraction();
         Player player = gc.getPlayer();
         Enemy enemy = gc.getEnemy();
-        enemy.setUpEnemy("Narrador",15,3,5);
+        Dice d8 = new Dice(8);
+        enemy.setUpEnemy("Narrador",15,3,5,1);
 
         gc.getConsolePresentation().displayCombat(gi, player, enemy);
         gi.pauseForUserInput();
@@ -31,10 +33,10 @@ public class Combat {
         gi.showMessage(winnerMessage);
         gc.getConsolePresentation().displayStats(gi,player,null);
         gi.pauseForUserInput();
-        resetParticipantsNarrador(player, enemy);
+        resetParticipantsNarrador(player, enemy,d8);
     }
 
-    private void resetParticipantsNarrador(Player player, Enemy enemy) {
+    private void resetParticipantsNarrador(Player player, Enemy enemy, Dice d8) {
         if (playerWins) {
             GameStoryTeller.narrar(19, player);
             GameStoryTeller.narrar(20, null);
@@ -42,9 +44,10 @@ public class Combat {
             GameStoryTeller.narrar(21, null);
             GameStoryTeller.narrar(40, player);
         }
+        player.setXp(enemy,d8);
         player.setEnergy(10);
         player.setHp(30);
-        enemy.setUpEnemy("",0,0,0);
+        enemy.setUpEnemy("",0,0,0,0);
     }
 
     public void combatLogic(GameContext gc) {

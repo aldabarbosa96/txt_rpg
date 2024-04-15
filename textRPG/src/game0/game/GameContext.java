@@ -19,7 +19,7 @@ public class GameContext { //esta clase encapsula muchas otras clases
     private Equipment equipment;
     private Attacks attacks;
     private GameEnter gameEnter;
-    private Dice diceForAttack;
+    private Dice dice;
 
     public GameContext(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combat, Equipment equipment,Dice diceForAttack, Attacks attacks,GameEnter ge) {
         this.consolePresentation = cp;
@@ -48,12 +48,12 @@ public class GameContext { //esta clase encapsula muchas otras clases
     public void setAttacks(Attacks attacks) {
         this.attacks = attacks;
     }
-    public Dice getDiceForAttack() {
-        return diceForAttack;
+    public Dice getDice() {
+        return dice;
     }
 
-    public void setDiceForAttack(Dice diceForAttack) {
-        this.diceForAttack = diceForAttack;
+    public void setDice(Dice dice) {
+        this.dice = dice;
     }
 
     public ConsolePresentation getConsolePresentation() {

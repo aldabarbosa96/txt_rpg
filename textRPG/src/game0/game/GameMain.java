@@ -19,7 +19,7 @@ public class GameMain {
             //inicializamos componentes
             Inventory inventory = new Inventory();
             Equipment equipment = new Equipment();
-            Player player = new Player(30, 10, 1, 1);
+            Player player = new Player(1,0, 30, 10, 1,1);
             Enemy enemy = new Enemy();
             GameFrame frame = new GameFrame(inventory, equipment, player, enemy);
             GuiInteraction guiInteraction = frame.getGuiInteraction();
