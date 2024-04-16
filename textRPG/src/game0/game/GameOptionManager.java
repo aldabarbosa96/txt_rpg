@@ -2,6 +2,7 @@ package game0.game;
 
 import game0.events.Tutorial;
 import game0.game.narrative.GameStoryTeller;
+import game0.game.narrative.GameVoiceOver;
 import game0.player.Equipment;
 import game0.player.Player;
 import playerInteractions.GameEnter;
@@ -27,9 +28,11 @@ public class GameOptionManager {
         GameStoryTeller.narrar(24, player);
         gi.pauseForUserInput();
         GameStoryTeller.narrar(31, player);
-        gi.pauseForUserInput();
+        gi.pauseForUserInput(); GameVoiceOver.separador(gi);
+        GameVoiceOver.dialogo(14,null);
+        gi.pauseForUserInput(); GameVoiceOver.separador(gi);
         equipment.equiparItem("manoD", "Navaja (+1 Fuerza)"); //todo -> esto hay que manejarlo de forma dinámica
-        player.setAttack(player.getAttack() + 1);
+        player.setAttack((player.getAttack()+1));
         GameStoryTeller.narrar(25, null);
     }
 
@@ -52,6 +55,13 @@ public class GameOptionManager {
     }
 
     protected static void manageOption02E(GameContext gc) {
-        gc.getCombat().combatFlowNarrator(gc);
+        if (gc.getPlayer().getXp() <= 100){
+            gc.getCombat().combatFlowNarrator(gc);
+        } else {
+            GameVoiceOver.separador(gc.getGuiInteraction());
+            GameStoryTeller.narrar(48,gc.getPlayer());
+            gc.getGuiInteraction().pauseForUserInput();
+        }
     }
+
 }

@@ -34,12 +34,12 @@ public class GameVoiceOver {
         /*6*/vozEnOff.add("El ataque no tuvo efecto en el enemigo");
         /*7*/vozEnOff.add("Turno del enemigo:");
         /*8*/vozEnOff.add("El ataque no tuvo efecto sobre ti");
-        /*9*/vozEnOff.add("\n--------------------¡FIN DEL COMBATE!--------------------");
+        /*9*/vozEnOff.add("\n--------------------¡FIN DEL COMBATE!--------------------\n");
         /*10*/vozEnOff.add("Continúa el combate:");
         /*11*/vozEnOff.add("---------------------------------------------------");
         /*12*/vozEnOff.add("Pulsa \"Continuar\" para lanzar el dado de ataque: del enemigo:");
         /*13*/vozEnOff.add("¿Qué quieres hacer <<{PlayerName}>> ?");
-        /*14*/vozEnOff.add("Pulsa \"Continuar\" para ver tu equipamiento:");
+        /*14*/vozEnOff.add("Pulsa \"E\" para ver tu equipamiento:");
         /*15*/vozEnOff.add("Comienzas a subir hacia \"Los Acantilados de Riera Alta\".");
         /*16*/vozEnOff.add("Coges un extraño transporte dirección \"La Selva Santa Rosa\".");
         /*17*/vozEnOff.add("Te adentras en las profundidades de \"La Jungla de Fondo\".");

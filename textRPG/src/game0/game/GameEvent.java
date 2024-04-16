@@ -44,31 +44,58 @@ public class GameEvent {
     }
 
     public static String gestionEventos03(Player player, GuiInteraction gi) {
+        String opcion = "";
         while (true) {
             GameVoiceOver.dialogo(13, player);
             gi.pauseForUserInput();
             PlayerOptions.opcion(7, player);
 
-            String opcion = gi.getInput().toLowerCase();
+            opcion = gi.getInput().toLowerCase();
             switch (opcion) {
-                case "1":
-                    Player.statsPlayer(player, gi);
-                    break;
                 case "d":
+                    GameVoiceOver.separador(gi);
                     GameVoiceOver.dialogo(18, null);
                     gi.pauseForUserInput();
                     GameStoryTeller.narrar(45, null);
                     gi.pauseForUserInput();
+                    PlayerOptions.opcion(10,player);
+                    //todo -> SEGUIR POR AQUÍ!!!
                     break;
-                case "a": //todo -> SEGUIR POR AQUÍ!!!
+                case "a":
+                    GameVoiceOver.separador(gi);
+                    GameVoiceOver.dialogo(15,null);
+                    gi.pauseForUserInput();
+                    GameStoryTeller.narrar(41,player);
+                    gi.pauseForUserInput();
+                    PlayerOptions.opcion(8,player);
+                    //todo -> SEGUIR POR AQUÍ!!!
+                    break;
                 case "b":
+                    GameVoiceOver.separador(gi);
+                    GameVoiceOver.dialogo(16,null);
+                    gi.pauseForUserInput();
+                    GameStoryTeller.narrar(42,player);
+                    gi.pauseForUserInput();
+                    PlayerOptions.opcion(9,player);
+                    //todo -> SEGUIR POR AQUÍ!!!
+                    break;
                 case "c":
+                    GameVoiceOver.separador(gi);
+                    GameVoiceOver.dialogo(17,null);
+                    gi.pauseForUserInput();
+                    GameStoryTeller.narrar(43,player);
+                    gi.pauseForUserInput();
+                    GameStoryTeller.narrar(44,player);
+                    //todo -> SEGUIR POR AQUÍ!!!
+                    break;
                 case "e":
                     return opcion;
                 default:
                     GameStoryTeller.narrar(26, null);
                     gi.showMessage("\n");
             }
+            break;
         }
+        return opcion;
     }
 }

@@ -27,7 +27,7 @@ public class PlayerOptions {
         /*5*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Sí, aún tengo dudas porque soy un cubo de basura con manos\nB) No, soy hostia y lo he entendido todo\nC) Empecemos ya el combate, capullo");
         /*6*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Coger regalo y empezar aventurita\nB) ¡T-U-T-O-R-I-A-L! ¡T-U-T-O-R-I-A-L!\nC) Ahora sí, adiós\nD) Quiero cambiarme el nombre\nE) Quiero pelear otra vez");
         /*7*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Ir al Norte (\"Acantilados Riera Alta\")\nB) Ir al Sur (\"Selva Santa Rosa\")\nC) Ir al Este (\"Jungla Fondo\")\nD) Ir al Oeste (\"Montañas Singuerlín\")\nE) Explorar tu ubicación");
-        /*8*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Hablar con el ente raro\nB) Atacar al ente raro\nC) Tirarte un pedo\nD) Pasar de largo");
+        /*8*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Hablar con entes raros\nB) Atacar entes raros\nC) Tirarte un pedo\nD) Pasar de largo");
         /*9*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Dialogar con anciana\nB) Atacar a anciana\nC) Dialogar con borracho\nD) Atacar a borracho\nE) Seguir tu camino");
         /*10*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Retroceder al \"Centro\"\nB) Entrar en la Singuerlín C.F\nC) Adoptar postura sigilosa\nD) Provocar al primero que veas");
     }

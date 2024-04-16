@@ -54,7 +54,7 @@ public class GameStoryTeller {
         /*28*/narracion.add("Narrador: Era la mejor opción de todas.");
         /*29*/narracion.add("Introduzca nombre del Jugador:"); //esto debería ir en GameVoiceOver
         /*30*/narracion.add("Introudce un nombre válido:"); //esto debería ir en GameVoiceOver
-        /*31*/narracion.add("Narrador: Ah, se me olvidaba, toma, te entrego esto:\n<<{PlayerName}>> ha recibido \"navaja multiusos\".");
+        /*31*/narracion.add("Narrador: Ah, se me olvidaba, toma, te entrego esto:\n<<{PlayerName}>> ha recibido \"navaja\".");
         /*32*/narracion.add("Narrador: El Guardia de las Arenas golpea a <<{PlayerName}>> con su maza de tungsteno y lo mata ipsofacto\n--------------------GAME OVER--------------------");
         /*33*/narracion.add("Narrador: <<{PlayerName}>> sale corriendo y tropieza con la sangre del guardia\nCon la cabeza en el frío suelo se percata de un objeto pequeño e insignificante (EL PUTO DADO).");
         /*34*/narracion.add("Narrador: Saltan derechos de copyright y se cierra el juego por denuncias de derechos de autor.\n--------------------GAME OVER--------------------");
@@ -64,12 +64,13 @@ public class GameStoryTeller {
         /*38*/narracion.add("Narrador: A pesar de lo que parece, no, no nos está dando el alto...");
         /*39*/narracion.add("Narrador: Venga, te lo volveré a preguntar {PlayerName}: ");
         /*40*/narracion.add("Narrador: No se yo si estás muy bien preparado para este basto mundo de violad..Digo, de peligros que acenchan.\n");
-        /*41*/narracion.add("Narrador: <<{PlayerName}>> se ecnontraba subiendo los empinados acantilados, cuando, de repente, un curioso personaje apareció.");
+        /*41*/narracion.add("Narrador: <<{PlayerName}>> se ecnontraba subiendo los empinados acantilados, cuando, de repente, unos curiosos personajes aparecieron.");
         /*42*/narracion.add("Narrador: ¿Parece que vas en tod@ regalad@ o no <<{PlayerName}>> ? Anda mira, en el vehículo este raro hay bastante muchedumbre.\nYo probaría a interactuar con alguno de estos paletos...");
         /*43*/narracion.add("Narrador: Muy atrevido por tu parte <<{PlayerName}>> ; buena suerte en la Jungla de los \"Horrores\", je je je...");
         /*44*/narracion.add("Narrador: Te recomendaría pasar desapercibid@. Esta zona es bastante peliaguda.");
         /*45*/narracion.add("Narrador: Para tu información, toda la zona de Singuerlín está bajo los dominios de la S.C.F (Singuerlín Clan Fentanílico) y no son muy amigables que digamos...");
         /*46*/narracion.add("Narrador: Tú contra mí: ¡El pringao de <<{PlayerName}>> contra el maravilloso, el magnífico, el omnipotente y omnipresente NARRADOOORRRRRR!\"");
         /*47*/narracion.add("Narrador: Te daré 30 puntos de salud para que no te mueras, por ahora, y unos 10 de energía para realizar tus ataques.\n");
+        /*48*/narracion.add("Narrador: Muy bien, <<{PlayerName}>> , te he regalado un nivel, bravo! Has descubierto un pequeño e intencionado glitch, pero hasta aquí llegó tu grindeo gratis amigo.");
     }
 }

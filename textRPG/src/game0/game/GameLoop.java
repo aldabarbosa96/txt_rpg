@@ -8,7 +8,7 @@ import game0.player.PlayerInteractions;
 import playerInteractions.GameEnter;
 public class GameLoop { // todo -> modularizar esta clase en un futuro para manejabilidad y comprensión
     public static void run(GameContext gc, PlayerInteractions pi) {
-        Npc npc = new Npc(); // todo -> considerar manejar NPCs de una forma más dinámica en el futuro
+        Npc npc = new Npc();
         gc.getConsolePresentation().displayStats(gc.getGuiInteraction(),gc.getPlayer(),null);
 
         String playerName = "";
@@ -30,7 +30,6 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         gc.getGuiInteraction().pauseForUserInput(); GameVoiceOver.separador(gc.getGuiInteraction());
 
             //estadísticas iniciales del jugador
-
         GameStoryTeller.narrar(2, null);
         gc.getGuiInteraction().pauseForUserInput();
         GameStoryTeller.narrar(3, gc.getPlayer());
