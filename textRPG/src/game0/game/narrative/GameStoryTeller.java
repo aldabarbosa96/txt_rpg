@@ -72,5 +72,7 @@ public class GameStoryTeller {
         /*46*/narracion.add("Narrador: Tú contra mí: ¡El pringao de <<{PlayerName}>> contra el maravilloso, el magnífico, el omnipotente y omnipresente NARRADOOORRRRRR!\"");
         /*47*/narracion.add("Narrador: Te daré 30 puntos de salud para que no te mueras, por ahora, y unos 10 de energía para realizar tus ataques.\n");
         /*48*/narracion.add("Narrador: Muy bien, <<{PlayerName}>> , te he regalado un nivel, bravo! Has descubierto un pequeño e intencionado glitch, pero hasta aquí llegó tu grindeo gratis amigo.");
+        /*49*/narracion.add("Narrador: ¡Enhorabuena <<{PlayerName}>> ! Has muerto nada más empezar la aventura, maravilloso. Venga hasta luego parguelas ;)");
+        /*50*/narracion.add("Narrador: ¡Enhorabuena <<{PlayerName}>> ! Has ganado tu primer combate real, ¡WOW!");
     }
 }

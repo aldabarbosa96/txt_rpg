@@ -1,17 +1,13 @@
-package game0.events;
+package game0.events.combats;
 
 import game0.game.GameContext;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Player;
-import playerInteractions.Dice;
 import window.GuiInteraction;
 
-public class Combat {
-    private String winnerMessage = "";
-    boolean playerWins = true;
-
+public class CombatNarrator extends CombatLogic{
     public void combatFlowNarrator(GameContext gc) { //todo -> implementar una clase (o interfaz) que controle y estructure el combate de forma genérica
         GuiInteraction gi = gc.getGuiInteraction();
         Player player = gc.getPlayer();
@@ -34,14 +30,15 @@ public class Combat {
         if (playerWins) {
             winnerMessage = "¡¡¡<<" + player.getName() + ">> es el ganador!!!";
             GameVoiceOver.separador(gi);
+
         } else {
             winnerMessage = "¡¡¡<<" + enemy.getName() + ">> es el ganador!!!";
             GameVoiceOver.separador(gi);
         }
         gi.showMessage(winnerMessage);
+        resetParticipantsNarrador(player, enemy);
         gc.getConsolePresentation().displayStats(gi,player,null);
         gi.pauseForUserInput();
-        resetParticipantsNarrador(player, enemy);
     }
 
     private void resetParticipantsNarrador(Player player, Enemy enemy) {

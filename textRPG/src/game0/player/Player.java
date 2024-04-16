@@ -6,7 +6,7 @@ import window.GuiInteraction;
 
 public class Player {
     private String name;
-    protected float hp;
+    protected int hp;
     protected int energy;
     protected int attack;
     protected int deffense;
@@ -34,7 +34,7 @@ public class Player {
         return name;
     }
 
-    public float getHp() {
+    public int getHp() {
         return hp;
     }
 
@@ -42,11 +42,11 @@ public class Player {
         return energy;
     }
 
-    public void setHp(float hp) {
+    public void setHp(int hp) {
         this.hp = hp;
     }
 
-    public Player(int lvl, float xp, float hp, int energy, int attack,int deffense) {
+    public Player(int lvl, float xp, int hp, int energy, int attack,int deffense) {
         this.hp = hp;
         this.energy = energy;
         this.attack = attack;

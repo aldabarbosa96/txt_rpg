@@ -57,7 +57,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         if (gc.getPlayer().ResPaz()) GameVoiceOver.separador(gc.getGuiInteraction());
 
             //manejo del inventario y uso de objetos
-        Inventory.addToInventory("Dado.12");
+        Inventory.addToInventory("Dado");
         GameEnter.enterInv(gc.getGuiInteraction()); GameVoiceOver.separador(gc.getGuiInteraction());
         GameStoryTeller.narrar(12, null);
         gc.getGuiInteraction().pauseForUserInput();
@@ -81,6 +81,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         gc.getGuiInteraction().pauseForUserInput();
 
         //todo -> continuar la historia...
-        GameEvent.gestionEventos03(gc.getPlayer(), gc.getGuiInteraction());
+        GameEvent.gestionEventos03(gc.getPlayer(), gc.getGuiInteraction(),gc,gc.getTpt());
+
     }
 }

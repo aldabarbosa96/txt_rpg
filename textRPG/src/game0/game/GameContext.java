@@ -2,10 +2,13 @@ package game0.game;
 
 import game0.console.ConsolePresentation;
 import game0.events.Attacks;
-import game0.events.Combat;
+import game0.events.combats.CombatLogic;
+import game0.events.combats.CombatNarrator;
+import game0.events.combats.CombatTablePum;
 import game0.player.Equipment;
 import game0.player.Player;
 import game0.NPCs.Enemy;
+import game0.threads.thread.ThreadPonYTable;
 import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 import window.GuiInteraction;
@@ -15,13 +18,16 @@ public class GameContext { //esta clase encapsula muchas otras clases
     private GuiInteraction guiInteraction;
     private Player player;
     private Enemy enemy;
-    private Combat combat;
+    private CombatNarrator combat;
     private Equipment equipment;
     private Attacks attacks;
     private GameEnter gameEnter;
     private Dice dice;
+    private CombatLogic cl;
+    private CombatTablePum ctp;
+    private ThreadPonYTable tpt;
 
-    public GameContext(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, Combat combat, Equipment equipment,Dice diceForAttack, Attacks attacks,GameEnter ge) {
+    public GameContext(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, CombatNarrator combat, Equipment equipment, Attacks attacks, GameEnter ge, CombatLogic cl, CombatTablePum ctp, ThreadPonYTable tpt) {
         this.consolePresentation = cp;
         this.guiInteraction = gi;
         this.player = player;
@@ -30,6 +36,9 @@ public class GameContext { //esta clase encapsula muchas otras clases
         this.equipment = equipment;
         this.attacks = attacks;
         this.gameEnter = ge;
+        this.cl = cl;
+        this.ctp = ctp;
+        this.tpt = tpt;
     }
 
 
@@ -72,7 +81,7 @@ public class GameContext { //esta clase encapsula muchas otras clases
         return enemy;
     }
 
-    public Combat getCombat() {
+    public CombatNarrator getCombat() {
         return combat;
     }
 
@@ -87,5 +96,8 @@ public class GameContext { //esta clase encapsula muchas otras clases
     public GameEnter getGameEnter() {
         return gameEnter;
     }
+    public CombatLogic getCl(){return cl;}
+    public CombatTablePum getctp(){return ctp;}
+    public ThreadPonYTable getTpt(){return tpt;}
 
 }

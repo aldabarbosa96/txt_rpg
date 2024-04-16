@@ -30,6 +30,8 @@ public class PlayerOptions {
         /*8*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Hablar con entes raros\nB) Atacar entes raros\nC) Tirarte un pedo\nD) Pasar de largo");
         /*9*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Dialogar con anciana\nB) Atacar a anciana\nC) Dialogar con borracho\nD) Atacar a borracho\nE) Seguir tu camino");
         /*10*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Retroceder al \"Centro\"\nB) Entrar en la Singuerlín C.F\nC) Adoptar postura sigilosa\nD) Provocar al primero que veas");
+        /*11*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Coger regalo sin hacer preguntas\nB) Preguntar qué es eso\nC) Intentar robar\nD) Pasar de ellos");
+        /*12*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Lootear los cuerpos\nB) Salir corriendo\nC) Ocultar los cuerpos");
     }
     public static void dialogo(int index, Player player){
         String escoger = dialogar.get(index);
@@ -46,5 +48,7 @@ public class PlayerOptions {
         /*1*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : Procede a violentarle la mandíbula con los nudillos en un gesto rápido y efectivo.");
         /*2*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : Procede a enseñar su bolsa.");
         /*3*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : ¡Coño! ¡¿Solo tiene esto?! Menuda porquería.");
+        /*4*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : Hola buenas, soy {PlayerName}, ya que veo que sois de por aquí cerca, sabéis algo acerca de los \"Acantilados Riera Alta\"?");
+        /*5*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : ¡Encantado, mis panas! ¿Algún consejo para poder llegar sano y salvo?");
     }
 }

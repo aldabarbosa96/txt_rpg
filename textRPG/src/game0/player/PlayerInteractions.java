@@ -55,10 +55,10 @@ public class PlayerInteractions extends Player{
             respuesta = gi.getInput();
 
             if (respuesta.equalsIgnoreCase("a")) {
-                NpcNarration.dialogo(5);
+                NpcNarration.dialogoGuardiaArenas(5);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {
-                NpcNarration.dialogo(6);
+                NpcNarration.dialogoGuardiaArenas(6);
                 respuestaValida = true;
                 GameStoryTeller.narrar(32,player);
                 gi.pauseForUserInput();
@@ -96,7 +96,7 @@ public class PlayerInteractions extends Player{
     }
     public void opcionEscogida03(){
         Inventory.addToInventory("Trozo de pan");
-        NpcNarration.dialogo(7);
+        NpcNarration.dialogoGuardiaArenas(7);
         GameStoryTeller.narrar(18,null);
     }
     public void escogerOpcion(GuiInteraction gi, Npc npc, Player player){

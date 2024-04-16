@@ -29,17 +29,17 @@ public class Npc { //todo -> separar la clase NPC de la lógica de sus interacci
     public static void interactuarNPC00(GuiInteraction gi) {
         GameStoryTeller.narrar(4,null); gi.pauseForUserInput();
         GameVoiceOver.separador(gi);
-        NpcNarration.dialogo(0);
+        NpcNarration.dialogoGuardiaArenas(0);
         GameStoryTeller.narrar(38,null);
-        NpcNarration.dialogo(1);
+        NpcNarration.dialogoGuardiaArenas(1);
     }
     public void interactuarNPC01(String respuesta) {
         while (respuestaNum0 <= 3) {
             if (respuesta.equalsIgnoreCase("a")) {
                 respuestaNum0 = 0;
-                NpcNarration.dialogo(2);
+                NpcNarration.dialogoGuardiaArenas(2);
                 GameStoryTeller.narrar(5,null);
-                NpcNarration.dialogo(3);
+                NpcNarration.dialogoGuardiaArenas(3);
                 break;
             } else if (respuesta.equalsIgnoreCase("b")) {
                 respuestaNum0 = 1;
@@ -47,7 +47,7 @@ public class Npc { //todo -> separar la clase NPC de la lógica de sus interacci
                 break;
             } else if (respuesta.equalsIgnoreCase("c")) {
                 respuestaNum0 = 2;
-                NpcNarration.dialogo(4);
+                NpcNarration.dialogoGuardiaArenas(4);
                 GameStoryTeller.narrar(7,null);
                 break;
             } else {

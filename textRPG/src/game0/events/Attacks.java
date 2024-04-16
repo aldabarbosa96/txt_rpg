@@ -21,7 +21,7 @@ public class Attacks {
             GameVoiceOver.dialogo(6,null);
         } else {
             float daño = enemy.getDeffensePoints() - (resultadoDado+player.getAttack());
-            player.setHp(player.getHp() - daño);
+            player.setHp((int) (player.getHp() - daño));
             gi.showMessage(player.getName() + " se hirió " + daño + " a si mismo.");
         }
         set0ifNegative(enemy, player);
@@ -35,7 +35,7 @@ public class Attacks {
             daño *= -1;
         }
         if (resultadoDado > player.getDeffense()) {
-            player.setHp(player.getHp() - daño);
+            player.setHp((int) (player.getHp() - daño));
             gi.showMessage("El ataque te ha hecho " + daño + " de daño.");
         } else if (resultadoDado == player.getDeffense()) {
             GameVoiceOver.dialogo(8,null);

@@ -1,8 +1,11 @@
 package game0.game;
 
+import game0.events.combats.CombatLogic;
+import game0.events.combats.CombatTablePum;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.player.*;
+import game0.threads.thread.ThreadPonYTable;
 import window.GuiInteraction;
 
 public class GameEvent {
@@ -43,7 +46,7 @@ public class GameEvent {
         } while (!opcionEsc.equals("a") && !opcionEsc.equals("c"));
     }
 
-    public static String gestionEventos03(Player player, GuiInteraction gi) {
+    public static String gestionEventos03(Player player, GuiInteraction gi, GameContext gc, ThreadPonYTable tpt) {
         String opcion = "";
         while (true) {
             GameVoiceOver.dialogo(13, player);
@@ -68,7 +71,7 @@ public class GameEvent {
                     GameStoryTeller.narrar(41,player);
                     gi.pauseForUserInput();
                     PlayerOptions.opcion(8,player);
-                    //todo -> SEGUIR POR AQUÍ!!!
+                    tpt.gestionEventosPumYTable(player,gi,gc);
                     break;
                 case "b":
                     GameVoiceOver.separador(gi);

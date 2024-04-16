@@ -45,6 +45,7 @@ public class GameVoiceOver {
         /*17*/vozEnOff.add("Te adentras en las profundidades de \"La Jungla de Fondo\".");
         /*18*/vozEnOff.add("Desciendes hacia la valle de \"Las Montañas Singuerlín\".");
         /*19*/vozEnOff.add("Pulsa \"S\" para abrir tus estadísticas:");
+        /*20*/vozEnOff.add("\n--------------------GAME OVER--------------------");
     }
 }
 
