@@ -5,40 +5,35 @@ import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Player;
-import window.GuiInteraction;
 
 public class CombatNarrator extends CombatLogic{
     public void combatFlowNarrator(GameContext gc) { //todo -> implementar una clase (o interfaz) que controle y estructure el combate de forma genérica
-        GuiInteraction gi = gc.getGuiInteraction();
-        Player player = gc.getPlayer();
-        Enemy enemy = gc.getEnemy();
-
-        if (player.getLvl() >= 2) {
-            GameVoiceOver.separador(gi);
-            GameStoryTeller.narrar(48, player);
+        if (gc.getPlayer().getLvl() >= 2) {
+            GameVoiceOver.separador(gc.getGuiInteraction());
+            GameStoryTeller.narrar(48, gc.getPlayer());
             gc.getGuiInteraction().pauseForUserInput();
             return;
         }
 
-        enemy.setUpEnemy("Narrador",15,3,5,1);
-        gc.getConsolePresentation().displayCombat(gi, player, enemy);
-        gi.pauseForUserInput();
+        gc.getEnemy().setUpEnemy("Narrador",15,3,5,1);
+        gc.getConsolePresentation().displayCombat(gc.getGuiInteraction(), gc.getPlayer(), gc.getEnemy());
+        gc.getGuiInteraction().pauseForUserInput();
 
         combatLogic(gc); //gestiona la lógica del combate
+        gc.getGuiInteraction().pauseForUserInput();
 
-        gi.pauseForUserInput();
         if (playerWins) {
-            winnerMessage = "¡¡¡<<" + player.getName() + ">> es el ganador!!!";
-            GameVoiceOver.separador(gi);
+            winnerMessage = "¡¡¡<<" + gc.getPlayer().getName() + ">> es el ganador!!!";
+            GameVoiceOver.separador(gc.getGuiInteraction());
 
         } else {
-            winnerMessage = "¡¡¡<<" + enemy.getName() + ">> es el ganador!!!";
-            GameVoiceOver.separador(gi);
+            winnerMessage = "¡¡¡<<" + gc.getEnemy().getName() + ">> es el ganador!!!";
+            GameVoiceOver.separador(gc.getGuiInteraction());
         }
-        gi.showMessage(winnerMessage);
-        resetParticipantsNarrador(player, enemy);
-        gc.getConsolePresentation().displayStats(gi,player,null);
-        gi.pauseForUserInput();
+        gc.getGuiInteraction().showMessage(winnerMessage);
+        resetParticipantsNarrador(gc.getPlayer(), gc.getEnemy());
+        gc.getConsolePresentation().displayStats(gc.getGuiInteraction(),gc.getPlayer(),null);
+        gc.getGuiInteraction().pauseForUserInput();
     }
 
     private void resetParticipantsNarrador(Player player, Enemy enemy) {
@@ -58,24 +53,5 @@ public class CombatNarrator extends CombatLogic{
         enemy.setUpEnemy("",0,0,0,0);
     }
 
-
-    public void combatLogic(GameContext gc) {
-        while (gc.getPlayer().getHp() > 0 && gc.getEnemy().getLifePoints() > 0) {
-            gc.getAttacks().playerAttack(gc.getPlayer(), gc.getEnemy(), gc.getGuiInteraction(), gc.getConsolePresentation());
-            if (gc.getEnemy().getLifePoints() <= 0) {
-                GameVoiceOver.dialogo(9, null);
-                break;
-            }
-            gc.getAttacks().enemyAttacks(gc.getPlayer(), gc.getEnemy(), gc.getGuiInteraction(), gc.getConsolePresentation());
-            if (gc.getPlayer().getHp() <= 0 || gc.getPlayer().getEnergy() <= 0) {
-                playerWins = false;
-                GameVoiceOver.dialogo(9, null);
-                break;
-            }
-            GameVoiceOver.dialogo(10, null);
-            gc.getGuiInteraction().pauseForUserInput();
-            GameVoiceOver.separador(gc.getGuiInteraction());
-        }
-    }
 
 }

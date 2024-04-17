@@ -3,8 +3,8 @@ package game0.threads.thread;
 import game0.NPCs.NpcNarration;
 import game0.events.combats.CombatLogic;
 import game0.game.GameContext;
-import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
+import game0.player.Equipment;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import window.GuiInteraction;
@@ -25,7 +25,8 @@ public class ThreadPonYTable extends CombatLogic {
                     attack(gc);
                     break;
                 case "c":
-
+                    tirarPedo(gi,gc.getEquipment());
+                    break;
             }
         }
     }
@@ -54,9 +55,17 @@ public class ThreadPonYTable extends CombatLogic {
         }
 
     public void attack(GameContext gc){
+        GameVoiceOver.separador(gc.getGuiInteraction());
         gc.getctp().combatFlowTablePum(gc);
     }
-    public static void tirarPedo(){
+    public static void tirarPedo(GuiInteraction gi, Equipment equipment){
+        GameVoiceOver.dialogo(21,null);
+        gi.pauseForUserInput();
+        NpcNarration.dialogoPumYTable(8);
+        gi.pauseForUserInput();
+        GameVoiceOver.dialogo(22,null);
+        equipment.equiparItem("manoI","Mechero (+2 Vida)");
+        gi.pauseForUserInput();
 
     }
 }

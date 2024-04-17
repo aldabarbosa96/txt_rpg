@@ -1,7 +1,5 @@
 package game0.game;
 
-import game0.events.combats.CombatLogic;
-import game0.events.combats.CombatTablePum;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.player.*;
@@ -11,6 +9,7 @@ import window.GuiInteraction;
 public class GameEvent {
     public static void gestionEventos01(GameContext gc) {
         boolean esValida;
+        gc.getGuiInteraction();
         PlayerOptions.opcion(4, gc.getPlayer());
         do {
             String respuesta = gc.getGuiInteraction().getInput().toLowerCase();

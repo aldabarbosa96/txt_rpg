@@ -1,9 +1,9 @@
 package game0.NPCs;
 
 public class Enemy extends Npc {
-    private float lifePoints;
-    private float attackPoints;
-    private float deffensePoints;
+    private int lifePoints;
+    private int attackPoints;
+    private int deffensePoints;
     private int lvl;
 
     public Enemy(String name, int vida, int ataque, int defensa, int lvl){
@@ -21,17 +21,17 @@ public class Enemy extends Npc {
         this.deffensePoints = deffensePoints;
         this.lvl = lvl;
    }
-    public float getDeffensePoints() {
+    public int getDeffensePoints() {
         return deffensePoints;
     }
-    public float getLifePoints() {
+    public int getLifePoints() {
         return lifePoints;
     }
-    public float getAttackPoints() {
+    public int getAttackPoints() {
         return attackPoints;
     }
     public int getLvl() {return lvl;}
-    public void setLifePoints(float lifePoints) {
+    public void setLifePoints(int lifePoints) {
         this.lifePoints = lifePoints;
     }
 }

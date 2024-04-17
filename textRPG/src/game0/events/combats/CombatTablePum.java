@@ -24,7 +24,7 @@ public class CombatTablePum extends CombatLogic{
         gc.getConsolePresentation().displayCombat(gi, player, enemy);
         gi.pauseForUserInput();
 
-        gc.getCl().combatLogic(gc);
+        combatLogic(gc);
 
         gi.pauseForUserInput();
         if (playerWins) {
@@ -57,6 +57,7 @@ public class CombatTablePum extends CombatLogic{
             gi.pauseForUserInput();
             GameVoiceOver.dialogo(20,null);
             gi.pauseForUserInput();
+            GameVoiceOver.dialogo(24,null); //mensaje subliminal casi invisible
             System.exit(0);
 
         }

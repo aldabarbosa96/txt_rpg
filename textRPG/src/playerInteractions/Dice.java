@@ -69,7 +69,7 @@ public class Dice {
                 break;
             case 7:
                 gi.showMessage("+-----+");
-                gi.showMessage(" # # # ");
+                gi.showMessage(" # # # #");
                 gi.showMessage("       # ");
                 gi.showMessage("       # ");
                 gi.showMessage("       # ");
@@ -184,7 +184,7 @@ public class Dice {
                 break;
             case 7:
                 gi.showMessage("+-----+");
-                gi.showMessage(" # # #  #");
+                gi.showMessage(" # # # #");
                 gi.showMessage("       # ");
                 gi.showMessage("       # ");
                 gi.showMessage("       # ");
@@ -203,9 +203,9 @@ public class Dice {
                 break;
             case 9:
                 gi.showMessage("+-----+");
-                gi.showMessage(" # # #  #");
+                gi.showMessage(" # # # #");
                 gi.showMessage(" #     #");
-                gi.showMessage(" # # #  #");
+                gi.showMessage(" # # # #");
                 gi.showMessage("       #");
                 gi.showMessage("       #");
                 gi.showMessage("+-----+");

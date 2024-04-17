@@ -76,7 +76,8 @@ public class Player {
         gi.showMessage("Introduce tu nombre:"); //todo -> será útil en un futuro
     }
     public static void statsPlayer(Player player, GuiInteraction gi) { // todo -> reemplazar llamadas a este método por displayStats de ConsolePresentation
-        gi.showMessage("---------------------------------------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() + "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense());
+        gi.showMessage("---------------------------------------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() +
+                "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense() +"\nNivel: "+player.getLvl() + "\nXP: "+player.getXp());
         gi.pauseForUserInput();
     }
     public float calculateXP(Enemy enemy) {

@@ -15,7 +15,7 @@ public class Attacks {
 
         if ((resultadoDado + player.getAttack()) > enemy.getDeffensePoints()) {
             float daño = (resultadoDado + player.getAttack() - enemy.getDeffensePoints());
-            enemy.setLifePoints(enemy.getLifePoints() - daño);
+            enemy.setLifePoints((int) (enemy.getLifePoints() - daño));
             gi.showMessage("El ataque ha hecho " + daño + " de daño al enemigo.");
         } else if ((resultadoDado + player.getAttack()) == enemy.getDeffensePoints()) {
             GameVoiceOver.dialogo(6,null);
@@ -40,7 +40,7 @@ public class Attacks {
         } else if (resultadoDado == player.getDeffense()) {
             GameVoiceOver.dialogo(8,null);
         } else if (resultadoDado < player.getDeffense()){
-            enemy.setLifePoints(enemy.getLifePoints() - daño);
+            enemy.setLifePoints((int) (enemy.getLifePoints() - daño));
             gi.showMessage(enemy.getName() + " se hirió " + daño + " a si mismo.");
         }
         set0ifNegative(enemy, player);

@@ -39,5 +39,7 @@ public class NpcNarration {
         /*5*/pumYtable.add("Pum: Ya sabes, pum.");
         /*6*/pumYtable.add("Table: ¡Será pedazo de mierdas..!");
         /*7*/pumYtable.add("Pum: ¡Pedazo de mierdas, pum!");
+        /*8*/pumYtable.add("Entes extraños: ¡La hostia! ¡Qué bien suena eso bro! JAJAJAJAJAJA");
+        /*9*/pumYtable.add("Entes extraños: ¡Toma! Me has caído de puta madre, la verdunch.");
     }
 }
