@@ -44,4 +44,5 @@ public class ConsolePresentation implements GamePresentation {
                 "\n"+
                 "     "+ player.getName()+"    VS    "+enemy.getName()+"\n");
     }
+
 }

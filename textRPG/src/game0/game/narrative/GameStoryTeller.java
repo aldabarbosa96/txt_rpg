@@ -74,5 +74,6 @@ public class GameStoryTeller {
         /*48*/narracion.add("Narrador: Muy bien, <<{PlayerName}>> , te he regalado un nivel, bravo! Has descubierto un pequeño e intencionado glitch, pero hasta aquí llegó tu grindeo gratis amigo.");
         /*49*/narracion.add("Narrador: ¡Enhorabuena <<{PlayerName}>> ! Has muerto nada más empezar la aventura, maravilloso. Venga hasta luego parguelas ;)");
         /*50*/narracion.add("Narrador: ¡Enhorabuena <<{PlayerName}>> ! Has ganado tu primer combate real, ¡WOW!");
+        /*51*/narracion.add("Narrador: Pues a mí me parecieron amistosos... Igual podrías haberles dado una oportunidad.");
     }
 }

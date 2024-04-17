@@ -1,6 +1,6 @@
-package game0.game;
+package game0.game.manager;
 
-import game0.events.Tutorial;
+import game0.game.narrative.Tutorial;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.player.Equipment;

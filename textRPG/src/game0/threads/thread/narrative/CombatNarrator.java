@@ -1,12 +1,13 @@
-package game0.events.combats;
+package game0.threads.thread.narrative;
 
-import game0.game.GameContext;
+import game0.events.combats.CombatLogic;
+import game0.game.manager.GameContext;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.NPCs.Enemy;
 import game0.player.Player;
 
-public class CombatNarrator extends CombatLogic{
+public class CombatNarrator extends CombatLogic {
     public void combatFlowNarrator(GameContext gc) { //todo -> implementar una clase (o interfaz) que controle y estructure el combate de forma genérica
         if (gc.getPlayer().getLvl() >= 2) {
             GameVoiceOver.separador(gc.getGuiInteraction());

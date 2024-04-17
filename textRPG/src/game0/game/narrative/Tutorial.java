@@ -1,8 +1,6 @@
-package game0.events;
+package game0.game.narrative;
 
-import game0.game.GameContext;
-import game0.game.narrative.GameStoryTeller;
-import game0.game.narrative.GameVoiceOver;
+import game0.game.manager.GameContext;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import window.GuiInteraction;
@@ -39,18 +37,17 @@ public class Tutorial {
             if (respuesta.equalsIgnoreCase("a")) {
                 GameStoryTeller.narrar(16, null);
                 gi.pauseForUserInput();
-                gi.showMessage("Narrador Enfadado: CASO 1:" +
-                        " VIDA ENEMIGO = 10\n" +
-                        "                           DEFENSA ENEMIGO: 5\n"+
-                        "                           TU TIRADA = 12(+1)\n" +
-                        "                           DAÑO = 3\n" +
-                        "                           VIDA ENEMIGO = 7\n\n"); gi.pauseForUserInput();
-                gi.showMessage("                   CASO 2:" +
-                        " DEFENSA ENEMIGO = 10\n" +
-                        "                           TU VIDA = 10\n" +
-                        "                           TU TIRADA = 7(+1)\n" +
-                        "                           DAÑO = -2\n" +
-                        "                           TU VIDA = 8");
+                gi.showMessage("Narrador Enfadado: CASO 1:\n\nVIDA ENEMIGO = 10\n" +
+                        "DEFENSA ENEMIGO: 5\n"+
+                        "TU TIRADA = 12(+1)\n" +
+                        "DAÑO = 3\n" +
+                        "VIDA ENEMIGO = 7\n\n"); gi.pauseForUserInput();
+                gi.showMessage("CASO 2:\n\n" +
+                        "DEFENSA ENEMIGO = 10\n" +
+                        "TU VIDA = 10\n" +
+                        "TU TIRADA = 7(+1)\n" +
+                        "DAÑO = -2\n" +
+                        "TU VIDA = 8");
                 gi.pauseForUserInput();
                 gi.showMessage("¿¿¿¡¡¡TE HA QUEDADO YA CLARO PEDAZO DE ...  <<" + player.getName() + ">> !!!???\nNarrador del Narrador: La pregunta era retórica, pues el combate iba a comenzar.");
                 esTonto = true;
@@ -58,7 +55,6 @@ public class Tutorial {
             } else if (respuesta.equalsIgnoreCase("b")) {
                 esTonto = true;
                 gi.showMessage("Narrador: No, la hostia no eres porque si lo fueras no tendría que haber hecho la explicación, lumbreras.");
-                gi.pauseForUserInput();
             } else if (respuesta.equalsIgnoreCase("c")) {
                 gi.showMessage("Narrador: Capullo tu padre. Te vas a enterar <<" + player.getName() + ">>");
                 esTonto = true;

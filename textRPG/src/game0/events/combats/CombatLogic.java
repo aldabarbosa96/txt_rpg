@@ -1,6 +1,6 @@
 package game0.events.combats;
 
-import game0.game.GameContext;
+import game0.game.manager.GameContext;
 import game0.game.narrative.GameVoiceOver;
 
 public class CombatLogic {
@@ -8,7 +8,7 @@ public class CombatLogic {
      public boolean playerWins = true;
     public void combatLogic(GameContext gc) {
         while (gc.getPlayer().getHp() > 0 && gc.getEnemy().getLifePoints() > 0) {
-            gc.getAttacks().playerAttack(gc.getPlayer(), gc.getEnemy(), gc.getGuiInteraction(), gc.getConsolePresentation());
+            gc.getAttacks().playerAttack(gc);
             if (gc.getEnemy().getLifePoints() <= 0) {
                 GameVoiceOver.dialogo(9, null);
                 break;

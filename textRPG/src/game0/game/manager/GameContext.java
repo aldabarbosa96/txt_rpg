@@ -1,19 +1,19 @@
-package game0.game;
+package game0.game.manager;
 
 import game0.console.ConsolePresentation;
-import game0.events.Attacks;
+import game0.events.combats.Attacks;
 import game0.events.combats.CombatLogic;
-import game0.events.combats.CombatNarrator;
-import game0.events.combats.CombatTablePum;
+import game0.threads.thread.narrative.CombatNarrator;
+import game0.threads.thread.table_pum.CombatTablePum;
 import game0.player.Equipment;
 import game0.player.Player;
 import game0.NPCs.Enemy;
-import game0.threads.thread.ThreadPonYTable;
+import game0.threads.thread.table_pum.ThreadTablePum;
 import playerInteractions.Dice;
 import playerInteractions.GameEnter;
 import window.GuiInteraction;
 
-public class GameContext { //esta clase encapsula muchas otras clases
+public class GameContext {
     private ConsolePresentation consolePresentation;
     private GuiInteraction guiInteraction;
     private Player player;
@@ -25,9 +25,9 @@ public class GameContext { //esta clase encapsula muchas otras clases
     private Dice dice;
     private CombatLogic cl;
     private CombatTablePum ctp;
-    private ThreadPonYTable tpt;
+    private ThreadTablePum tpt;
 
-    public GameContext(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, CombatNarrator combat, Equipment equipment, Attacks attacks, GameEnter ge, CombatLogic cl, CombatTablePum ctp, ThreadPonYTable tpt) {
+    public GameContext(ConsolePresentation cp, GuiInteraction gi, Player player, Enemy enemy, CombatNarrator combat, Equipment equipment, Attacks attacks, GameEnter ge, CombatLogic cl, CombatTablePum ctp, ThreadTablePum tpt) {
         this.consolePresentation = cp;
         this.guiInteraction = gi;
         this.player = player;
@@ -98,6 +98,6 @@ public class GameContext { //esta clase encapsula muchas otras clases
     }
     public CombatLogic getCl(){return cl;}
     public CombatTablePum getctp(){return ctp;}
-    public ThreadPonYTable getTpt(){return tpt;}
+    public ThreadTablePum getTpt(){return tpt;}
 
 }

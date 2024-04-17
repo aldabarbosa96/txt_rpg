@@ -49,7 +49,8 @@ public class GameVoiceOver {
         /*21*/vozEnOff.add("Te crujes el ano turbo fuerte; un pedo descomunal que resuena por toda la valle del acantilado.");
         /*22*/vozEnOff.add("Los entes extraños te otorgan un objeto extraño.");
         /*23*/vozEnOff.add("<<{PlayerName}>> ha recibido \"Mechero\"");
-        /*24*/vozEnOff.add("MARICÓN");
+        /*24*/vozEnOff.add("PRINGAO");
+        /*25*/vozEnOff.add("Ignoras por completo a los entes extraños.");
     }
 }
 

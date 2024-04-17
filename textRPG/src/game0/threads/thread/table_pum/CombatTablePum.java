@@ -1,15 +1,16 @@
-package game0.events.combats;
+package game0.threads.thread.table_pum;
 
 import game0.NPCs.Enemy;
 import game0.NPCs.NpcNarration;
-import game0.game.GameContext;
+import game0.events.combats.CombatLogic;
+import game0.game.manager.GameContext;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.player.Player;
 import game0.player.PlayerOptions;
 import window.GuiInteraction;
 
-public class CombatTablePum extends CombatLogic{
+public class CombatTablePum extends CombatLogic {
     public void combatFlowTablePum(GameContext gc) { //todo -> implementar una clase (o interfaz) que controle y estructure el combate de forma genérica y dinámica
         GuiInteraction gi = gc.getGuiInteraction();
         Player player = gc.getPlayer();
@@ -45,7 +46,7 @@ public class CombatTablePum extends CombatLogic{
         float xpGanada = player.calculateXP(enemy) + xpBase;
         player.setXp(xpGanada);
 
-        if (playerWins) {   // todo -> corregir esto
+        if (playerWins) {
             gi.pauseForUserInput();
             GameStoryTeller.narrar(50,player);
             gi.pauseForUserInput();
@@ -57,11 +58,11 @@ public class CombatTablePum extends CombatLogic{
             gi.pauseForUserInput();
             GameVoiceOver.dialogo(20,null);
             gi.pauseForUserInput();
-            GameVoiceOver.dialogo(24,null); //mensaje subliminal casi invisible
+            GameVoiceOver.dialogo(24,null); // todo -> mensaje subliminal (hay q conseguir que se vea esto)
             System.exit(0);
 
         }
-        player.setEnergy(5);
+        player.setEnergy(10);
         player.setHp(player.getHp());
         enemy.setUpEnemy("",0,0,0,0);
     }

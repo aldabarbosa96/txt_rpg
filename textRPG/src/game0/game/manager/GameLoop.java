@@ -1,4 +1,4 @@
-package game0.game;
+package game0.game.manager;
 
 import game0.NPCs.Npc;
 import game0.game.narrative.GameStoryTeller;
@@ -43,7 +43,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         gc.getGuiInteraction().pauseForUserInput();
         Npc.interactuarNPC02(gc.getPlayer());
 
-            //decisión del jugador y progreso del juego
+        //decisión del jugador y progreso del juego
         pi.escogerOpcion(gc.getGuiInteraction(), npc, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
         GameStoryTeller.narrar(8, gc.getPlayer());
@@ -56,7 +56,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         gc.getGuiInteraction().pauseForUserInput();
         if (gc.getPlayer().ResPaz()) GameVoiceOver.separador(gc.getGuiInteraction());
 
-            //manejo del inventario y uso de objetos
+            //manejo del inventario
         Inventory.addToInventory("Dado");
         GameEnter.enterInv(gc.getGuiInteraction()); GameVoiceOver.separador(gc.getGuiInteraction());
         GameStoryTeller.narrar(12, null);

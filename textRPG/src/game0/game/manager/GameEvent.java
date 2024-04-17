@@ -1,9 +1,9 @@
-package game0.game;
+package game0.game.manager;
 
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.player.*;
-import game0.threads.thread.ThreadPonYTable;
+import game0.threads.thread.table_pum.ThreadTablePum;
 import window.GuiInteraction;
 
 public class GameEvent {
@@ -45,7 +45,7 @@ public class GameEvent {
         } while (!opcionEsc.equals("a") && !opcionEsc.equals("c"));
     }
 
-    public static String gestionEventos03(Player player, GuiInteraction gi, GameContext gc, ThreadPonYTable tpt) {
+    public static String gestionEventos03(Player player, GuiInteraction gi, GameContext gc, ThreadTablePum tpt) {
         String opcion = "";
         while (true) {
             GameVoiceOver.dialogo(13, player);
@@ -70,7 +70,7 @@ public class GameEvent {
                     GameStoryTeller.narrar(41,player);
                     gi.pauseForUserInput();
                     PlayerOptions.opcion(8,player);
-                    tpt.gestionEventosPumYTable(player,gi,gc);
+                    tpt.gestionEventosPumYTable(gc);
                     break;
                 case "b":
                     GameVoiceOver.separador(gi);
