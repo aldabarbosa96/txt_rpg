@@ -67,6 +67,7 @@ public class GameEvent {
                     GameVoiceOver.separador(gc.getGuiInteraction());
                     GameVoiceOver.dialogo(15,null);
                     gc.getGuiInteraction().pauseForUserInput();
+                    GameVoiceOver.separador(gc.getGuiInteraction());
                     GameStoryTeller.narrar(41,gc.getPlayer());
                     gc.getGuiInteraction().pauseForUserInput();
                     PlayerOptions.opcion(8,gc.getPlayer());

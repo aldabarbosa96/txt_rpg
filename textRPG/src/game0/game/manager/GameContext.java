@@ -57,6 +57,7 @@ public class GameContext {
     public void setAttacks(Attacks attacks) {
         this.attacks = attacks;
     }
+
     public Dice getDice() {
         return dice;
     }
@@ -96,8 +97,17 @@ public class GameContext {
     public GameEnter getGameEnter() {
         return gameEnter;
     }
-    public CombatLogic getCl(){return cl;}
-    public CombatTablePum getctp(){return ctp;}
-    public ThreadTablePum getTpt(){return tpt;}
+
+    public CombatLogic getCl() {
+        return cl;
+    }
+
+    public CombatTablePum getctp() {
+        return ctp;
+    }
+
+    public ThreadTablePum getTpt() {
+        return tpt;
+    }
 
 }

@@ -1,5 +1,5 @@
 package game0.threads.thread;
 
-public class NarrativeThread {  //todo -> implementar clase para manejar los diferentes hilos narrativos que se pueden desarrollar
+public class NarrativeThreads {  //todo -> implementar clase para manejar los diferentes hilos narrativos que se pueden desarrollar
     // todo -> se deben crear clases para cada hilo posible e implementar aquí el flujo de la lógica.
 }

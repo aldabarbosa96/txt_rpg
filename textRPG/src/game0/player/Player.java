@@ -13,6 +13,7 @@ public class Player {
     protected int lvl;
     protected float xp;
     private boolean resPaz;
+
     public int getDeffense() {
         return deffense;
     }
@@ -28,9 +29,11 @@ public class Player {
     public boolean ResPaz() {
         return resPaz;
     }
+
     public Player() {
     }
-    public  String getName() {
+
+    public String getName() {
         return name;
     }
 
@@ -46,7 +49,7 @@ public class Player {
         this.hp = hp;
     }
 
-    public Player(int lvl, float xp, int hp, int energy, int attack,int deffense) {
+    public Player(int lvl, float xp, int hp, int energy, int attack, int deffense) {
         this.hp = hp;
         this.energy = energy;
         this.attack = attack;
@@ -59,7 +62,9 @@ public class Player {
         this.energy = energy;
     }
 
-    public int getAttack(){return attack;}
+    public int getAttack() {
+        return attack;
+    }
 
     public void setAttack(int attack) {
         this.attack = attack;
@@ -68,34 +73,38 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-    public void setXp(float xpGanada){
+
+    public void setXp(float xpGanada) {
         xp += xpGanada;
         lvlUp();
     }
+
     public void setName(GuiInteraction gi) {
         gi.showMessage("Introduce tu nombre:"); //todo -> será útil en un futuro
     }
+
     public static void statsPlayer(Player player, GuiInteraction gi) { // todo -> reemplazar llamadas a este método por displayStats de ConsolePresentation
         gi.showMessage("---------------------------------------------------\nJugador: " + player.getName() + "\nVida: " + player.getHp() + "\nEnergía: " + player.getEnergy() +
-                "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense() +"\nNivel: "+player.getLvl() + "\nXP: "+player.getXp());
+                "\nFuerza: " + player.getAttack() + "\nDefensa: " + player.getDeffense() + "\nNivel: " + player.getLvl() + "\nXP: " + player.getXp());
         gi.pauseForUserInput();
     }
+
     public float calculateXP(Enemy enemy) {
         Dice d8 = new Dice(8);
         float expGanada;
-        if (lvl <= 3){
-            expGanada = (d8.lanzar()*1.8f) + enemy.getLvl();
+        if (lvl <= 3) {
+            expGanada = (d8.lanzar() * 1.8f) + enemy.getLvl();
         } else if (lvl > 3 && lvl <= 8) {
-            expGanada = (d8.lanzar()*1.5f) + enemy.getLvl();
+            expGanada = (d8.lanzar() * 1.5f) + enemy.getLvl();
         } else if (lvl > 8 && lvl <= 15) {
-            expGanada = (d8.lanzar()*1.2f) + enemy.getLvl();
+            expGanada = (d8.lanzar() * 1.2f) + enemy.getLvl();
         } else {
             expGanada = d8.lanzar() + enemy.getLvl();
         }
         return expGanada;
     }
 
-    public void lvlUp(){
+    public void lvlUp() {
         while (xp >= 100) {
             xp -= 100;
             lvl++;

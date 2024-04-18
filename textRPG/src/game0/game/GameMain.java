@@ -20,7 +20,7 @@ import window.GuiInteraction;
 
 import javax.swing.*;
 
-public class GameMain { // TODO -> ACUÉRDATE DE CAMBIAR EL GAMETESTER ANTES DE JUGAR
+public class GameMain { // TODO -> ¡ACUÉRDATE de cambiar el GameTester.run2() por GameLopp.run() antes de jugar!
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             //inicializamos componentes

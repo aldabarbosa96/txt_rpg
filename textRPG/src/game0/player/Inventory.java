@@ -23,15 +23,15 @@ public class Inventory {
     }
 
     public String getInventoryDisplay() {
-        StringBuilder inventoryContents = new StringBuilder("\n\n---------INVENTARIO------------\n\n\n");
+        StringBuilder inventoryContents = new StringBuilder("\n\n----------------INVENTARIO-------\n\n\n");
         for (int i = 0; i < slots.length; i++) {
             if (i <= 8) {
-                inventoryContents.append("        0").append(i + 1).append(".    ").append(slots[i]).append("\n");
+                inventoryContents.append("                    0").append(i + 1).append(".   ").append(slots[i]).append("\n");
             } else {
-                inventoryContents.append("        ").append(i + 1).append(".    ").append(slots[i]).append("\n");
+                inventoryContents.append("                    ").append(i + 1).append(".   ").append(slots[i]).append("\n");
             }
         }
-        inventoryContents.append("\n\n\n\n#################");
+        inventoryContents.append("\n\n\n\n\n#######################");
         return inventoryContents.toString();
     }
 }

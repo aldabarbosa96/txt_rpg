@@ -5,11 +5,13 @@ import game0.console.ConsolePresentation;
 import game0.player.Inventory;
 import game0.player.Equipment;
 import game0.player.Player;
+
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-public class GameFrame extends JFrame{
+
+public class GameFrame extends JFrame {
     private JTextArea textArea;
     private JTextField inputField;
     private GuiInteraction guiInteraction;
@@ -49,6 +51,7 @@ public class GameFrame extends JFrame{
         setFocusable(true);
         setVisible(true);
     }
+
     private void initializeComponents() {
         setupTextArea();
         setupSidePanel();
@@ -57,6 +60,7 @@ public class GameFrame extends JFrame{
         setupKeyBindings();
         guiInteraction = new GuiInteraction(textArea, this);
     }
+
     private void startUpdateTimer() {
         updateTimer = new Timer(100, e -> updateUIAreas());  // Actualizar cada 1000 ms = 1 segundo
         updateTimer.start();
@@ -70,14 +74,15 @@ public class GameFrame extends JFrame{
             equipmentArea.setText(equipment.toString());
         }
         if (statsScrollPane.isVisible()) {
-            statsArea.setText(consolePresentation.displayStats(guiInteraction, player,enemy));
+            statsArea.setText(consolePresentation.displayStats(guiInteraction, player, enemy));
         }
     }
+
     private void setupTextArea() {
         textArea = new JTextArea();
         textArea.setEditable(false);
-        textArea.setBackground(Color.black);
-        textArea.setForeground(Color.orange);
+        textArea.setBackground(new Color(10, 10, 10));
+        textArea.setForeground(new Color(215, 215, 215));
         textArea.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 16));
         textArea.setMargin(new Insets(15, 13, 300, 5));
 
@@ -90,6 +95,7 @@ public class GameFrame extends JFrame{
 
         add(textScrollPane, BorderLayout.CENTER);
     }
+
     private void setupButtonPanel() {
         buttonPanel = new JPanel(new BorderLayout());
         setupInputField();
@@ -98,6 +104,7 @@ public class GameFrame extends JFrame{
         buttonPanel.setBackground(Color.black);
         add(buttonPanel, BorderLayout.SOUTH);
     }
+
     private void setupInputField() {
         inputField = new JTextField();
         inputField.addActionListener(e -> {
@@ -114,6 +121,7 @@ public class GameFrame extends JFrame{
         inputField.setFont(new Font("Liberation mono", Font.PLAIN, 17));
         buttonPanel.add(inputField, BorderLayout.CENTER);
     }
+
     private void setupContinueButton() {
         continueButton = new JButton("CONTINUAR");
         continueButton.addActionListener(e -> {
@@ -123,67 +131,72 @@ public class GameFrame extends JFrame{
         continueButton.setVisible(false);
         continueButton.setBackground(Color.black);
         continueButton.setForeground(Color.orange);
-        continueButton.setPreferredSize(new Dimension(233, 50));
+        continueButton.setPreferredSize(new Dimension(245, 50));
         buttonPanel.add(continueButton, BorderLayout.EAST);
     }
+
     private void setupStatsPanel() {
         statsPanel = new JPanel();
-        statsPanel.setLayout(new BoxLayout(statsPanel,BoxLayout.PAGE_AXIS));
+        statsPanel.setLayout(new BoxLayout(statsPanel, BoxLayout.PAGE_AXIS));
         statsPanel.setBackground(Color.black);
         setupStatsArea(statsPanel);
-
-        add(statsPanel, BorderLayout.WEST); // Ubicación del panel de estadísticas en el lado izquierdo
+        add(statsPanel, BorderLayout.WEST);
     }
+
     private void setupStatsArea(JPanel parent) {
         statsArea = new JTextArea(8, 8);
         statsArea.setEditable(false);
         statsArea.setBackground(Color.black);
-        statsArea.setForeground(Color.orange);
-        statsArea.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 16));
+        statsArea.setForeground(new Color(220, 175, 10));
+        statsArea.setFont(new Font("Lucida Sans Unicode", Font.BOLD, 16));
 
         statsScrollPane = new JScrollPane(statsArea);
-        statsScrollPane.setPreferredSize(new Dimension(210,400));
+        statsScrollPane.setPreferredSize(new Dimension(220, 400));
         statsScrollPane.setVisible(false);
-        statsScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange, 4));
+        statsScrollPane.setBorder(BorderFactory.createLineBorder(Color.lightGray, 3));
         statsScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         statsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 
         parent.add(statsScrollPane);
     }
+
     private void setupSidePanel() {
         sidePanel = new JPanel(new GridLayout(2, 1));
+        sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.PAGE_AXIS));
         setupInventoryArea(sidePanel);
         setupEquipmentArea(sidePanel);
         sidePanel.setBackground(Color.black);
-        sidePanel.setVisible(true);
         add(sidePanel, BorderLayout.EAST);
     }
+
     private void setupInventoryArea(JPanel parent) {
         inventoryArea = new JTextArea(15, 15);
         inventoryArea.setEditable(false);
         inventoryArea.setBackground(Color.black);
-        inventoryArea.setForeground(Color.orange);
-        inventoryArea.setFont(new Font("verdana", Font.PLAIN, 16));
+        inventoryArea.setForeground(new Color(220, 175, 10));
+        inventoryArea.setFont(new Font("verdana", Font.BOLD, 16));
         inventoryScrollPane = new JScrollPane(inventoryArea);
         inventoryScrollPane.setVisible(false);
-        inventoryScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange,4));
+        inventoryScrollPane.setBorder(BorderFactory.createLineBorder(Color.lightGray, 3));
         inventoryScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         inventoryScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         parent.add(inventoryScrollPane);
     }
+
     private void setupEquipmentArea(JPanel parent) {
         equipmentArea = new JTextArea(15, 15);
         equipmentArea.setEditable(false);
         equipmentArea.setBackground(Color.black);
-        equipmentArea.setForeground(Color.orange);
-        equipmentArea.setFont(new Font("Verdana", Font.PLAIN, 15));
+        equipmentArea.setForeground(new Color(220, 175, 10));
+        equipmentArea.setFont(new Font("Verdana", Font.BOLD, 15));
         equipmentScrollPane = new JScrollPane(equipmentArea);
         equipmentScrollPane.setVisible(false);
-        equipmentScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange,4));
+        equipmentScrollPane.setBorder(BorderFactory.createLineBorder(Color.lightGray, 3));
         equipmentScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         equipmentScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         parent.add(equipmentScrollPane);
     }
+
     private void setupKeyBindings() {
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap actionMap = getRootPane().getActionMap();
@@ -221,6 +234,7 @@ public class GameFrame extends JFrame{
             }
         });
     }
+
     private void togglePanelVisibility(JScrollPane scrollPane) {
         SwingUtilities.invokeLater(() -> {
             boolean isVisible = scrollPane.isVisible();
@@ -242,6 +256,7 @@ public class GameFrame extends JFrame{
             getContentPane().repaint();
         });
     }
+
     public void showContinueButton(boolean show) {
         SwingUtilities.invokeLater(() -> continueButton.setVisible(show));
     }

@@ -32,26 +32,26 @@ public class CombatNarrator extends CombatLogic {
             GameVoiceOver.separador(gc.getGuiInteraction());
         }
         gc.getGuiInteraction().showMessage(winnerMessage);
-        resetParticipantsNarrador(gc.getPlayer(), gc.getEnemy());
+        resetParticipantsNarrador(gc);
         gc.getConsolePresentation().displayStats(gc.getGuiInteraction(),gc.getPlayer(),null);
         gc.getGuiInteraction().pauseForUserInput();
     }
 
-    private void resetParticipantsNarrador(Player player, Enemy enemy) {
-        float xpBase = playerWins ? 13.33f : 6.65f;
-        float xpGanada = player.calculateXP(enemy) + xpBase;
-        player.setXp(xpGanada);
+    private void resetParticipantsNarrador(GameContext gc) {
+        float xpBase = playerWins ? 14.33f : 7.65f;
+        float xpGanada = gc.getPlayer().calculateXP(gc.getEnemy()) + xpBase;
+        gc.getPlayer().setXp(xpGanada);
 
         if (playerWins) {
-            GameStoryTeller.narrar(19, player);
+            GameStoryTeller.narrar(19, gc.getPlayer());
             GameStoryTeller.narrar(20, null);
         } else {
             GameStoryTeller.narrar(21, null);
-            GameStoryTeller.narrar(40, player);
+            GameStoryTeller.narrar(40, gc.getPlayer());
         }
-        player.setEnergy(10);
-        player.setHp(30);
-        enemy.setUpEnemy("",0,0,0,0);
+        gc.getPlayer().setEnergy(10);
+        gc.getPlayer().setHp(30);
+        gc.getEnemy().setUpEnemy("",0,0,0,0);
     }
 
 

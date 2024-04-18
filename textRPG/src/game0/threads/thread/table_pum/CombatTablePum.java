@@ -21,7 +21,7 @@ public class CombatTablePum extends CombatLogic {
         NpcNarration.dialogoPumYTable(7);
         gi.pauseForUserInput();
 
-        enemy.setUpEnemy("Pum y Table",24,4,4,2);
+        enemy.setUpEnemy("Pum y Table", 24, 4, 4, 2);
         gc.getConsolePresentation().displayCombat(gi, player, enemy);
         gi.pauseForUserInput();
 
@@ -37,34 +37,35 @@ public class CombatTablePum extends CombatLogic {
             GameVoiceOver.separador(gi);
         }
         gi.showMessage(winnerMessage);
-        resetParticipantsTablePum(player, enemy,gi);
-        gc.getConsolePresentation().displayStats(gi,player,null);
+        resetParticipantsTablePum(gc);
+        gc.getConsolePresentation().displayStats(gi, player, null);
         gi.pauseForUserInput();
     }
-    private void resetParticipantsTablePum(Player player, Enemy enemy, GuiInteraction gi) {
+
+    private void resetParticipantsTablePum(GameContext gc) {
         float xpBase = playerWins ? 13.33f : 6.65f;
-        float xpGanada = player.calculateXP(enemy) + xpBase;
-        player.setXp(xpGanada);
+        float xpGanada = gc.getPlayer().calculateXP(gc.getEnemy()) + xpBase;
+        gc.getPlayer().setXp(xpGanada);
 
         if (playerWins) {
-            gi.pauseForUserInput();
-            GameStoryTeller.narrar(50,player);
-            gi.pauseForUserInput();
-            enemy.setUpEnemy("",0,0,0,0);
-            GameVoiceOver.dialogo(13,null);
-            PlayerOptions.opcion(12,player);
+            gc.getGuiInteraction().pauseForUserInput();
+            GameStoryTeller.narrar(50, gc.getPlayer());
+            gc.getGuiInteraction().pauseForUserInput();
+            gc.getEnemy().setUpEnemy("", 0, 0, 0, 0);
+            GameVoiceOver.dialogo(13, null);
+            PlayerOptions.opcion(12, gc.getPlayer());
         } else {
-            GameStoryTeller.narrar(49,player);
-            gi.pauseForUserInput();
-            GameVoiceOver.dialogo(20,null);
-            gi.pauseForUserInput();
-            GameVoiceOver.dialogo(24,null); // todo -> mensaje subliminal (hay q conseguir que se vea esto)
+            GameStoryTeller.narrar(49, gc.getPlayer());
+            gc.getGuiInteraction().pauseForUserInput();
+            GameVoiceOver.dialogo(20, null);
+            gc.getGuiInteraction().pauseForUserInput();
+            GameVoiceOver.dialogo(24, null); // todo -> mensaje subliminal (hay q conseguir que se vea esto)
             System.exit(0);
 
         }
-        player.setEnergy(10);
-        player.setHp(player.getHp());
-        enemy.setUpEnemy("",0,0,0,0);
+        gc.getPlayer().setEnergy(10);
+        gc.getPlayer().setHp( gc.getPlayer().getHp());
+        gc.getEnemy().setUpEnemy("", 0, 0, 0, 0);
     }
 
 }

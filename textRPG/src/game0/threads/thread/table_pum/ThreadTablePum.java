@@ -27,8 +27,7 @@ public class ThreadTablePum extends CombatLogic {
                 break;
         }
     }
-    public static void dialogar(GameContext gc) { //todo -> interaccion con las opciones en otro método
-
+    public static void dialogar(GameContext gc) {
         PlayerOptions.dialogo(4, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
 
@@ -41,9 +40,9 @@ public class ThreadTablePum extends CombatLogic {
         NpcNarration.dialogoPumYTable(2);
         gc.getGuiInteraction().pauseForUserInput();
         NpcNarration.dialogoPumYTable(3);
-        GameVoiceOver.separador(gc.getGuiInteraction());
         PlayerOptions.dialogo(5, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
+        GameVoiceOver.separador(gc.getGuiInteraction());
         NpcNarration.dialogoPumYTable(4);
         gc.getGuiInteraction().pauseForUserInput();
         NpcNarration.dialogoPumYTable(5);
@@ -53,7 +52,6 @@ public class ThreadTablePum extends CombatLogic {
     }
 
     public void attack(GameContext gc) {
-        GameVoiceOver.separador(gc.getGuiInteraction());
         gc.getctp().combatFlowTablePum(gc);
     }
 
@@ -65,7 +63,7 @@ public class ThreadTablePum extends CombatLogic {
         GameVoiceOver.dialogo(22, null);
         gc.getEquipment().equiparItem("manoI", "Mechero (+2 Vida)");
         gc.getGuiInteraction().pauseForUserInput();
-        gc.getPlayer().setAttack(gc.getPlayer().getHp() + 2);
+        gc.getPlayer().setHp(gc.getPlayer().getHp() + 2);
         GameVoiceOver.dialogo(23, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
 
