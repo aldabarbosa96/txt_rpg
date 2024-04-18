@@ -74,15 +74,15 @@ public class Equipment {
     }
 
     @Override
-    public  String toString() {
-        return "\n\n-------------EQUIPO--------------------\n\n" +
-                "   Cabeza: \n     " + cabeza + "\n\n" +
-                "   Torso: \n     " + torso + "\n\n" +
-                "   Mano D: \n     " + manoD + "\n\n" +
-                "   Mano I: \n     " + manoI + "\n\n" +
-                "   Piernas: \n     " + pantalones + "\n\n" +
-                "   Pies: \n     " + zapatos + "\n\n" +
-                "   Amuleto: \n     " + collar + "\n\n" +
-                "\n----------------------------------";
+    public String toString() {
+        return "\n\n--------------EQUIPO--------------------\n\n" +
+                "       Cabeza: \n       " + cabeza + "\n\n" +
+                "       Torso: \n       " + torso + "\n\n" +
+                "       Mano D: \n       " + manoD + "\n\n" +
+                "       Mano I: \n       " + manoI + "\n\n" +
+                "       Piernas: \n       " + pantalones + "\n\n" +
+                "       Pies: \n       " + zapatos + "\n\n" +
+                "       Amuleto: \n       " + collar + "\n" +
+                "\n####################";
     }
 }

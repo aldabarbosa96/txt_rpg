@@ -45,56 +45,56 @@ public class GameEvent {
         } while (!opcionEsc.equals("a") && !opcionEsc.equals("c"));
     }
 
-    public static String gestionEventos03(Player player, GuiInteraction gi, GameContext gc, ThreadTablePum tpt) {
+    public static String gestionEventos03(GameContext gc) {
         String opcion = "";
         while (true) {
-            GameVoiceOver.dialogo(13, player);
-            gi.pauseForUserInput();
-            PlayerOptions.opcion(7, player);
+            GameVoiceOver.dialogo(13, gc.getPlayer());
+            gc.getGuiInteraction().pauseForUserInput();
+            PlayerOptions.opcion(7, gc.getPlayer());
 
-            opcion = gi.getInput().toLowerCase();
+            opcion = gc.getGuiInteraction().getInput().toLowerCase();
             switch (opcion) {
                 case "d":
-                    GameVoiceOver.separador(gi);
+                    GameVoiceOver.separador(gc.getGuiInteraction());
                     GameVoiceOver.dialogo(18, null);
-                    gi.pauseForUserInput();
+                    gc.getGuiInteraction().pauseForUserInput();
                     GameStoryTeller.narrar(45, null);
-                    gi.pauseForUserInput();
-                    PlayerOptions.opcion(10,player);
+                    gc.getGuiInteraction().pauseForUserInput();
+                    PlayerOptions.opcion(10,gc.getPlayer());
                     //todo -> SEGUIR POR AQUÍ!!!
                     break;
                 case "a":
-                    GameVoiceOver.separador(gi);
+                    GameVoiceOver.separador(gc.getGuiInteraction());
                     GameVoiceOver.dialogo(15,null);
-                    gi.pauseForUserInput();
-                    GameStoryTeller.narrar(41,player);
-                    gi.pauseForUserInput();
-                    PlayerOptions.opcion(8,player);
-                    tpt.gestionEventosPumYTable(gc);
+                    gc.getGuiInteraction().pauseForUserInput();
+                    GameStoryTeller.narrar(41,gc.getPlayer());
+                    gc.getGuiInteraction().pauseForUserInput();
+                    PlayerOptions.opcion(8,gc.getPlayer());
+                    gc.getTpt().gestionEventosPumYTable(gc);
                     break;
                 case "b":
-                    GameVoiceOver.separador(gi);
+                    GameVoiceOver.separador(gc.getGuiInteraction());
                     GameVoiceOver.dialogo(16,null);
-                    gi.pauseForUserInput();
-                    GameStoryTeller.narrar(42,player);
-                    gi.pauseForUserInput();
-                    PlayerOptions.opcion(9,player);
+                    gc.getGuiInteraction().pauseForUserInput();
+                    GameStoryTeller.narrar(42,gc.getPlayer());
+                    gc.getGuiInteraction().pauseForUserInput();
+                    PlayerOptions.opcion(9,gc.getPlayer());
                     //todo -> SEGUIR POR AQUÍ!!!
                     break;
                 case "c":
-                    GameVoiceOver.separador(gi);
+                    GameVoiceOver.separador(gc.getGuiInteraction());
                     GameVoiceOver.dialogo(17,null);
-                    gi.pauseForUserInput();
-                    GameStoryTeller.narrar(43,player);
-                    gi.pauseForUserInput();
-                    GameStoryTeller.narrar(44,player);
+                    gc.getGuiInteraction().pauseForUserInput();
+                    GameStoryTeller.narrar(43,gc.getPlayer());
+                    gc.getGuiInteraction().pauseForUserInput();
+                    GameStoryTeller.narrar(44,gc.getPlayer());
                     //todo -> SEGUIR POR AQUÍ!!!
                     break;
                 case "e":
                     return opcion;
                 default:
                     GameStoryTeller.narrar(26, null);
-                    gi.showMessage("\n");
+                    gc.getGuiInteraction().showMessage("\n");
             }
             break;
         }

@@ -7,6 +7,7 @@ import game0.events.combats.Attacks;
 import game0.events.combats.CombatLogic;
 import game0.game.manager.GameContext;
 import game0.game.manager.GameLoop;
+import game0.game.manager.GameTester;
 import game0.threads.thread.narrative.CombatNarrator;
 import game0.threads.thread.table_pum.CombatTablePum;
 import game0.game.narrative.GameStoryTeller;
@@ -16,14 +17,16 @@ import game0.threads.thread.table_pum.ThreadTablePum;
 import playerInteractions.GameEnter;
 import window.GameFrame;
 import window.GuiInteraction;
+
 import javax.swing.*;
-public class GameMain {
+
+public class GameMain { // TODO -> ACUÉRDATE DE CAMBIAR EL GAMETESTER ANTES DE JUGAR
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             //inicializamos componentes
             Inventory inventory = new Inventory();
             Equipment equipment = new Equipment();
-            Player player = new Player(1,0, 30, 10, 1,1);
+            Player player = new Player(1, 0, 30, 10, 1, 1);
             Enemy enemy = new Enemy();
             GameFrame frame = new GameFrame(inventory, equipment, player, enemy);
             GuiInteraction guiInteraction = frame.getGuiInteraction();
@@ -37,7 +40,7 @@ public class GameMain {
             ThreadTablePum tpt = new ThreadTablePum();
 
             //contexto juego
-            GameContext gc = new GameContext(consolePresentation, guiInteraction, player, enemy, combat, equipment, attacks, gameEnter, cl,ctp,tpt);
+            GameContext gc = new GameContext(consolePresentation, guiInteraction, player, enemy, combat, equipment, attacks, gameEnter, cl, ctp, tpt);
 
             //ejecución bucle principal
             new Thread(() -> {
@@ -45,7 +48,7 @@ public class GameMain {
                 NpcNarration.setUserInteraction(guiInteraction);
                 PlayerOptions.setUserInteraction(guiInteraction);
                 GameVoiceOver.setUserInteraction(guiInteraction);
-                GameLoop.run(gc,pi);
+                GameTester.run2(gc);
             }).start();
         });
     }

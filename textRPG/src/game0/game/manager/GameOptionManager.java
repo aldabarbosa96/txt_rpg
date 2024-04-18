@@ -15,9 +15,13 @@ public class GameOptionManager {
                 Tutorial.tutorialEvent(gc);
                 return true;
             case "b":
-            case "c":
                 GameStoryTeller.narrar(17, null);
                 gc.getCombat().combatFlowNarrator(gc);
+            case "c":
+                GameStoryTeller.narrar(28,null);
+                GameVoiceOver.separador(gc.getGuiInteraction());
+                gc.getGuiInteraction().pauseForUserInput();
+                System.exit(0);
                 return true;
             default:
                 GameStoryTeller.narrar(26, null);

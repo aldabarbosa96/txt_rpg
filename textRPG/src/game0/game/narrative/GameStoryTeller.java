@@ -32,13 +32,13 @@ public class GameStoryTeller {
         /*6*/narracion.add("Narrador: El guardia cae redondo al suelo y se desnuca con una botella rota que había por ahí.");
         /*7*/narracion.add("Narrador: El guardia comprueba que no llevas nada raro. Bueno realmente no llevas NADA.");
         /*8*/narracion.add("\nNarrador: <<{PlayerName}>> ha obtenido ¡EL DADO!");
-        /*9*/narracion.add("Narrador: Este DAAADO sirve para que el jodido videojuego sea puro azar; es decir, cuando tengas un combate, un diálogo, o cualquier interacción con el mundo\nes posible que se te obligue a decidir tu suerte tirando LOS dados (efectivamente, tienes más de uno) para que jamás sepas tu destino.\nMe sigues <<Caradeculo>> ? Digo <<{PlayerName}>> ?");
+        /*9*/narracion.add("Narrador: Este DAAADO sirve para que el jodido videojuego sea puro azar; cuando tengas un combate, un diálogo, etc.\nEs posible que se te obligue a decidir tu suerte tirando LOS dados (efectivamente, tienes más de uno) para que jamás sepas tu destino.\nMe sigues <<Caradeculo>> ? Digo <<{PlayerName}>> ?");
         /*10*/narracion.add("Narrador: Te mostraré tu inventario para que vayas viendo el espacio que tienes y \"tus items\"\n");
         /*11*/narracion.add("PD: por haber sido bueno y pacífico además del \"DADO\" has obtenido un roñoso pero comestible \"trozo de pan.\"");
         /*12*/narracion.add("Narrador: Como habrás visto ya dispones de un DADO en tu inventario.");
         /*13*/narracion.add("Narrador: ¡Vamos a probar ese DADO! Primero que sepas que es un DADO algo mágico; puede tener diversas caras.");
-        /*14*/narracion.add("Narrador: Hay una amplia variedad de DADOS por descubrir... Ahora, centrémonos en el DADO de ataque (el de 12 caras) y simulemos un ataque.");
-        /*15*/narracion.add("Narrador: Bien, ahora que ya has visto el \"complejo\" sistema de lanzamiento de dados, quieres que te parta la boca ya o prefieres el T-U-T-O-R-I-A-L para T-O-N-T-I-T-O-S ?");
+        /*14*/narracion.add("Narrador: Hay una amplia variedad de DADOS por descubrir... Ahora, centrémonos en el DADO de ataque y simulemos un ataque.");
+        /*15*/narracion.add("Narrador: Bien, ahora que ya has visto el \"complejo\" sistema de lanzamiento de dados, quieres que te parta la boca ya o prefieres \n\nel T-U-T-O-R-I-A-L para T-O-N-T-I-T-O-S ?");
         /*16*/narracion.add("Narrador del Narrador: El Narrador se enfada.");
         /*17*/narracion.add("Narrador: Se han acabado ya las mamarrachadas, a partirse la boca YA:");
         /*18*/narracion.add("Narrador: El guardia se saca un trozo de pan del ano y se lo entrega al jugador; también le regala un dado raro.");
@@ -46,7 +46,7 @@ public class GameStoryTeller {
         /*20*/narracion.add("Narrador del Narrador: En realidad no se había dejado, solo era un paco.");
         /*21*/narracion.add("Narrador: Hay que ser pringao para perder contra mí JA JA JA...\n");
         /*22*/narracion.add("Narrador: Llegados a este punto, si te ves preparad@ para emprender tu viaje <<{PlayerName}>> tengo algo para ti.\n");
-        /*23*/narracion.add("Narrador: Por el contrario, si prefieres practicar un poco más con el combate, que te R-E-P-I-T-A el T-U-T-O-R-I-A-L o prefieres abandonar aquí, ahora es el momento:");
+        /*23*/narracion.add("Narrador: Por el contrario, si prefieres practicar un poco más con el combate, ver el T-U-T-O-R-I-A-L o prefieres abandonar aquí, ahora es el momento:");
         /*24*/narracion.add("Narrador: Lo vas a flipar <<{PlayerName}>>\n\n¡QUE EMPIECE EL JUEGO!\n---------------------------------------------------\n");
         /*25*/narracion.add("Narrador: Estás en el centro del oasis \"Centro\", un peculiar, maravilloso y peligroso lugar en el corazón del desierto del \"Santako\".");
         /*26*/narracion.add("Narrador: Prueba de nuevo, lumbreras.");

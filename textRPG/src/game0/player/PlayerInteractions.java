@@ -78,7 +78,6 @@ public class PlayerInteractions extends Player{
             respuesta = gi.getInput();
 
             if (respuesta.equalsIgnoreCase("a")){
-                GameVoiceOver.separador(gi);
                 PlayerOptions.dialogo(3,player);
                 respuestaValida = true;
             } else if (respuesta.equalsIgnoreCase("b")) {

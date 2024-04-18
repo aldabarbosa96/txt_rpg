@@ -81,7 +81,7 @@ public class GameLoop { // todo -> modularizar esta clase en un futuro para mane
         gc.getGuiInteraction().pauseForUserInput();
 
         //todo -> continuar la historia...
-        GameEvent.gestionEventos03(gc.getPlayer(), gc.getGuiInteraction(),gc,gc.getTpt());
+        GameEvent.gestionEventos03(gc);
 
     }
 }

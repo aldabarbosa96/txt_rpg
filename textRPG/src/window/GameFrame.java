@@ -37,7 +37,7 @@ public class GameFrame extends JFrame{
         this.player = player;
         this.enemy = enemy;
         setTitle("txt_rpg");
-        setSize(1800, 1080);
+        setSize(1900, 1180);
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -78,7 +78,7 @@ public class GameFrame extends JFrame{
         textArea.setEditable(false);
         textArea.setBackground(Color.black);
         textArea.setForeground(Color.orange);
-        textArea.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+        textArea.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 16));
         textArea.setMargin(new Insets(15, 13, 300, 5));
 
         textScrollPane = new JScrollPane(textArea);
@@ -110,8 +110,8 @@ public class GameFrame extends JFrame{
         inputField.setBackground(Color.black);
         inputField.setForeground(Color.orange);
         inputField.setCaretColor(Color.orange);
-        inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 40));
-        inputField.setFont(new Font("Century Gothic", Font.PLAIN, 17));
+        inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 50));
+        inputField.setFont(new Font("Liberation mono", Font.PLAIN, 17));
         buttonPanel.add(inputField, BorderLayout.CENTER);
     }
     private void setupContinueButton() {
@@ -123,7 +123,7 @@ public class GameFrame extends JFrame{
         continueButton.setVisible(false);
         continueButton.setBackground(Color.black);
         continueButton.setForeground(Color.orange);
-        continueButton.setPreferredSize(new Dimension(250, 40));
+        continueButton.setPreferredSize(new Dimension(233, 50));
         buttonPanel.add(continueButton, BorderLayout.EAST);
     }
     private void setupStatsPanel() {
@@ -139,10 +139,10 @@ public class GameFrame extends JFrame{
         statsArea.setEditable(false);
         statsArea.setBackground(Color.black);
         statsArea.setForeground(Color.orange);
-        statsArea.setFont(new Font("Verdana", Font.BOLD, 14));
+        statsArea.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 16));
 
         statsScrollPane = new JScrollPane(statsArea);
-        statsScrollPane.setPreferredSize(new Dimension(200,400));
+        statsScrollPane.setPreferredSize(new Dimension(210,400));
         statsScrollPane.setVisible(false);
         statsScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange, 4));
         statsScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -163,7 +163,7 @@ public class GameFrame extends JFrame{
         inventoryArea.setEditable(false);
         inventoryArea.setBackground(Color.black);
         inventoryArea.setForeground(Color.orange);
-        inventoryArea.setFont(new Font("Verdana", Font.BOLD, 16));
+        inventoryArea.setFont(new Font("verdana", Font.PLAIN, 16));
         inventoryScrollPane = new JScrollPane(inventoryArea);
         inventoryScrollPane.setVisible(false);
         inventoryScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange,4));
@@ -176,7 +176,7 @@ public class GameFrame extends JFrame{
         equipmentArea.setEditable(false);
         equipmentArea.setBackground(Color.black);
         equipmentArea.setForeground(Color.orange);
-        equipmentArea.setFont(new Font("Verdana", Font.BOLD, 14));
+        equipmentArea.setFont(new Font("Verdana", Font.PLAIN, 15));
         equipmentScrollPane = new JScrollPane(equipmentArea);
         equipmentScrollPane.setVisible(false);
         equipmentScrollPane.setBorder(BorderFactory.createLineBorder(Color.orange,4));
