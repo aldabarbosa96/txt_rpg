@@ -3,12 +3,12 @@ Para quien lea esto:
 Soy un estudiante de programación (desarrollo aplicaciones multiplataforma) y estoy creando este rpg de texto
 para asimilar las bases y fundamentos de la POO y Java y además aprender sobre lo que más me gusta y me interesa, el Game Development.
 
-Actualmente el juego está muy verde, solamente imprime texto por terminal y juega con las entradas del usuario para la toma de decisiones,
-simulación de combates, y alguna que otra interacción más. La idea es que el juego siga siendo un rpg de texto pero que se visualice 
-en una ventana GUI (implementación de JFrame y JPanel en un futuro) y que el usuario pueda interactuar tanto con teclado como con ratón,
-además de añadir algunos sprites para que el acabado visual sea mucho mejor (la idea es que tanto los npc's, enemigos, items, etc, tenga
-su representación gráfica dentro del juego.
-Por ahora soy consciente de los bugs y lo mal optimizado y redactado que está el código, por ahora me enfoco en que funcione y poco a poco lo voy revisando y mejorando.
+Actualmente el juego está muy verde, por ahora, he conseguido solamente implementar una GUI muy básica (muestra la historia y equipo y stats del jugador), que funciona a través de los inputs del usuario tanto por teclado como por ratón, en la toma de decisiones y avance de la narrativa. 
+
+Mi idea es poder perfilar esa GUI para que sea mucho más cómoda de usar y visualmente atractiva (añadiendo sprites de items, enemigos, etc).
+También, me gustaría poder terminar la historia (por ahora están solo las bases) con caminos, posibilidades y finales diferentes y variados.
+
+Soy consciente de los bugs y lo mal optimizado y redactado que está el código, por ahora me enfoco en que funcione y poco a poco lo voy revisando y mejorando.
 
 Espero que te guste el proyecto y cualquier duda, consejo o crítica constructiva será bienvenida :)
 
