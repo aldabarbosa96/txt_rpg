@@ -34,7 +34,7 @@ public class GameMain { // TODO -> ¡ACUÉRDATE de cambiar el GameTester.run2() 
             CombatNarrator combat = new CombatNarrator();
             Attacks attacks = new Attacks();
             GameEnter gameEnter = new GameEnter();
-            PlayerInteractions pi = new PlayerInteractions(player, guiInteraction);
+            PlayerInteractions pi = new PlayerInteractions(player, guiInteraction); //importante, no borrar
             CombatLogic cl = new CombatLogic();
             CombatTablePum ctp = new CombatTablePum();
             ThreadTablePum tpt = new ThreadTablePum();

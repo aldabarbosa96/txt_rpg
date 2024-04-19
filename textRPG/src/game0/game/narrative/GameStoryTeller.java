@@ -75,5 +75,11 @@ public class GameStoryTeller {
         /*49*/narracion.add("Narrador: ¡Enhorabuena <<{PlayerName}>> ! Has muerto nada más empezar la aventura, maravilloso. Venga hasta luego parguelas ;)");
         /*50*/narracion.add("Narrador: ¡Enhorabuena <<{PlayerName}>> ! Has ganado tu primer combate real, ¡WOW!");
         /*51*/narracion.add("Narrador: Pues a mí me parecieron amistosos... Igual podrías haberles dado una oportunidad.");
+        /*52*/narracion.add("Narrador: Madre mía con el buitre carroñero, <<{PlayerName}>> es un asesino y un buitre... Qué orgulloso estoy de ti... <3 ");
+        /*53*/narracion.add("Narrador: ¡Joder macho! Si lo llego a saber antes los hubiera matado yo mismo.");
+        /*54*/narracion.add("Narrador: Sí, sí, mejor date el piro <<{PlayerName}>> que seguro que alguien accaba echando de menos a esos dos.");
+        /*55*/narracion.add("Narrador: Esa es la buena <<{PlayerName}>>. La del listo, ahora puedes foll.. digo lootearlos sin que nadie te vea...");
+        /*56*/narracion.add("Narrador: Bueno, supongo que es porque eres idiota, pero bueno, yo los hubiera registrado.. por si acaso... ");
+        /*57*/narracion.add("Narrador: ¡¡¡HERMANOO!!! Ni la voz en off ha dicha nada, la has horrorizado... Debes estar de coña, va te lo volvere a preguntar:");
     }
 }

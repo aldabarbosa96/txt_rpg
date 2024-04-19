@@ -81,7 +81,7 @@ public class GameFrame extends JFrame {
     private void setupTextArea() {
         textArea = new JTextArea();
         textArea.setEditable(false);
-        textArea.setBackground(new Color(10, 10, 10));
+        textArea.setBackground(new Color(3, 3, 3));
         textArea.setForeground(new Color(215, 215, 215));
         textArea.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 16));
         textArea.setMargin(new Insets(15, 13, 300, 5));
@@ -115,8 +115,8 @@ public class GameFrame extends JFrame {
             }
         });
         inputField.setBackground(Color.black);
-        inputField.setForeground(Color.orange);
-        inputField.setCaretColor(Color.orange);
+        inputField.setForeground(new Color(215, 215, 215));
+        inputField.setCaretColor(new Color(215, 215, 215));
         inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 50));
         inputField.setFont(new Font("Liberation mono", Font.PLAIN, 17));
         buttonPanel.add(inputField, BorderLayout.CENTER);

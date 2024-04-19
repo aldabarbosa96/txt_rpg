@@ -32,6 +32,10 @@ public class PlayerOptions {
         /*10*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Retroceder al \"Centro\"\nB) Entrar en la Singuerlín C.F\nC) Adoptar postura sigilosa\nD) Provocar al primero que veas");
         /*11*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Coger regalo sin hacer preguntas\nB) Preguntar qué es eso\nC) Intentar robar\nD) Pasar de ellos");
         /*12*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Lootear los cuerpos\nB) Salir corriendo\nC) Ocultar los cuerpos");
+        /*13*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Tomar polvos raros\nB) Decir NO\nC) Atacar sin motivo alguno");
+        /*14*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Intentar huír\nB) Entablar conversación amistosa\nC) Combate directo");
+        /*15*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Lootear los cuerpos\nB) Pasar de ellos\nC) F*llarte los cadáveres");
+
     }
     public static void dialogo(int index, Player player){
         String escoger = dialogar.get(index);
@@ -49,6 +53,10 @@ public class PlayerOptions {
         /*2*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : Procede a enseñar su bolsa.");
         /*3*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : ¡Coño! ¡¿Solo tiene esto?! Menuda porquería.");
         /*4*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : Hola buenas, soy {PlayerName}, ya que veo que sois de por aquí cerca, sabéis algo acerca de los \"Acantilados Riera Alta\"?");
-        /*5*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : ¡Encantado, mis panas! ¿Algún consejo para poder llegar sano y salvo?");
+        /*5*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : ¡Anda Pum y table, como Rasca y Pica...xd. ¡Os trataré de mis panas! ¿Algún consejo para poder llegar sano y salvo?");
+        /*6*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : Emmm... Claro.. Lo que tú digas... Un placer mis panas. Y gracias por la faf.. fabulosa magia que me habéis dado.");
+        /*7*/dialogar.add("\n<<{PlayerName}>> : ¡Ciao mis panas!");
+        /*8*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : ¡Guau! ¡Qué generosa la gente de aquí! Muchas gracias, curiosos entes.");
+
     }
 }

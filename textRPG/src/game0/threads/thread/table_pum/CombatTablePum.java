@@ -7,7 +7,6 @@ import game0.game.manager.GameContext;
 import game0.game.narrative.GameStoryTeller;
 import game0.game.narrative.GameVoiceOver;
 import game0.player.Player;
-import game0.player.PlayerOptions;
 import window.GuiInteraction;
 
 public class CombatTablePum extends CombatLogic {
@@ -21,7 +20,7 @@ public class CombatTablePum extends CombatLogic {
         NpcNarration.dialogoPumYTable(7);
         gi.pauseForUserInput();
 
-        enemy.setUpEnemy("Pum y Table", 24, 4, 4, 2);
+        enemy.setUpEnemy("Pum y Table", 20, 3, 1, 2);
         gc.getConsolePresentation().displayCombat(gi, player, enemy);
         gi.pauseForUserInput();
 
@@ -39,7 +38,6 @@ public class CombatTablePum extends CombatLogic {
         gi.showMessage(winnerMessage);
         resetParticipantsTablePum(gc);
         gc.getConsolePresentation().displayStats(gi, player, null);
-        gi.pauseForUserInput();
     }
 
     private void resetParticipantsTablePum(GameContext gc) {
@@ -53,7 +51,6 @@ public class CombatTablePum extends CombatLogic {
             gc.getGuiInteraction().pauseForUserInput();
             gc.getEnemy().setUpEnemy("", 0, 0, 0, 0);
             GameVoiceOver.dialogo(13, null);
-            PlayerOptions.opcion(12, gc.getPlayer());
         } else {
             GameStoryTeller.narrar(49, gc.getPlayer());
             gc.getGuiInteraction().pauseForUserInput();

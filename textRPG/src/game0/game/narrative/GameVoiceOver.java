@@ -46,11 +46,23 @@ public class GameVoiceOver {
         /*18*/vozEnOff.add("Desciendes hacia la valle de \"Las Montañas Singuerlín\".");
         /*19*/vozEnOff.add("Pulsa \"S\" para abrir tus estadísticas:");
         /*20*/vozEnOff.add("\n--------------------GAME OVER--------------------");
-        /*21*/vozEnOff.add("Te crujes el ano turbo fuerte; un pedo descomunal que resuena por toda la valle del acantilado.");
+        /*21*/vozEnOff.add("\nTe crujes el ano turbo fuerte; un pedo descomunal que resuena por toda la valle del acantilado.");
         /*22*/vozEnOff.add("Los entes extraños te otorgan un objeto extraño.");
         /*23*/vozEnOff.add("<<{PlayerName}>> ha recibido \"Mechero\"");
         /*24*/vozEnOff.add("PRINGAO");
         /*25*/vozEnOff.add("Ignoras por completo a los entes extraños.");
+        /*26*/vozEnOff.add("Recibes un polvo blanco \"mágico\" que se saca del ano y, se te mete en un descuido por la nariz, sin poder remediarlo. ");
+        /*27*/vozEnOff.add("Obtienes +2 Energía // Pierdes -1 Vida.");
+        /*28*/vozEnOff.add("Miras los bolsillos, las mochilas y hasta en los gayumbos de estos dos entes.");
+        /*29*/vozEnOff.add("Encuentras un mechero y un colgante bastante horroroso.");
+        /*30*/vozEnOff.add("Parece que alguien te ha visto looteando los cadáveres.");
+        /*31*/vozEnOff.add("Sales corriendo cual gallina espantada, dejando un rastro de plumas y dignidad.");
+        /*32*/vozEnOff.add("Desapareces de la zona del delito, adentrándote más en \"Los Acantilados Riera Alta\".");
+        /*33*/vozEnOff.add("Te llevas raudo y veloz los cuerpos de la escena del crimen, sin que nadie cosniga verte.");
+        /*34*/vozEnOff.add("Dejas los cuerpos intactos y te marchas del lugar.");
+        /*35*/vozEnOff.add("Desapareces de la zona, adentrándote más en \"Los Acantilados Riera Alta\".");
+
+
     }
 }
 
