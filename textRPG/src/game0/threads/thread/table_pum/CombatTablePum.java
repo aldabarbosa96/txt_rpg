@@ -11,33 +11,33 @@ import window.GuiInteraction;
 
 public class CombatTablePum extends CombatLogic {
     public void combatFlowTablePum(GameContext gc) { //todo -> implementar una clase (o interfaz) que controle y estructure el combate de forma genérica y dinámica
-        GuiInteraction gi = gc.getGuiInteraction();
+        GuiInteraction gc0 = gc.getGuiInteraction();
         Player player = gc.getPlayer();
         Enemy enemy = gc.getEnemy();
-        GameVoiceOver.separador(gi);
+        GameVoiceOver.separador(gc0);
         NpcNarration.dialogoPumYTable(6);
-        gi.pauseForUserInput();
+        gc0.pauseForUserInput();
         NpcNarration.dialogoPumYTable(7);
-        gi.pauseForUserInput();
+        gc0.pauseForUserInput();
 
         enemy.setUpEnemy("Pum y Table", 20, 3, 1, 2);
-        gc.getConsolePresentation().displayCombat(gi, player, enemy);
-        gi.pauseForUserInput();
+        gc.getConsolePresentation().displayCombat(gc0, player, enemy);
+        gc0.pauseForUserInput();
 
         combatLogic(gc);
 
-        gi.pauseForUserInput();
+        gc0.pauseForUserInput();
         if (playerWins) {
             winnerMessage = "¡¡¡<<" + player.getName() + ">> es el ganador!!!";
-            GameVoiceOver.separador(gi);
+            GameVoiceOver.separador(gc0);
 
         } else {
             winnerMessage = "¡¡¡<<" + enemy.getName() + ">> es el ganador!!!";
-            GameVoiceOver.separador(gi);
+            GameVoiceOver.separador(gc0);
         }
-        gi.showMessage(winnerMessage);
+        gc0.showMessage(winnerMessage);
         resetParticipantsTablePum(gc);
-        gc.getConsolePresentation().displayStats(gi, player, null);
+        gc.getConsolePresentation().displayStats(gc0, player, null);
     }
 
     private void resetParticipantsTablePum(GameContext gc) {
@@ -50,7 +50,7 @@ public class CombatTablePum extends CombatLogic {
             GameStoryTeller.narrar(50, gc.getPlayer());
             gc.getGuiInteraction().pauseForUserInput();
             gc.getEnemy().setUpEnemy("", 0, 0, 0, 0);
-            GameVoiceOver.dialogo(13, null);
+            GameVoiceOver.dialogo(13, gc.getPlayer());
         } else {
             GameStoryTeller.narrar(49, gc.getPlayer());
             gc.getGuiInteraction().pauseForUserInput();

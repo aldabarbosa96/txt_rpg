@@ -45,60 +45,57 @@ public class GameEvent {
         } while (!opcionEsc.equals("a") && !opcionEsc.equals("c"));
     }
 
-    public static String gestionEventos03(GameContext gc) {
+    public static void gestionEventos03(GameContext gc) {
         String opcion = "";
         while (true) {
             GameVoiceOver.dialogo(13, gc.getPlayer());
             gc.getGuiInteraction().pauseForUserInput();
             PlayerOptions.opcion(7, gc.getPlayer());
-
             opcion = gc.getGuiInteraction().getInput().toLowerCase();
-            switch (opcion) {
-                case "d":
-                    GameVoiceOver.separador(gc.getGuiInteraction());
-                    GameVoiceOver.dialogo(18, null);
-                    gc.getGuiInteraction().pauseForUserInput();
-                    GameStoryTeller.narrar(45, null);
-                    gc.getGuiInteraction().pauseForUserInput();
-                    PlayerOptions.opcion(10,gc.getPlayer());
-                    //todo -> SEGUIR POR AQUÍ!!!
-                    break;
-                case "a":
-                    GameVoiceOver.separador(gc.getGuiInteraction());
-                    GameVoiceOver.dialogo(15,null);
-                    gc.getGuiInteraction().pauseForUserInput();
-                    GameVoiceOver.separador(gc.getGuiInteraction());
-                    GameStoryTeller.narrar(41,gc.getPlayer());
-                    gc.getGuiInteraction().pauseForUserInput();
-                    PlayerOptions.opcion(8,gc.getPlayer());
-                    gc.getTpt().gestionEventosPumYTable(gc);
-                    break;
-                case "b":
-                    GameVoiceOver.separador(gc.getGuiInteraction());
-                    GameVoiceOver.dialogo(16,null);
-                    gc.getGuiInteraction().pauseForUserInput();
-                    GameStoryTeller.narrar(42,gc.getPlayer());
-                    gc.getGuiInteraction().pauseForUserInput();
-                    PlayerOptions.opcion(9,gc.getPlayer());
-                    //todo -> SEGUIR POR AQUÍ!!!
-                    break;
-                case "c":
-                    GameVoiceOver.separador(gc.getGuiInteraction());
-                    GameVoiceOver.dialogo(17,null);
-                    gc.getGuiInteraction().pauseForUserInput();
-                    GameStoryTeller.narrar(43,gc.getPlayer());
-                    gc.getGuiInteraction().pauseForUserInput();
-                    GameStoryTeller.narrar(44,gc.getPlayer());
-                    //todo -> SEGUIR POR AQUÍ!!!
-                    break;
-                case "e":
-                    return opcion;
-                default:
-                    GameStoryTeller.narrar(26, null);
-                    gc.getGuiInteraction().showMessage("\n");
+
+            if (opcion.equalsIgnoreCase("d")) {
+                GameVoiceOver.separador(gc.getGuiInteraction());
+                GameVoiceOver.dialogo(18, null);
+                gc.getGuiInteraction().pauseForUserInput();
+                GameStoryTeller.narrar(45, null);
+                gc.getGuiInteraction().pauseForUserInput();
+                PlayerOptions.opcion(10, gc.getPlayer());
+                //todo -> SEGUIR POR AQUÍ!!!
+                break;
+            } else if (opcion.equalsIgnoreCase("a")) {
+                GameVoiceOver.separador(gc.getGuiInteraction());
+                GameVoiceOver.dialogo(15, null);
+                gc.getGuiInteraction().pauseForUserInput();
+                GameVoiceOver.separador(gc.getGuiInteraction());
+                GameStoryTeller.narrar(41, gc.getPlayer());
+                gc.getGuiInteraction().pauseForUserInput();
+                PlayerOptions.opcion(8, gc.getPlayer());
+                gc.getTpt().gestionEventosPumYTable(gc); //primer evento importante
+                break;
+            } else if (opcion.equalsIgnoreCase("b")) {
+                GameVoiceOver.separador(gc.getGuiInteraction());
+                GameVoiceOver.dialogo(16, null);
+                gc.getGuiInteraction().pauseForUserInput();
+                GameStoryTeller.narrar(42, gc.getPlayer());
+                gc.getGuiInteraction().pauseForUserInput();
+                PlayerOptions.opcion(9, gc.getPlayer());
+                //todo -> SEGUIR POR AQUÍ!!!
+                break;
+            } else if (opcion.equalsIgnoreCase("c")) {
+                GameVoiceOver.separador(gc.getGuiInteraction());
+                GameVoiceOver.dialogo(17, null);
+                gc.getGuiInteraction().pauseForUserInput();
+                GameStoryTeller.narrar(43, gc.getPlayer());
+                gc.getGuiInteraction().pauseForUserInput();
+                GameStoryTeller.narrar(44, gc.getPlayer());
+                //todo -> SEGUIR POR AQUÍ!!!
+                break;
+            } else if (opcion.equalsIgnoreCase("e")) {
+                // todo -> SEGUIR POR AQUÍ
+                break;
             }
-            break;
         }
-        return opcion;
+
+
     }
 }

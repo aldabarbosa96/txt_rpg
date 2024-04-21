@@ -8,6 +8,7 @@ import game0.events.combats.CombatLogic;
 import game0.game.manager.GameContext;
 import game0.game.manager.GameLoop;
 import game0.game.manager.GameTester;
+import game0.multimedia.SoundUtils;
 import game0.threads.thread.narrative.CombatNarrator;
 import game0.threads.thread.table_pum.CombatTablePum;
 import game0.game.narrative.GameStoryTeller;
@@ -19,10 +20,15 @@ import window.GameFrame;
 import window.GuiInteraction;
 
 import javax.swing.*;
+import java.net.URL;
 
 public class GameMain { // TODO -> ¡ACUÉRDATE de cambiar el GameTester.run2() por GameLopp.run() antes de jugar!
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+            URL startupSoundURL = GameMain.class.getResource("/game0/resources/audio/powerOn0.WAV");
+            SoundUtils.loadStartGameSound(startupSoundURL);
+            SoundUtils.playStartGameSound();
+            SoundUtils.loadTypingSound((GameMain.class.getResource("/game0/resources/audio/1.WAV")));
             //inicializamos componentes
             Inventory inventory = new Inventory();
             Equipment equipment = new Equipment();
@@ -48,7 +54,7 @@ public class GameMain { // TODO -> ¡ACUÉRDATE de cambiar el GameTester.run2() 
                 NpcNarration.setUserInteraction(guiInteraction);
                 PlayerOptions.setUserInteraction(guiInteraction);
                 GameVoiceOver.setUserInteraction(guiInteraction);
-                GameTester.run2(gc);
+                GameLoop.run(gc,pi);
             }).start();
         });
     }

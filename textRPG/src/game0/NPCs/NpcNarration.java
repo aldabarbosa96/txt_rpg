@@ -47,6 +47,8 @@ public class NpcNarration {
         /*13*/pumYtable.add("Pum: Ha sido un verdadero placer tener la oportunidad de encontrarme con usted, aunque brevemente. \nEste corto tiempo juntos ha sido increíblemente fructífero y enriquecedor. Aprecio profundamente la sabiduría y las perspectivas que compartió,\nlas cuales han dejado una huella indeleble en mi trayectoria. Le agradezco sinceramente por la generosidad de su tiempo y por la inspiración que me ha brindado.\nEspero que en un futuro tengamos la fortuna de reencontrarnos y continuar esta conversación. Hasta entonces, le deseo lo mejor en todos sus proyectos y emprendimientos.\nCon el mayor respeto y un cordial saludo, me despido agradecido por este valioso intercambio.\nPum.");
         /*14*/pumYtable.add("\nTable: Pues verás, es una especie de estimulante mágico. Son unos polvitos blancos que te darán un chute de energía a costa de un poquito de tu vida :)\n¿Qué me dices?");
         /*15*/pumYtable.add("Pum: Un chutazo, pum.");
+        /*16*/pumYtable.add("Table: Tú te lo pierdes broder. Más pa' nosotros JAJ.");
+        /*17*/pumYtable.add("Pum: Pa' nosotros, pum.");
 
     }
 }

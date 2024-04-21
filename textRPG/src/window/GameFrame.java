@@ -81,17 +81,24 @@ public class GameFrame extends JFrame {
     private void setupTextArea() {
         textArea = new JTextArea();
         textArea.setEditable(false);
-        textArea.setBackground(new Color(3, 3, 3));
-        textArea.setForeground(new Color(215, 215, 215));
+        textArea.setBackground(new Color(2, 5, 0));
+        textArea.setForeground(new Color(0, 210, 95));
         textArea.setFont(new Font("Lucida Sans Unicode", Font.PLAIN, 16));
         textArea.setMargin(new Insets(15, 13, 300, 5));
+        textArea.setCaretColor(new Color(0, 210, 95));
 
         textScrollPane = new JScrollPane(textArea);
         textScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         textScrollPane.setBorder(BorderFactory.createEmptyBorder());
-
-        DefaultCaret caret = (DefaultCaret) textArea.getCaret();
+        DefaultCaret caret = new DefaultCaret() {
+            @Override
+            public boolean isVisible() {
+                return true;
+            }
+        };
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        textArea.setCaret(caret);
+        textArea.getCaret().setVisible(true);
 
         add(textScrollPane, BorderLayout.CENTER);
     }
@@ -114,9 +121,9 @@ public class GameFrame extends JFrame {
                 inputField.setText("");
             }
         });
-        inputField.setBackground(Color.black);
-        inputField.setForeground(new Color(215, 215, 215));
-        inputField.setCaretColor(new Color(215, 215, 215));
+        inputField.setBackground(new Color(2, 5, 0));
+        inputField.setForeground(new Color(0, 210, 95));
+        inputField.setCaretColor(new Color(0, 210, 95));
         inputField.setPreferredSize(new Dimension(Integer.MAX_VALUE, 50));
         inputField.setFont(new Font("Liberation mono", Font.PLAIN, 17));
         buttonPanel.add(inputField, BorderLayout.CENTER);
@@ -146,8 +153,8 @@ public class GameFrame extends JFrame {
     private void setupStatsArea(JPanel parent) {
         statsArea = new JTextArea(8, 8);
         statsArea.setEditable(false);
-        statsArea.setBackground(Color.black);
-        statsArea.setForeground(new Color(220, 175, 10));
+        statsArea.setBackground(new Color(2, 5, 0));
+        statsArea.setForeground(new Color(0, 210, 95));
         statsArea.setFont(new Font("Lucida Sans Unicode", Font.BOLD, 16));
 
         statsScrollPane = new JScrollPane(statsArea);
@@ -172,8 +179,8 @@ public class GameFrame extends JFrame {
     private void setupInventoryArea(JPanel parent) {
         inventoryArea = new JTextArea(15, 15);
         inventoryArea.setEditable(false);
-        inventoryArea.setBackground(Color.black);
-        inventoryArea.setForeground(new Color(220, 175, 10));
+        inventoryArea.setBackground(new Color(2, 5, 0));
+        inventoryArea.setForeground(new Color(0, 210, 95));
         inventoryArea.setFont(new Font("verdana", Font.BOLD, 16));
         inventoryScrollPane = new JScrollPane(inventoryArea);
         inventoryScrollPane.setVisible(false);
@@ -186,8 +193,8 @@ public class GameFrame extends JFrame {
     private void setupEquipmentArea(JPanel parent) {
         equipmentArea = new JTextArea(15, 15);
         equipmentArea.setEditable(false);
-        equipmentArea.setBackground(Color.black);
-        equipmentArea.setForeground(new Color(220, 175, 10));
+        equipmentArea.setBackground(new Color(2, 5, 0));
+        equipmentArea.setForeground(new Color(0, 210, 95));
         equipmentArea.setFont(new Font("Verdana", Font.BOLD, 15));
         equipmentScrollPane = new JScrollPane(equipmentArea);
         equipmentScrollPane.setVisible(false);

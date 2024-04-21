@@ -35,7 +35,7 @@ public class PlayerOptions {
         /*13*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Tomar polvos raros\nB) Decir NO\nC) Atacar sin motivo alguno");
         /*14*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Intentar huír\nB) Entablar conversación amistosa\nC) Combate directo");
         /*15*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Lootear los cuerpos\nB) Pasar de ellos\nC) F*llarte los cadáveres");
-
+        /*16*/opciones.add("\n---------------------------------------------------\n<<{PlayerName}>> \nA) Hablar con entes raros\nB) Atacar entes raros\nC) Pasar de largo");
     }
     public static void dialogo(int index, Player player){
         String escoger = dialogar.get(index);
@@ -57,6 +57,7 @@ public class PlayerOptions {
         /*6*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : Emmm... Claro.. Lo que tú digas... Un placer mis panas. Y gracias por la faf.. fabulosa magia que me habéis dado.");
         /*7*/dialogar.add("\n<<{PlayerName}>> : ¡Ciao mis panas!");
         /*8*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : ¡Guau! ¡Qué generosa la gente de aquí! Muchas gracias, curiosos entes.");
+        /*9*/dialogar.add("\n---------------------------------------------------\n<<{PlayerName}>> : Gracias amiguetes pero voy a pasar... No me va la coc, digo los polvos \"mágicos\".");
 
     }
 }

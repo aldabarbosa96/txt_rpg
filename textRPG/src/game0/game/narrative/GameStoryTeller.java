@@ -81,5 +81,8 @@ public class GameStoryTeller {
         /*55*/narracion.add("Narrador: Esa es la buena <<{PlayerName}>>. La del listo, ahora puedes foll.. digo lootearlos sin que nadie te vea...");
         /*56*/narracion.add("Narrador: Bueno, supongo que es porque eres idiota, pero bueno, yo los hubiera registrado.. por si acaso... ");
         /*57*/narracion.add("Narrador: ¡¡¡HERMANOO!!! Ni la voz en off ha dicha nada, la has horrorizado... Debes estar de coña, va te lo volvere a preguntar:");
+        /*58*/narracion.add("Narrador: Joder macho, menuda oportunidad has desperd, digo ¡Bien hecho <<{PlayerName}>>! Di no a las drogas :) (cateto...).");
+        /*59*/narracion.add("Narrador: Ha salido todo a pedir de Milhouse. Bueno, no me hagas ni caso. Te has cargado a esos dos y vas bien equipado para continuar tu viaje, menuda maravilla.");
+        /*60*/narracion.add("Narrador: ¡Hostia puta! ¡Pero será cerdo el tío! Ah no espera... ¡Eeeeh que te la quitaa! Vamos corree, que te deja sin, huélete esos culos!");
     }
 }

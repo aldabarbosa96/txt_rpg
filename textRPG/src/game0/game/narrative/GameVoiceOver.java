@@ -56,12 +56,17 @@ public class GameVoiceOver {
         /*28*/vozEnOff.add("Miras los bolsillos, las mochilas y hasta en los gayumbos de estos dos entes.");
         /*29*/vozEnOff.add("Encuentras un mechero y un colgante bastante horroroso.");
         /*30*/vozEnOff.add("Parece que alguien te ha visto looteando los cadáveres.");
-        /*31*/vozEnOff.add("Sales corriendo cual gallina espantada, dejando un rastro de plumas y dignidad.");
-        /*32*/vozEnOff.add("Desapareces de la zona del delito, adentrándote más en \"Los Acantilados Riera Alta\".");
+        /*31*/vozEnOff.add("Sales huyendo cual gallina espantada, dejando un rastro de plumas y dignidad.");
+        /*32*/vozEnOff.add("Sigues corriendo hasta desaparecer por completo de la zona del delito, adentrándote más en \"Los Acantilados Riera Alta\".");
         /*33*/vozEnOff.add("Te llevas raudo y veloz los cuerpos de la escena del crimen, sin que nadie cosniga verte.");
         /*34*/vozEnOff.add("Dejas los cuerpos intactos y te marchas del lugar.");
         /*35*/vozEnOff.add("Desapareces de la zona, adentrándote más en \"Los Acantilados Riera Alta\".");
-
+        /*36*/vozEnOff.add("Encuentras un colgante bastante horroroso.");
+        /*37*/vozEnOff.add("Los entes desaparecen en un abrir y cerrar de ojos. Los oyes a lo lejos, balbuceando tonterías.");
+        /*38*/vozEnOff.add("Abandonas los cuerpos en calzones y te dispones a proseguir con tu \"aventura\".");
+        /*39*/vozEnOff.add("Mientras huyes, echas la mirada atrás y ves como la persona que te vió está registrando los cadáveres.");
+        /*40*/vozEnOff.add("Te propones a conversar, cuando de pronto, la persona que te había visto y que estaba vieniendo dirtecta a ti,\npasa de largo y se dispone a desnudar los cuerpos y a esnifar muy fuerte de sus anos.");
+        /*41*/vozEnOff.add("Ignorando por completo al narrador, desapareces de la zona, adentrándote más en \"Los Acantilados Riera Alta\".");
 
     }
 }

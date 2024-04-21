@@ -8,6 +8,8 @@ import game0.game.narrative.GameVoiceOver;
 import game0.player.PlayerOptions;
 
 public class ThreadTablePum extends CombatLogic {
+    private boolean pedoTirado = false;
+
     public void gestionEventosPumYTable(GameContext gc) {
         String opcion = "";
         opcion = gc.getGuiInteraction().getInput().toLowerCase();
@@ -27,7 +29,7 @@ public class ThreadTablePum extends CombatLogic {
                 pasarDeLargo(gc);
                 break;
             default:
-                GameStoryTeller.narrar(26,null);
+                GameStoryTeller.narrar(26, null);
                 gestionEventosPumYTable(gc);
                 break;
         }
@@ -58,36 +60,41 @@ public class ThreadTablePum extends CombatLogic {
         this.gestionarRegalo(gc);
     }
 
+    public void tomarFarlopa(GameContext gc) {
+        GameVoiceOver.separador(gc.getGuiInteraction());
+        GameVoiceOver.dialogo(26, null);
+        gc.getGuiInteraction().pauseForUserInput();
+        GameVoiceOver.dialogo(27, null);
+        gc.getPlayer().setHp(gc.getPlayer().getHp() - 1);
+        gc.getPlayer().setEnergy(gc.getPlayer().getEnergy() + 2);
+        gc.getGuiInteraction().pauseForUserInput();
+        NpcNarration.dialogoPumYTable(10);
+        gc.getGuiInteraction().pauseForUserInput();
+        NpcNarration.dialogoPumYTable(11);
+        gc.getGuiInteraction().pauseForUserInput();
+        NpcNarration.dialogoPumYTable(12);
+        gc.getGuiInteraction().pauseForUserInput();
+        NpcNarration.dialogoPumYTable(13);
+        gc.getGuiInteraction().pauseForUserInput();
+        PlayerOptions.dialogo(6, gc.getPlayer());
+        PlayerOptions.dialogo(7, gc.getPlayer());
+    }
+
     public void gestionarRegalo(GameContext gc) {
         String opcion = "";
         opcion = gc.getGuiInteraction().getInput();
 
         switch (opcion) {
             case "a":
-                GameVoiceOver.separador(gc.getGuiInteraction());
-                GameVoiceOver.dialogo(26, null);
-                gc.getGuiInteraction().pauseForUserInput();
-                GameVoiceOver.dialogo(27, null);
-                gc.getPlayer().setHp(gc.getPlayer().getHp() - 1);
-                gc.getPlayer().setEnergy(gc.getPlayer().getEnergy() + 2);
-                gc.getGuiInteraction().pauseForUserInput();
-                NpcNarration.dialogoPumYTable(10);
-                gc.getGuiInteraction().pauseForUserInput();
-                NpcNarration.dialogoPumYTable(11);
-                gc.getGuiInteraction().pauseForUserInput();
-                NpcNarration.dialogoPumYTable(12);
-                gc.getGuiInteraction().pauseForUserInput();
-                NpcNarration.dialogoPumYTable(13);
-                gc.getGuiInteraction().pauseForUserInput();
-                PlayerOptions.dialogo(6, gc.getPlayer());
-                PlayerOptions.dialogo(7, gc.getPlayer());
+                tomarFarlopa(gc);
                 break;
             case "b":
                 NpcNarration.dialogoPumYTable(14);
                 gc.getGuiInteraction().pauseForUserInput();
                 NpcNarration.dialogoPumYTable(15);
                 gc.getGuiInteraction().pauseForUserInput();
-                PlayerOptions.opcion(13, gc.getPlayer()); // todo -> seguir por aquí
+                PlayerOptions.opcion(13, gc.getPlayer());
+                gestionarPolvos(gc);
                 break;
             case "c":
                 gc.getctp().combatFlowTablePum(gc);
@@ -97,12 +104,13 @@ public class ThreadTablePum extends CombatLogic {
             case "d":
                 pasarDeLargo(gc);
             default:
-                GameStoryTeller.narrar(26,null);
+                GameStoryTeller.narrar(26, null);
                 gestionarRegalo(gc);
         }
     }
 
-    public static void tirarPedo(GameContext gc) {
+    public void tirarPedo(GameContext gc) {
+        pedoTirado = true;
         GameVoiceOver.dialogo(21, null);
         gc.getGuiInteraction().pauseForUserInput();
         GameVoiceOver.separador(gc.getGuiInteraction());
@@ -115,8 +123,25 @@ public class ThreadTablePum extends CombatLogic {
         gc.getPlayer().setHp(gc.getPlayer().getHp() + 2);
         GameVoiceOver.dialogo(23, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
-        PlayerOptions.dialogo(8, gc.getPlayer()); // todo -> seguir por aquí
+        PlayerOptions.opcion(16, gc.getPlayer());
+        String opcion = gc.getGuiInteraction().getInput();
 
+        while (true) {
+            if (opcion.equalsIgnoreCase("a")) {
+                dialogar(gc);
+                break;
+            } else if (opcion.equalsIgnoreCase("b")) {
+                gc.getctp().combatFlowTablePum(gc);
+                this.afterCombat(gc);
+                break;
+            } else if (opcion.equalsIgnoreCase("c")) {
+                pasarDeLargo(gc);
+                break;
+            } else {
+                GameStoryTeller.narrar(26, null);
+                gc.getGuiInteraction().pauseForUserInput();
+            }
+        }
     }
 
     public static void pasarDeLargo(GameContext gc) {
@@ -125,7 +150,7 @@ public class ThreadTablePum extends CombatLogic {
         gc.getGuiInteraction().pauseForUserInput();
         GameStoryTeller.narrar(51, null);
         gc.getGuiInteraction().pauseForUserInput();
-        GameVoiceOver.dialogo(35,null);
+        GameVoiceOver.dialogo(35, null);
     }
 
     public void afterCombat(GameContext gc) {
@@ -139,6 +164,7 @@ public class ThreadTablePum extends CombatLogic {
                     GameVoiceOver.dialogo(30, null);
                     gc.getGuiInteraction().pauseForUserInput();
                     PlayerOptions.opcion(14, gc.getPlayer());
+                    teHanPillado(gc);
                     break;
                 case "b":
                     GameVoiceOver.separador(gc.getGuiInteraction());
@@ -154,7 +180,6 @@ public class ThreadTablePum extends CombatLogic {
                     gc.getGuiInteraction().pauseForUserInput();
                     GameStoryTeller.narrar(55, gc.getPlayer());
                     gc.getGuiInteraction().pauseForUserInput();
-                    PlayerOptions.opcion(15, gc.getPlayer());
                     opcionDespuesEsconderCuerpos(gc);
             }
         }
@@ -168,10 +193,15 @@ public class ThreadTablePum extends CombatLogic {
         GameStoryTeller.narrar(52, gc.getPlayer());
         gc.getGuiInteraction().pauseForUserInput();
         GameVoiceOver.separador(gc.getGuiInteraction());
-        GameVoiceOver.dialogo(29, null);
-        gc.getEquipment().equiparItem("manoI", "Mechero (+2 Vida)");
+
+        if (!pedoTirado) {
+            GameVoiceOver.dialogo(29, null);
+            gc.getEquipment().equiparItem("manoI", "Mechero (+2 Vida)");
+            gc.getPlayer().setHp(gc.getPlayer().getHp() + 2);
+        }
+
         gc.getEquipment().equiparItem("collar", "Collar feo (+2 Defensa)");
-        gc.getPlayer().setHp(gc.getPlayer().getHp() + 2);
+        GameVoiceOver.dialogo(36, null);
         gc.getPlayer().setHp(gc.getPlayer().getDeffense() + 2);
         gc.getGuiInteraction().pauseForUserInput();
         GameVoiceOver.separador(gc.getGuiInteraction());
@@ -180,10 +210,13 @@ public class ThreadTablePum extends CombatLogic {
     }
 
     public void opcionDespuesEsconderCuerpos(GameContext gc) {
+        PlayerOptions.opcion(15, gc.getPlayer());
         String opcion2 = gc.getGuiInteraction().getInput();
 
         if (opcion2.equalsIgnoreCase("a")) {
             lootearCuerpos(gc);
+            GameVoiceOver.dialogo(38,null);
+            GameStoryTeller.narrar(59,null);
 
         } else if (opcion2.equalsIgnoreCase("b")) {
             GameVoiceOver.separador(gc.getGuiInteraction());
@@ -195,11 +228,56 @@ public class ThreadTablePum extends CombatLogic {
             GameVoiceOver.separador(gc.getGuiInteraction());
             GameStoryTeller.narrar(57, null);
             gc.getGuiInteraction().pauseForUserInput();
-            afterCombat(gc);
+            opcionDespuesEsconderCuerpos(gc);
 
         } else {
             GameStoryTeller.narrar(26, null);
             opcionDespuesEsconderCuerpos(gc);
+        }
+    }
+
+    public void gestionarPolvos(GameContext gc) {
+        String opcion = gc.getGuiInteraction().getInput();
+
+        if (opcion.equalsIgnoreCase("a")) {
+            tomarFarlopa(gc);
+
+        } else if (opcion.equalsIgnoreCase("b")) {
+            PlayerOptions.dialogo(9, gc.getPlayer());
+            gc.getGuiInteraction().pauseForUserInput();
+            NpcNarration.dialogoPumYTable(16);
+            NpcNarration.dialogoPumYTable(17);
+            gc.getGuiInteraction().pauseForUserInput();
+            GameVoiceOver.dialogo(37, null);
+            GameStoryTeller.narrar(58, gc.getPlayer());
+
+        } else if (opcion.equalsIgnoreCase("c")) {
+            gc.getctp().combatFlowTablePum(gc);
+            this.afterCombat(gc);
+
+        } else {
+            GameStoryTeller.narrar(26, null);
+            gestionarPolvos(gc);
+        }
+    }
+    public void teHanPillado(GameContext gc){
+        String opcion = gc.getGuiInteraction().getInput();
+
+        if (opcion.equalsIgnoreCase("a")){
+            GameVoiceOver.separador(gc.getGuiInteraction());
+            GameVoiceOver.dialogo(31, null);
+            gc.getGuiInteraction().pauseForUserInput();
+            GameStoryTeller.narrar(54, gc.getPlayer());
+            gc.getGuiInteraction().pauseForUserInput();
+            GameVoiceOver.dialogo(39,null);
+            GameVoiceOver.dialogo(32, null);
+        } else if (opcion.equalsIgnoreCase("b")) {
+            GameVoiceOver.dialogo(40,null);
+            GameStoryTeller.narrar(60,null);
+            GameVoiceOver.dialogo(41,null);
+        } else {
+            GameStoryTeller.narrar(26,null);
+            teHanPillado(gc);
         }
     }
 }

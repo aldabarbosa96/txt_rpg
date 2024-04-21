@@ -10,33 +10,37 @@ import window.GuiInteraction;
 
 public class GameOptionManager {
     protected static boolean manageOption01(String option, GameContext gc) {
-        switch (option) {
-            case "a":
-                Tutorial.tutorialEvent(gc);
-                return true;
-            case "b":
-                GameStoryTeller.narrar(17, null);
-                gc.getCombat().combatFlowNarrator(gc);
-            case "c":
-                GameStoryTeller.narrar(28,null);
-                GameVoiceOver.separador(gc.getGuiInteraction());
-                gc.getGuiInteraction().pauseForUserInput();
-                System.exit(0);
-                return true;
-            default:
-                GameStoryTeller.narrar(26, null);
-                return false;
+
+        if (option.equalsIgnoreCase("a")) {
+            Tutorial.tutorialEvent(gc);
+            return true;
+        } else if (option.equalsIgnoreCase("b")) {
+            GameStoryTeller.narrar(17, null);
+            gc.getCombat().combatFlowNarrator(gc);
+            return true;
+        } else if (option.equalsIgnoreCase("c")) {
+            GameStoryTeller.narrar(28, null);
+            GameVoiceOver.separador(gc.getGuiInteraction());
+            gc.getGuiInteraction().pauseForUserInput();
+            System.exit(0);
+            return true;
+        } else {
+            GameStoryTeller.narrar(26, null);
+            return false;
         }
     }
+
     protected static void manageOption02A(GuiInteraction gi, Player player, Equipment equipment) {
         GameStoryTeller.narrar(24, player);
         gi.pauseForUserInput();
         GameStoryTeller.narrar(31, player);
-        gi.pauseForUserInput(); GameVoiceOver.separador(gi);
-        GameVoiceOver.dialogo(14,null);
-        gi.pauseForUserInput(); GameVoiceOver.separador(gi);
+        gi.pauseForUserInput();
+        GameVoiceOver.separador(gi);
+        GameVoiceOver.dialogo(14, null);
+        gi.pauseForUserInput();
+        GameVoiceOver.separador(gi);
         equipment.equiparItem("manoD", "Navaja (+1 Fuerza)"); //todo -> esto hay que manejarlo de forma dinámica
-        player.setAttack((player.getAttack()+1));
+        player.setAttack((player.getAttack() + 1));
         GameStoryTeller.narrar(25, null);
     }
 
@@ -59,11 +63,11 @@ public class GameOptionManager {
     }
 
     protected static void manageOption02E(GameContext gc) {
-        if (gc.getPlayer().getXp() <= 100){
+        if (gc.getPlayer().getXp() <= 100) {
             gc.getCombat().combatFlowNarrator(gc);
         } else {
             GameVoiceOver.separador(gc.getGuiInteraction());
-            GameStoryTeller.narrar(48,gc.getPlayer());
+            GameStoryTeller.narrar(48, gc.getPlayer());
             gc.getGuiInteraction().pauseForUserInput();
         }
     }
